@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -321,7 +321,9 @@
   .form-header { margin-bottom: 32px; }
   .form-header h3 { font-size: 22px; color: var(--neutral800); margin-bottom: 6px; }
   .form-header p { font-size: 14px; color: var(--neutral600); }
-  .form-progress { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; }
+  .form-progress { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+  .form-progress .prog-step span { display: none; }
+  @media (min-width: 1100px) { .form-progress .prog-step span { display: inline; } }
   .prog-step {
     display: flex;
     align-items: center;
@@ -606,6 +608,82 @@
   }
   .success-note strong { display: block; margin-bottom: 6px; }
 
+  /* ── FORM TABS ── */
+  .form-tabs { display: flex; gap: 8px; margin-bottom: 24px; background: var(--neutral100); border-radius: var(--radius-sm); padding: 6px; }
+  .form-tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--neutral600);
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .form-tab.active { background: var(--white); color: var(--g600); box-shadow: var(--shadow-card); }
+  .form-tab:hover:not(.active) { color: var(--g600); }
+  .app-form-wrap { display: none; }
+  .app-form-wrap.active { display: block; }
+
+  /* ── SLIDE (ONBOARDING) ── */
+  .slide-intro { text-align: center; padding: 12px 0 24px; }
+  .slide-intro h3 { font-size: 24px; color: var(--neutral800); margin-bottom: 8px; }
+  .slide-intro p { font-size: 15px; color: var(--neutral600); max-width: 420px; margin: 0 auto; }
+  .product-options { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+  .product-opt {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 1.5px solid var(--neutral200);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+    background: var(--neutral50);
+  }
+  .product-opt:hover, .product-opt.selected { border-color: var(--g400); background: var(--g50); }
+  .product-opt input[type="radio"] { appearance: none; width: 18px; height: 18px; border: 2px solid var(--neutral400); border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; cursor: pointer; }
+  .product-opt input[type="radio"]:checked { border-color: var(--g500); background: var(--g500); box-shadow: inset 0 0 0 3px white; }
+  .product-opt-icon { width: 38px; height: 38px; background: var(--g100); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .product-opt-icon svg { width: 20px; height: 20px; fill: var(--g600); }
+  .product-opt-text { display: flex; flex-direction: column; }
+  .product-opt-text strong { font-size: 15px; color: var(--neutral800); }
+  .product-opt-text span { font-size: 13px; color: var(--neutral600); }
+
+  .tc-box {
+    border: 1px solid var(--neutral200);
+    border-radius: var(--radius-sm);
+    background: var(--neutral50);
+    padding: 20px;
+    max-height: 280px;
+    overflow-y: auto;
+    font-size: 13px;
+    color: var(--neutral600);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .tc-box h4 { font-size: 14px; color: var(--neutral800); margin: 14px 0 4px; }
+  .tc-box h4:first-child { margin-top: 0; }
+
+  .doc-req-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border: 1.5px solid var(--neutral200);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    margin-bottom: 14px;
+    background: var(--neutral50);
+  }
+  .doc-req-icon { width: 40px; height: 40px; background: var(--g100); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .doc-req-icon svg { width: 20px; height: 20px; fill: var(--g600); }
+  .doc-req-text strong { display: block; font-size: 15px; color: var(--neutral800); margin-bottom: 2px; }
+  .doc-req-text span { font-size: 13px; color: var(--neutral600); }
+
   @media (max-width: 960px) {
     .hero-inner { grid-template-columns: 1fr; }
     .membership-layout { grid-template-columns: 1fr; }
@@ -711,7 +789,7 @@
 <!-- MEMBERSHIP APPLICATION (updated all Zoho references) -->
 <section class="membership-section" id="membership">
   <div class="membership-inner">
-    <div style="margin-bottom:48px;"><div class="section-tag">Membership Application</div><h2 class="section-title">Join Umoja SACCO today</h2><p class="section-sub">100% online. Powered by our digital membership hub — your data is captured, verified, and processed automatically.</p></div>
+    <div style="margin-bottom:48px;"><div class="section-tag">Membership Application</div><h2 class="section-title">Join Umoja SACCO today</h2><p class="section-sub">We're excited to help you start your financial journey. Select A loan/savings product to continue</p></div>
     <div class="membership-layout">
       <div class="membership-info">
         <h2>Why become a member?</h2>
@@ -720,21 +798,207 @@
       </div>
 
       <!-- Form Card -->
-      <div class="form-card" id="applicationForm">
-        <div class="form-progress"><div class="prog-step done" id="prog1"><div class="prog-num">✓</div><span>Personal</span></div><div class="prog-line done" id="line1"></div><div class="prog-step active" id="prog2"><div class="prog-num">2</div><span>Employment</span></div><div class="prog-line" id="line2"></div><div class="prog-step" id="prog3"><div class="prog-num">3</div><span>Contributions</span></div><div class="prog-line" id="line3"></div><div class="prog-step" id="prog4"><div class="prog-num">4</div><span>Confirm</span></div></div>
-        <div class="form-header"><h3>Membership Application Form</h3><p>All sections are required. Your data is securely stored in our member database.</p></div>
-        <div id="section1"><div class="form-section-title">Personal Information</div><div class="form-row"><div class="form-group"><label for="fname">First Name <span class="req">*</span></label><input type="text" id="fname" placeholder="e.g. Amina" /></div><div class="form-group"><label for="lname">Last Name <span class="req">*</span></label><input type="text" id="lname" placeholder="e.g. Odhiambo" /></div></div><div class="form-row"><div class="form-group"><label for="id_no">National ID / Passport No. <span class="req">*</span></label><input type="text" id="id_no" placeholder="12345678" /></div><div class="form-group"><label for="dob">Date of Birth <span class="req">*</span></label><input type="date" id="dob" /></div></div><div class="form-row"><div class="form-group"><label for="phone">Phone Number <span class="req">*</span></label><input type="tel" id="phone" placeholder="+254 7XX XXX XXX" /></div><div class="form-group"><label for="email">Email Address <span class="req">*</span></label><input type="email" id="email" placeholder="you@example.com" /></div></div><div class="form-row single"><div class="form-group"><label>Gender <span class="req">*</span></label><div class="radio-group"><label class="radio-opt"><input type="radio" name="gender" value="female" /> Female</label><label class="radio-opt"><input type="radio" name="gender" value="male" /> Male</label><label class="radio-opt"><input type="radio" name="gender" value="other" /> Prefer not to say</label></div></div></div><div class="form-row single"><div class="form-group"><label for="county">County of Residence <span class="req">*</span></label><select id="county"><option value="">— Select County —</option><option>Nairobi</option><option>Mombasa</option><option>Kisumu</option><option>Nakuru</option><option>Eldoret</option><option>Kiambu</option><option>Machakos</option><option>Meru</option><option>Other</option></select></div></div><div class="form-divider"></div><div class="form-section-title">Upload ID Documents</div><div class="form-row"><div class="form-group"><label>ID Front Side <span class="req">*</span></label><div class="upload-area"><svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg><p>Click to upload or drag & drop</p><span>JPG, PNG or PDF — max 5MB</span></div></div><div class="form-group"><label>ID Back Side <span class="req">*</span></label><div class="upload-area"><svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg><p>Click to upload or drag & drop</p><span>JPG, PNG or PDF — max 5MB</span></div></div></div></div>
-        <div id="section2" style="display:none;"><div class="form-section-title">Employment & Income</div><div class="form-row single"><div class="form-group"><label>Employment Status <span class="req">*</span></label><div class="radio-group"><label class="radio-opt"><input type="radio" name="empstatus" value="employed" /> Employed</label><label class="radio-opt"><input type="radio" name="empstatus" value="self" /> Self-employed</label><label class="radio-opt"><input type="radio" name="empstatus" value="business" /> Business Owner</label><label class="radio-opt"><input type="radio" name="empstatus" value="retired" /> Retired</label></div></div></div><div class="form-row"><div class="form-group"><label for="employer">Employer / Business Name <span class="req">*</span></label><input type="text" id="employer" placeholder="e.g. Safaricom PLC" /></div><div class="form-group"><label for="job_title">Job Title / Role <span class="req">*</span></label><input type="text" id="job_title" placeholder="e.g. Senior Accountant" /></div></div><div class="form-row"><div class="form-group"><label for="income">Monthly Net Income (KSh) <span class="req">*</span></label><select id="income"><option value="">— Select range —</option><option>Below KSh 20,000</option><option>KSh 20,000 – 50,000</option><option>KSh 50,000 – 100,000</option><option>KSh 100,000 – 250,000</option><option>Above KSh 250,000</option></select></div><div class="form-group"><label for="years">Years in Current Employment <span class="req">*</span></label><input type="number" id="years" placeholder="e.g. 3" min="0" max="50" /></div></div><div class="form-divider"></div><div class="form-section-title">Next of Kin</div><div class="form-row"><div class="form-group"><label for="kin_name">Full Name <span class="req">*</span></label><input type="text" id="kin_name" placeholder="e.g. John Odhiambo" /></div><div class="form-group"><label for="kin_relation">Relationship <span class="req">*</span></label><select id="kin_relation"><option value="">— Select —</option><option>Spouse</option><option>Parent</option><option>Child</option><option>Sibling</option><option>Other</option></select></div></div><div class="form-row"><div class="form-group"><label for="kin_phone">Phone Number <span class="req">*</span></label><input type="tel" id="kin_phone" placeholder="+254 7XX XXX XXX" /></div><div class="form-group"><label for="kin_id">ID Number <span class="req">*</span></label><input type="text" id="kin_id" placeholder="12345678" /></div></div></div>
-        <div id="section3" style="display:none;"><div class="form-section-title">Monthly Contributions</div><div class="form-row single"><div class="form-group"><label>Monthly Savings Contribution <span class="req">*</span></label><div class="amount-options" id="amountOptions"><div class="amount-pill active" data-val="500">KSh 500</div><div class="amount-pill" data-val="1000">KSh 1,000</div><div class="amount-pill" data-val="2000">KSh 2,000</div><div class="amount-pill custom" data-val="custom">Custom</div></div><input type="number" id="custom_amount" placeholder="Enter custom amount (KSh)" style="display:none;" /><p class="form-hint">Minimum KSh 500/month. Deducted automatically via standing order or M-Pesa.</p></div></div><div class="form-row single"><div class="form-group"><label>Preferred Payment Method <span class="req">*</span></label><div class="radio-group"><label class="radio-opt"><input type="radio" name="paymethod" value="mpesa" checked /> M-Pesa</label><label class="radio-opt"><input type="radio" name="paymethod" value="bank" /> Bank Transfer</label><label class="radio-opt"><input type="radio" name="paymethod" value="payroll" /> Payroll Deduction</label></div></div></div><div class="form-row"><div class="form-group"><label for="loan_type">Primary Loan Interest <span class="req">*</span></label><select id="loan_type"><option value="">— Select type —</option><option>Emergency Loan</option><option>Development Loan</option><option>School Fees Loan</option><option>Business Loan</option><option>Asset Financing</option></select></div><div class="form-group"><label for="referral">Referred By (Member No.)</label><input type="text" id="referral" placeholder="e.g. UM-002345 (optional)" /></div></div><div class="form-divider"></div><div class="form-section-title">Communication Preferences</div><div class="form-group"><label style="margin-bottom:12px;">I'd like to receive updates via <span class="req">*</span></label><div class="checkbox-group"><label class="check-opt"><input type="checkbox" checked /><span>WhatsApp messages — account alerts & dividends</span></label><label class="check-opt"><input type="checkbox" checked /><span>Email newsletters — SACCO news and financial tips</span></label><label class="check-opt"><input type="checkbox" /><span>SMS notifications — transaction confirmations</span></label></div></div></div>
-        <div id="section4" style="display:none;"><div class="form-section-title">Review & Declaration</div><div style="background:var(--neutral50);border:1px solid var(--neutral200);border-radius:var(--radius-sm);padding:20px;margin-bottom:24px;"><p style="font-size:14px;color:var(--neutral600);line-height:1.8;">By submitting this form, I confirm that:</p><ul style="font-size:14px;color:var(--neutral600);line-height:2;padding-left:20px;margin-top:8px;"><li>All information provided is true and accurate to the best of my knowledge.</li><li>I have read and agree to the Umoja SACCO membership terms and bylaws.</li><li>I consent to KYC verification and credit checks as permitted by law.</li><li>I agree to pay the KSh 2,000 registration fee within 7 days of approval.</li><li>My data will be stored and processed in accordance with the Privacy Policy.</li></ul></div><div class="form-group" style="margin-bottom:24px;"><label class="check-opt" style="align-items:flex-start;gap:12px;"><input type="checkbox" id="declaration" style="margin-top:2px;" /><span style="font-size:14px;color:var(--neutral700);line-height:1.6;">I have read and agree to the <a href="#" style="color:var(--g600);text-decoration:underline;">Terms & Conditions</a> and <a href="#" style="color:var(--g600);text-decoration:underline;">Privacy Policy</a>. I understand my membership agreement will be sent for digital signature.</span></label></div><div class="form-group" style="margin-bottom:24px;"><label for="signature">Digital Signature (Full Name as confirmation) <span class="req">*</span></label><input type="text" id="signature" placeholder="Type your full name as your digital signature" style="font-style:italic;" /><p class="form-hint">This acts as your electronic signature for the membership agreement.</p></div><div style="background:var(--g50);border:1px solid var(--g200);border-radius:var(--radius-sm);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;"><svg style="fill:var(--g500);width:20px;height:20px;flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><div><div style="font-size:14px;font-weight:600;color:var(--g700);margin-bottom:4px;">What happens next?</div><p style="font-size:13px;color:var(--g700);line-height:1.7;">Your application enters our member system instantly. Our membership team is notified, and you'll receive a WhatsApp confirmation within 5 minutes. Full approval takes 24–48 hours, after which you'll receive a link to sign your membership agreement digitally.</p></div></div></div>
+      <div class="form-card" id="applicationFormCard">
+        <div class="form-tabs">
+          <button class="form-tab active" id="tabMembership" onclick="switchForm('membership')">Membership</button>
+          <button class="form-tab" id="tabLoan" onclick="switchForm('loan')">Loan Application</button>
+          <button class="form-tab" id="tabSavings" onclick="switchForm('savings')">Savings Application</button>
+        </div>
 
-        <div class="form-footer" id="formNav"><button type="button" id="prevBtn" onclick="changeStep(-1)" style="background:transparent;border:1.5px solid var(--neutral200);padding:12px 24px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;color:var(--neutral600);display:none;">← Back</button><button type="button" id="nextBtn" onclick="changeStep(1)" class="form-submit" style="margin-left:auto;">Next Step<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></button></div>
-        <!-- <div class="sacco-powered"><svg style="fill:var(--g500);width:16px;height:16px;flex-shrink:0;" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg><span>This form is <strong>powered by Umoja Digital Onboarding</strong> — data syncs instantly to our member core and triggers automated workflows.</span></div> -->
+        <!-- ================= MEMBERSHIP ONBOARDING FORM ================= -->
+        <div class="app-form-wrap active" id="wrapMembership">
+        <div class="form-card" id="applicationForm" style="padding:0;border:none;box-shadow:none;">
+        <div class="form-progress" style="overflow-x:auto;">
+          <div class="prog-step active" id="mprog1"><div class="prog-num">1</div><span>Welcome</span></div><div class="prog-line" id="mline1"></div>
+          <div class="prog-step" id="mprog2"><div class="prog-num">2</div><span>Terms</span></div><div class="prog-line" id="mline2"></div>
+          <div class="prog-step" id="mprog3"><div class="prog-num">3</div><span>Documents</span></div><div class="prog-line" id="mline3"></div>
+          <div class="prog-step" id="mprog4"><div class="prog-num">4</div><span>Verification</span></div><div class="prog-line" id="mline4"></div>
+          <div class="prog-step" id="mprog5"><div class="prog-num">5</div><span>Identification</span></div><div class="prog-line" id="mline5"></div>
+          <div class="prog-step" id="mprog6"><div class="prog-num">6</div><span>Personal</span></div><div class="prog-line" id="mline6"></div>
+          <div class="prog-step" id="mprog7"><div class="prog-num">7</div><span>Next of Kin</span></div><div class="prog-line" id="mline7"></div>
+          <div class="prog-step" id="mprog8"><div class="prog-num">8</div><span>Confirm</span></div>
+        </div>
+        <div class="form-header"><h3>Membership Application Form</h3><p>All sections are required. Your data is securely stored in our member database.</p></div>
+        <div id="section1">
+          <div class="slide-intro">
+            <h3>Open Your Account</h3>
+            <p>Good morning! We're excited to help you start your financial journey. Select a loan/savings product to continue.</p>
+          </div>
+          <div class="product-options">
+            <label class="product-opt"><input type="radio" name="product_interest" value="savings" /><div class="product-opt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div><div class="product-opt-text"><strong>Savings Account</strong><span>Grow your money with competitive dividends</span></div></label>
+            <label class="product-opt"><input type="radio" name="product_interest" value="loan" /><div class="product-opt-icon"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div><div class="product-opt-text"><strong>Loan Product</strong><span>Borrow up to 3× your savings, fast approval</span></div></label>
+            <label class="product-opt"><input type="radio" name="product_interest" value="both" /><div class="product-opt-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></div><div class="product-opt-text"><strong>Both Savings & Loan</strong><span>Open a savings account and apply for a loan</span></div></label>
+          </div>
+        </div>
+        <div id="section2" style="display:none;">
+          <div class="form-section-title">Open Your Account — Terms and Conditions</div>
+          <div class="tc-box">
+            <h4>1. Account Opening</h4>
+            <p>By opening an account, you agree to provide accurate and truthful information. We reserve the right to verify the information provided and may refuse to open an account at our discretion.</p>
+            <h4>2. Deposits and Withdrawals</h4>
+            <p>Minimum deposit requirements may apply. Withdrawals may be subject to notice periods and limitations as per the specific account type chosen.</p>
+            <h4>3. Interest Rates</h4>
+            <p>Interest rates are subject to change without prior notice. The current interest rates will be displayed on our website and at our branches.</p>
+            <h4>4. Fees and Charges</h4>
+            <p>Account maintenance fees, transaction fees, and other charges may apply. Please refer to our current fee schedule for details.</p>
+            <h4>5. Account Closure</h4>
+            <p>We reserve the right to close your account with reasonable notice if it is not maintained in accordance with our policies.</p>
+          </div>
+          <div class="form-group"><label class="check-opt" style="align-items:flex-start;gap:12px;"><input type="checkbox" id="agree_terms" style="margin-top:2px;" /><span style="font-size:14px;color:var(--neutral700);">I agree to the terms and conditions <span class="req">*</span></span></label></div>
+        </div>
+        <div id="section3" style="display:none;">
+          <div class="form-section-title">Account Opening Requirements</div>
+          <p class="form-hint" style="margin-bottom:18px;font-size:14px;">Please prepare the following documents for upload. You'll be asked to attach them in the next steps.</p>
+          <div class="doc-req-card"><div class="doc-req-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><div class="doc-req-text"><strong>National ID / Passport</strong><span>A clear copy of your front and back ID, or passport bio-data page.</span></div></div>
+          <div class="doc-req-card"><div class="doc-req-icon"><svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg></div><div class="doc-req-text"><strong>KRA PIN Certificate</strong><span>Your current Kenya Revenue Authority PIN certificate.</span></div></div>
+          <div class="form-row" style="margin-top:18px;">
+            <div class="form-group"><label>Upload ID / Passport <span class="req">*</span></label><div class="upload-area"><svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg><p>Click to upload or drag & drop</p><span>JPG, PNG or PDF — max 5MB</span></div></div>
+            <div class="form-group"><label>Upload KRA PIN Certificate <span class="req">*</span></label><div class="upload-area"><svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg><p>Click to upload or drag & drop</p><span>JPG, PNG or PDF — max 5MB</span></div></div>
+          </div>
+        </div>
+        <div id="section4" style="display:none;">
+          <div class="form-section-title">Details Verification</div>
+          <div class="form-row single"><div class="form-group"><label for="m_country">Country of Residence <span class="req">*</span></label><select id="m_country"><option value="">— Select Country —</option><option selected>Kenya</option><option>Uganda</option><option>Tanzania</option><option>Rwanda</option><option>South Sudan</option><option>Other</option></select></div></div>
+          <div class="form-row"><div class="form-group"><label for="m_email">Registered Email Address <span class="req">*</span></label><input type="email" id="m_email" placeholder="you@example.com" /></div><div class="form-group"><label for="m_phone">Registered Phone Number <span class="req">*</span></label><input type="tel" id="m_phone" placeholder="+254 7XX XXX XXX" /></div></div>
+        </div>
+        <div id="section5" style="display:none;">
+          <div class="form-section-title">Identification Document</div>
+          <div class="form-row single"><div class="form-group"><label>Identification Type <span class="req">*</span></label><div class="radio-group"><label class="radio-opt"><input type="radio" name="id_type" value="national_id" checked /> National ID</label><label class="radio-opt"><input type="radio" name="id_type" value="passport" /> Passport</label></div></div></div>
+          <div class="form-row single"><div class="form-group"><label for="id_doc_no">ID / Passport Number <span class="req">*</span></label><input type="text" id="id_doc_no" placeholder="e.g. 12345678" /></div></div>
+        </div>
+        <div id="section6" style="display:none;">
+          <div class="form-section-title">Personal Details</div>
+          <div class="form-row"><div class="form-group"><label for="fname">Full Name <span class="req">*</span></label><input type="text" id="fname" placeholder="e.g. Amina Wanjiku Odhiambo" /></div><div class="form-group"><label for="id_no">ID No. <span class="req">*</span></label><input type="text" id="id_no" placeholder="12345678" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="dob">Date of Birth <span class="req">*</span></label><input type="date" id="dob" /></div><div class="form-group"><label>Gender <span class="req">*</span></label><div class="radio-group"><label class="radio-opt"><input type="radio" name="gender" value="female" /> Female</label><label class="radio-opt"><input type="radio" name="gender" value="male" /> Male</label><label class="radio-opt"><input type="radio" name="gender" value="other" /> Prefer not to say</label></div></div></div>
+          <div class="form-row"><div class="form-group"><label for="m_marital">Marital Status</label><select id="m_marital"><option value="">— Select —</option><option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option></select></div><div class="form-group"><label for="m_occupation">Occupation</label><input type="text" id="m_occupation" placeholder="e.g. Teacher" /></div></div>
+          <div class="form-divider"></div>
+          <div class="form-section-title">Address Details</div>
+          <div class="form-row single"><div class="form-group"><label for="addr_line">Address Line <span class="req">*</span></label><input type="text" id="addr_line" placeholder="e.g. House No., Street, Estate" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="addr_city">City / Town <span class="req">*</span></label><input type="text" id="addr_city" placeholder="e.g. Nairobi" /></div><div class="form-group"><label for="addr_zip">Postal Code / ZIP <span class="req">*</span></label><input type="text" id="addr_zip" placeholder="e.g. 00100" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="addr_state">State / Province / Region <span class="req">*</span></label><input type="text" id="addr_state" placeholder="e.g. Nairobi County" /></div><div class="form-group"><label for="addr_country">Country <span class="req">*</span></label><select id="addr_country"><option value="">— Select Country —</option><option selected>Kenya</option><option>Uganda</option><option>Tanzania</option><option>Rwanda</option><option>South Sudan</option><option>Other</option></select></div></div>
+        </div>
+        <div id="section7" style="display:none;">
+          <div class="form-section-title">Next of Kin</div>
+          <div class="form-row"><div class="form-group"><label for="kin_name">Full Name <span class="req">*</span></label><input type="text" id="kin_name" placeholder="e.g. John Odhiambo" /></div><div class="form-group"><label for="kin_relation">Relationship <span class="req">*</span></label><select id="kin_relation"><option value="">— Select —</option><option>Spouse</option><option>Parent</option><option>Child</option><option>Sibling</option><option>Other</option></select></div></div>
+          <div class="form-row"><div class="form-group"><label for="kin_phone">Phone Number <span class="req">*</span></label><input type="tel" id="kin_phone" placeholder="+254 7XX XXX XXX" /></div><div class="form-group"><label for="kin_id">ID / Passport Number <span class="req">*</span></label><input type="text" id="kin_id" placeholder="12345678" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="kin_email">Email Address</label><input type="email" id="kin_email" placeholder="kin@example.com" /></div><div class="form-group"><label for="kin_dob">Date of Birth</label><input type="date" id="kin_dob" /></div></div>
+          <div class="form-row single"><div class="form-group"><label for="kin_address">Physical Address</label><input type="text" id="kin_address" placeholder="e.g. House No., Street, Town" /></div></div>
+        </div>
+        <div id="section8" style="display:none;"><div class="form-section-title">Review & Declaration</div><div style="background:var(--neutral50);border:1px solid var(--neutral200);border-radius:var(--radius-sm);padding:20px;margin-bottom:24px;"><p style="font-size:14px;color:var(--neutral600);line-height:1.8;">By submitting this form, I confirm that:</p><ul style="font-size:14px;color:var(--neutral600);line-height:2;padding-left:20px;margin-top:8px;"><li>All information provided is true and accurate to the best of my knowledge.</li><li>I have read and agree to the Umoja SACCO membership terms and bylaws.</li><li>I consent to KYC verification and credit checks as permitted by law.</li><li>I agree to pay the KSh 2,000 registration fee within 7 days of approval.</li><li>My data will be stored and processed in accordance with the Privacy Policy.</li></ul></div><div class="form-group" style="margin-bottom:24px;"><label class="check-opt" style="align-items:flex-start;gap:12px;"><input type="checkbox" id="declaration" style="margin-top:2px;" /><span style="font-size:14px;color:var(--neutral700);line-height:1.6;">I have read and agree to the <a href="#" style="color:var(--g600);text-decoration:underline;">Terms & Conditions</a> and <a href="#" style="color:var(--g600);text-decoration:underline;">Privacy Policy</a>. I understand my membership agreement will be sent for digital signature.</span></label></div><div class="form-group" style="margin-bottom:24px;"><label for="signature">Digital Signature (Full Name as confirmation) <span class="req">*</span></label><input type="text" id="signature" placeholder="Type your full name as your digital signature" style="font-style:italic;" /><p class="form-hint">This acts as your electronic signature for the membership agreement.</p></div><div style="background:var(--g50);border:1px solid var(--g200);border-radius:var(--radius-sm);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;"><svg style="fill:var(--g500);width:20px;height:20px;flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><div><div style="font-size:14px;font-weight:600;color:var(--g700);margin-bottom:4px;">What happens next?</div><p style="font-size:13px;color:var(--g700);line-height:1.7;">Your application enters our member system instantly. Our membership team is notified, and you'll receive a WhatsApp confirmation within 5 minutes. Full approval takes 24–48 hours, after which you'll receive a link to sign your membership agreement digitally.</p></div></div></div>
+
+        <div class="form-footer" id="formNavMembership"><button type="button" id="prevBtnM" onclick="changeStep('membership',-1)" style="background:transparent;border:1.5px solid var(--neutral200);padding:12px 24px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;color:var(--neutral600);display:none;">← Back</button><button type="button" id="nextBtnM" onclick="changeStep('membership',1)" class="form-submit" style="margin-left:auto;">Next Step<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></button></div>
+        </div>
+        <div class="form-card success-card" id="successCardMembership"><div class="success-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><h3>Application Submitted!</h3><p>Thank you for applying to join Umoja SACCO. Your application has been received and a WhatsApp confirmation is on its way.</p><div class="success-note"><strong>What happens next:</strong>  Application record created in member system<br> Membership team notified via internal workflow<br> Confirmation sent via WhatsApp / SMS<br> KYC verification in progress...<br> Digital membership agreement being prepared...</div><button onclick="resetForm('membership')" style="margin-top:24px;background:transparent;border:1.5px solid var(--g500);color:var(--g600);padding:10px 24px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;font-size:14px;">Start a New Application</button></div>
+        </div>
+        <!-- ================= END MEMBERSHIP FORM ================= -->
+
+        <!-- ================= LOAN APPLICATION FORM ================= -->
+        <div class="app-form-wrap" id="wrapLoan">
+        <div id="loanForm">
+        <div class="form-progress">
+          <div class="prog-step active" id="lprog1"><div class="prog-num">1</div><span>Loan Details</span></div><div class="prog-line" id="lline1"></div>
+          <div class="prog-step" id="lprog2"><div class="prog-num">2</div><span>Employment & Income</span></div><div class="prog-line" id="lline2"></div>
+          <div class="prog-step" id="lprog3"><div class="prog-num">3</div><span>Guarantors</span></div><div class="prog-line" id="lline3"></div>
+          <div class="prog-step" id="lprog4"><div class="prog-num">4</div><span>Review & Submit</span></div>
+        </div>
+        <div class="form-header"><h3>Loan Application Form</h3><p>Apply for a loan against your SACCO savings. Approval typically takes 24–48 hours.</p></div>
+
+        <div id="lsection1">
+          <div class="form-section-title">Loan Details</div>
+          <div class="form-row"><div class="form-group"><label for="l_member_no">Member Number <span class="req">*</span></label><input type="text" id="l_member_no" placeholder="e.g. UM-002345" /></div><div class="form-group"><label for="l_fullname">Full Name <span class="req">*</span></label><input type="text" id="l_fullname" placeholder="e.g. Amina Wanjiku Odhiambo" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="l_type">Loan Product <span class="req">*</span></label><select id="l_type"><option value="">— Select type —</option><option>Emergency Loan</option><option>Development Loan</option><option>School Fees Loan</option><option>Business Loan</option><option>Asset Financing</option><option>Salary Advance</option></select></div><div class="form-group"><label for="l_amount">Loan Amount Requested (KSh) <span class="req">*</span></label><input type="number" id="l_amount" placeholder="e.g. 150000" min="0" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="l_period">Repayment Period (Months) <span class="req">*</span></label><select id="l_period"><option value="">— Select —</option><option>3</option><option>6</option><option>12</option><option>24</option><option>36</option><option>48</option><option>60</option></select></div><div class="form-group"><label for="l_purpose">Purpose of Loan <span class="req">*</span></label><input type="text" id="l_purpose" placeholder="e.g. School fees, business stock" /></div></div>
+          <div class="form-row single"><div class="form-group"><label>Repayment Method <span class="req">*</span></label><div class="radio-group"><label class="radio-opt"><input type="radio" name="l_repay" value="payroll" checked /> Payroll Deduction</label><label class="radio-opt"><input type="radio" name="l_repay" value="mpesa" /> M-Pesa</label><label class="radio-opt"><input type="radio" name="l_repay" value="bank" /> Bank Standing Order</label></div></div></div>
+          <div class="form-row"><div class="form-group"><label for="l_current_savings">Current Savings Balance (KSh)</label><input type="number" id="l_current_savings" placeholder="e.g. 80000" min="0" /></div><div class="form-group"><label for="l_existing_loan">Existing Loan Balance (KSh)</label><input type="number" id="l_existing_loan" placeholder="e.g. 0" min="0" /></div></div>
+        </div>
+
+        <div id="lsection2" style="display:none;">
+          <div class="form-section-title">Employment & Income</div>
+          <div class="form-row single"><div class="form-group"><label>Employment Status <span class="req">*</span></label><div class="radio-group"><label class="radio-opt"><input type="radio" name="l_empstatus" value="employed" /> Employed</label><label class="radio-opt"><input type="radio" name="l_empstatus" value="self" /> Self-employed</label><label class="radio-opt"><input type="radio" name="l_empstatus" value="business" /> Business Owner</label><label class="radio-opt"><input type="radio" name="l_empstatus" value="retired" /> Retired</label></div></div></div>
+          <div class="form-row"><div class="form-group"><label for="l_employer">Employer / Business Name <span class="req">*</span></label><input type="text" id="l_employer" placeholder="e.g. Safaricom PLC" /></div><div class="form-group"><label for="l_job_title">Job Title / Role <span class="req">*</span></label><input type="text" id="l_job_title" placeholder="e.g. Senior Accountant" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="l_income">Monthly Net Income (KSh) <span class="req">*</span></label><select id="l_income"><option value="">— Select range —</option><option>Below KSh 20,000</option><option>KSh 20,000 – 50,000</option><option>KSh 50,000 – 100,000</option><option>KSh 100,000 – 250,000</option><option>Above KSh 250,000</option></select></div><div class="form-group"><label for="l_years">Years in Current Employment <span class="req">*</span></label><input type="number" id="l_years" placeholder="e.g. 3" min="0" max="50" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="l_other_income">Other Sources of Income (KSh/month)</label><input type="number" id="l_other_income" placeholder="e.g. 5000 (optional)" min="0" /></div><div class="form-group"><label for="l_monthly_expenses">Estimated Monthly Expenses (KSh)</label><input type="number" id="l_monthly_expenses" placeholder="e.g. 30000" min="0" /></div></div>
+          <div class="form-divider"></div>
+          <div class="form-section-title">Upload Supporting Documents</div>
+          <div class="form-row"><div class="form-group"><label>Latest Payslip / Income Proof <span class="req">*</span></label><div class="upload-area"><svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg><p>Click to upload or drag & drop</p><span>JPG, PNG or PDF — max 5MB</span></div></div><div class="form-group"><label>Bank Statement (Last 3 Months)</label><div class="upload-area"><svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg><p>Click to upload or drag & drop</p><span>JPG, PNG or PDF — max 5MB</span></div></div></div>
+        </div>
+
+        <div id="lsection3" style="display:none;">
+          <div class="form-section-title">Guarantor 1</div>
+          <div class="form-row"><div class="form-group"><label for="g1_name">Full Name <span class="req">*</span></label><input type="text" id="g1_name" placeholder="e.g. John Odhiambo" /></div><div class="form-group"><label for="g1_member_no">Member Number <span class="req">*</span></label><input type="text" id="g1_member_no" placeholder="e.g. UM-001122" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="g1_id">ID Number <span class="req">*</span></label><input type="text" id="g1_id" placeholder="12345678" /></div><div class="form-group"><label for="g1_phone">Phone Number <span class="req">*</span></label><input type="tel" id="g1_phone" placeholder="+254 7XX XXX XXX" /></div></div>
+          <div class="form-row single"><div class="form-group"><label for="g1_amount">Amount Guaranteed (KSh) <span class="req">*</span></label><input type="number" id="g1_amount" placeholder="e.g. 75000" min="0" /></div></div>
+          <div class="form-divider"></div>
+          <div class="form-section-title">Guarantor 2</div>
+          <div class="form-row"><div class="form-group"><label for="g2_name">Full Name</label><input type="text" id="g2_name" placeholder="e.g. Patricia Nyambura" /></div><div class="form-group"><label for="g2_member_no">Member Number</label><input type="text" id="g2_member_no" placeholder="e.g. UM-003344" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="g2_id">ID Number</label><input type="text" id="g2_id" placeholder="12345678" /></div><div class="form-group"><label for="g2_phone">Phone Number</label><input type="tel" id="g2_phone" placeholder="+254 7XX XXX XXX" /></div></div>
+          <div class="form-row single"><div class="form-group"><label for="g2_amount">Amount Guaranteed (KSh)</label><input type="number" id="g2_amount" placeholder="e.g. 75000 (optional)" min="0" /></div></div>
+        </div>
+
+        <div id="lsection4" style="display:none;">
+          <div class="form-section-title">Review & Declaration</div>
+          <div style="background:var(--neutral50);border:1px solid var(--neutral200);border-radius:var(--radius-sm);padding:20px;margin-bottom:24px;"><p style="font-size:14px;color:var(--neutral600);line-height:1.8;">By submitting this loan application, I confirm that:</p><ul style="font-size:14px;color:var(--neutral600);line-height:2;padding-left:20px;margin-top:8px;"><li>All information provided is true, accurate and complete.</li><li>I authorize Umoja SACCO to verify my employment, income and credit history.</li><li>I understand my savings and guarantors' shares may be used as collateral.</li><li>I agree to repay this loan as per the schedule and applicable interest rates.</li><li>My data will be processed in accordance with the Privacy Policy.</li></ul></div>
+          <div class="form-group" style="margin-bottom:24px;"><label class="check-opt" style="align-items:flex-start;gap:12px;"><input type="checkbox" id="l_declaration" style="margin-top:2px;" /><span style="font-size:14px;color:var(--neutral700);line-height:1.6;">I have read and agree to the <a href="#" style="color:var(--g600);text-decoration:underline;">Loan Terms & Conditions</a> and <a href="#" style="color:var(--g600);text-decoration:underline;">Privacy Policy</a>.</span></label></div>
+          <div class="form-group" style="margin-bottom:24px;"><label for="l_signature">Digital Signature (Full Name as confirmation) <span class="req">*</span></label><input type="text" id="l_signature" placeholder="Type your full name as your digital signature" style="font-style:italic;" /><p class="form-hint">This acts as your electronic signature for the loan agreement.</p></div>
+          <div style="background:var(--g50);border:1px solid var(--g200);border-radius:var(--radius-sm);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;"><svg style="fill:var(--g500);width:20px;height:20px;flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><div><div style="font-size:14px;font-weight:600;color:var(--g700);margin-bottom:4px;">What happens next?</div><p style="font-size:13px;color:var(--g700);line-height:1.7;">Your loan application is sent to our credit team for review and guarantor confirmation. You'll receive a WhatsApp update within 24 hours, and disbursement follows via M-Pesa or bank transfer upon approval.</p></div></div>
+        </div>
+
+        <div class="form-footer" id="formNavLoan"><button type="button" id="prevBtnL" onclick="changeStep('loan',-1)" style="background:transparent;border:1.5px solid var(--neutral200);padding:12px 24px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;color:var(--neutral600);display:none;">← Back</button><button type="button" id="nextBtnL" onclick="changeStep('loan',1)" class="form-submit" style="margin-left:auto;">Next Step<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></button></div>
+        </div>
+        <div class="form-card success-card" id="successCardLoan"><div class="success-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><h3>Loan Application Submitted!</h3><p>Thank you. Your loan application has been received and is being routed to our credit team.</p><div class="success-note"><strong>What happens next:</strong>  Application record created in loan origination system<br> Guarantors notified for confirmation<br> Credit checks in progress...<br> Decision &amp; disbursement notification via WhatsApp / SMS</div><button onclick="resetForm('loan')" style="margin-top:24px;background:transparent;border:1.5px solid var(--g500);color:var(--g600);padding:10px 24px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;font-size:14px;">Start a New Application</button></div>
+        </div>
+        <!-- ================= END LOAN FORM ================= -->
+
+        <!-- ================= SAVINGS APPLICATION FORM ================= -->
+        <div class="app-form-wrap" id="wrapSavings">
+        <div id="savingsForm">
+        <div class="form-progress">
+          <div class="prog-step active" id="sprog1"><div class="prog-num">1</div><span>Account Info</span></div><div class="prog-line" id="sline1"></div>
+          <div class="prog-step" id="sprog2"><div class="prog-num">2</div><span>Contribution Details</span></div><div class="prog-line" id="sline2"></div>
+          <div class="prog-step" id="sprog3"><div class="prog-num">3</div><span>Review & Submit</span></div>
+        </div>
+        <div class="form-header"><h3>Savings Application Form</h3><p>Open or top up a savings product with Umoja SACCO.</p></div>
+
+        <div id="ssection1">
+          <div class="form-section-title">Personal & Account Information</div>
+          <div class="form-row"><div class="form-group"><label for="s_member_no">Member Number (if existing)</label><input type="text" id="s_member_no" placeholder="e.g. UM-002345 (leave blank if new)" /></div><div class="form-group"><label for="s_fullname">Full Name <span class="req">*</span></label><input type="text" id="s_fullname" placeholder="e.g. Amina Wanjiku Odhiambo" /></div></div>
+          <div class="form-row"><div class="form-group"><label for="s_id_no">ID / Passport Number <span class="req">*</span></label><input type="text" id="s_id_no" placeholder="12345678" /></div><div class="form-group"><label for="s_phone">Phone Number <span class="req">*</span></label><input type="tel" id="s_phone" placeholder="+254 7XX XXX XXX" /></div></div>
+          <div class="form-row single"><div class="form-group"><label for="s_email">Email Address <span class="req">*</span></label><input type="email" id="s_email" placeholder="you@example.com" /></div></div>
+          <div class="form-row single"><div class="form-group"><label>Savings Product <span class="req">*</span></label><div class="radio-group"><label class="radio-opt"><input type="radio" name="s_product" value="ordinary" checked /> Ordinary Savings</label><label class="radio-opt"><input type="radio" name="s_product" value="fixed" /> Fixed Deposit</label><label class="radio-opt"><input type="radio" name="s_product" value="junior" /> Junior / Children's Savings</label><label class="radio-opt"><input type="radio" name="s_product" value="group" /> Group Savings (Chama)</label></div></div></div>
+        </div>
+
+        <div id="ssection2" style="display:none;">
+          <div class="form-section-title">Contribution Details</div>
+          <div class="form-row single"><div class="form-group"><label>Monthly Savings Contribution <span class="req">*</span></label><div class="amount-options" id="amountOptionsSavings"><div class="amount-pill active" data-val="500">KSh 500</div><div class="amount-pill" data-val="1000">KSh 1,000</div><div class="amount-pill" data-val="2000">KSh 2,000</div><div class="amount-pill custom" data-val="custom">Custom</div></div><input type="number" id="custom_amount_savings" placeholder="Enter custom amount (KSh)" style="display:none;" /><p class="form-hint">Minimum KSh 500/month. Deducted automatically via standing order or M-Pesa.</p></div></div>
+          <div class="form-row single"><div class="form-group"><label>Preferred Payment Method <span class="req">*</span></label><div class="radio-group"><label class="radio-opt"><input type="radio" name="s_paymethod" value="mpesa" checked /> M-Pesa</label><label class="radio-opt"><input type="radio" name="s_paymethod" value="bank" /> Bank Transfer</label><label class="radio-opt"><input type="radio" name="s_paymethod" value="payroll" /> Payroll Deduction</label></div></div></div>
+          <div class="form-row"><div class="form-group"><label for="s_initial_deposit">Initial Deposit Amount (KSh) <span class="req">*</span></label><input type="number" id="s_initial_deposit" placeholder="e.g. 1000" min="0" /></div><div class="form-group"><label for="s_term">Fixed Deposit Term (Months)</label><select id="s_term"><option value="">— N/A or select term —</option><option>3</option><option>6</option><option>12</option><option>24</option></select></div></div>
+          <div class="form-divider"></div>
+          <div class="form-section-title">Beneficiary (Optional)</div>
+          <div class="form-row"><div class="form-group"><label for="s_beneficiary_name">Beneficiary Full Name</label><input type="text" id="s_beneficiary_name" placeholder="e.g. John Odhiambo" /></div><div class="form-group"><label for="s_beneficiary_relation">Relationship</label><select id="s_beneficiary_relation"><option value="">— Select —</option><option>Spouse</option><option>Parent</option><option>Child</option><option>Sibling</option><option>Other</option></select></div></div>
+          <div class="form-divider"></div>
+          <div class="form-section-title">Communication Preferences</div>
+          <div class="form-group"><label style="margin-bottom:12px;">I'd like to receive updates via <span class="req">*</span></label><div class="checkbox-group"><label class="check-opt"><input type="checkbox" checked /><span>WhatsApp messages — account alerts & dividends</span></label><label class="check-opt"><input type="checkbox" checked /><span>Email newsletters — SACCO news and financial tips</span></label><label class="check-opt"><input type="checkbox" /><span>SMS notifications — transaction confirmations</span></label></div></div>
+        </div>
+
+        <div id="ssection3" style="display:none;">
+          <div class="form-section-title">Review & Declaration</div>
+          <div style="background:var(--neutral50);border:1px solid var(--neutral200);border-radius:var(--radius-sm);padding:20px;margin-bottom:24px;"><p style="font-size:14px;color:var(--neutral600);line-height:1.8;">By submitting this application, I confirm that:</p><ul style="font-size:14px;color:var(--neutral600);line-height:2;padding-left:20px;margin-top:8px;"><li>All information provided is true and accurate to the best of my knowledge.</li><li>I understand the minimum balance and notice period requirements for this product.</li><li>I consent to KYC verification as permitted by law.</li><li>My data will be stored and processed in accordance with the Privacy Policy.</li></ul></div>
+          <div class="form-group" style="margin-bottom:24px;"><label class="check-opt" style="align-items:flex-start;gap:12px;"><input type="checkbox" id="s_declaration" style="margin-top:2px;" /><span style="font-size:14px;color:var(--neutral700);line-height:1.6;">I have read and agree to the <a href="#" style="color:var(--g600);text-decoration:underline;">Savings Account Terms & Conditions</a> and <a href="#" style="color:var(--g600);text-decoration:underline;">Privacy Policy</a>.</span></label></div>
+          <div class="form-group" style="margin-bottom:24px;"><label for="s_signature">Digital Signature (Full Name as confirmation) <span class="req">*</span></label><input type="text" id="s_signature" placeholder="Type your full name as your digital signature" style="font-style:italic;" /><p class="form-hint">This acts as your electronic signature for the savings account agreement.</p></div>
+          <div style="background:var(--g50);border:1px solid var(--g200);border-radius:var(--radius-sm);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;"><svg style="fill:var(--g500);width:20px;height:20px;flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><div><div style="font-size:14px;font-weight:600;color:var(--g700);margin-bottom:4px;">What happens next?</div><p style="font-size:13px;color:var(--g700);line-height:1.7;">Your savings account is set up in our core system instantly. You'll receive a WhatsApp confirmation with your account details and instructions for your first deposit.</p></div></div>
+        </div>
+
+        <div class="form-footer" id="formNavSavings"><button type="button" id="prevBtnS" onclick="changeStep('savings',-1)" style="background:transparent;border:1.5px solid var(--neutral200);padding:12px 24px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;color:var(--neutral600);display:none;">← Back</button><button type="button" id="nextBtnS" onclick="changeStep('savings',1)" class="form-submit" style="margin-left:auto;">Next Step<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></button></div>
+        </div>
+        <div class="form-card success-card" id="successCardSavings"><div class="success-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><h3>Savings Application Submitted!</h3><p>Thank you. Your savings application has been received and your account is being set up.</p><div class="success-note"><strong>What happens next:</strong>  Savings account created in core system<br> Confirmation sent via WhatsApp / SMS<br> First deposit instructions sent<br> KYC verification in progress...</div><button onclick="resetForm('savings')" style="margin-top:24px;background:transparent;border:1.5px solid var(--g500);color:var(--g600);padding:10px 24px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;font-size:14px;">Start a New Application</button></div>
+        </div>
+        <!-- ================= END SAVINGS FORM ================= -->
+
       </div>
-      <div class="form-card success-card" id="successCard"><div class="success-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><h3>Application Submitted!</h3><p>Thank you for applying to join Umoja SACCO. Your application has been received and a WhatsApp confirmation is on its way.</p><div class="success-note"><strong>What happens next:</strong>  Application record created in member system<br> Membership team notified via internal workflow<br> Confirmation sent via WhatsApp / SMS<br> KYC verification in progress...<br> Digital membership agreement being prepared...</div><button onclick="resetForm()" style="margin-top:24px;background:transparent;border:1.5px solid var(--g500);color:var(--g600);padding:10px 24px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;font-size:14px;">Start a New Application</button></div>
     </div>
   </div>
 </section>
+
 
 <!-- TESTIMONIALS & CTA / FOOTER (unchanged except footer) -->
 <section class="testimonials-section" id="testimonials"><div class="section-inner"><div class="section-tag">Member Stories</div><h2 class="section-title">What our members say</h2><p class="section-sub">Over 12,000 Kenyans trust Umoja SACCO with their financial future.</p><div class="testimonials-grid"><div class="testimonial-card"><div class="stars">★★★★★</div><q>The online application was so smooth — I applied on my phone during lunch and had my membership approved by evening. The member portal makes it easy to track my savings every day.</q><div class="testimonial-author"><div class="author-avatar">AW</div><div><div class="author-name">Amina Wanjiku</div><div class="author-role">Teacher, Nairobi — Member since 2022</div></div></div></div><div class="testimonial-card"><div class="stars">★★★★★</div><q>I got a business development loan in less than 24 hours. The M-Pesa disbursement was instant. This is what modern SACCO banking should look like.</q><div class="testimonial-author"><div class="author-avatar">DK</div><div><div class="author-name">David Kipchoge</div><div class="author-role">Entrepreneur, Eldoret — Member since 2019</div></div></div></div><div class="testimonial-card"><div class="stars">★★★★★</div><q>The WhatsApp updates from the SACCO are super helpful — I know exactly when my contribution has been received and when interest is credited. I've recommended Umoja to my entire department.</q><div class="testimonial-author"><div class="author-avatar">PN</div><div><div class="author-name">Patricia Nyambura</div><div class="author-role">Nurse, Mombasa — Member since 2021</div></div></div></div></div></div></section>
@@ -744,13 +1008,103 @@
 <footer><div class="footer-inner"><div class="footer-top"><div><div class="footer-logo">Umoja SACCO</div><p class="footer-tagline">Empowering Kenyan communities through cooperative savings and credit — fully digitised and SASRA-compliant.</p></div><div class="footer-col"><h4>Services</h4><a href="#">Savings Accounts</a><a href="#">Loan Products</a><a href="#">Fixed Deposits</a><a href="#">Group Savings</a></div><div class="footer-col"><h4>Membership</h4><a href="#membership">Apply Online</a><a href="#">Member Portal</a><a href="#">Dividends</a><a href="#">AGM Reports</a></div><div class="footer-col"><h4>Contact</h4><a href="#">+254 700 000 000</a><a href="#">info@umojasacco.co.ke</a><a href="#">Nairobi CBD Branch</a><a href="#">Privacy Policy</a></div></div><div class="footer-bottom"><p>© 2025 Umoja SACCO Ltd. Licensed by SASRA. All rights reserved.</p><div class="footer-tech">Digitised & automated by <strong>Umoja Digital Core</strong> — Member CRM · Loan Origination · Analytics · Workflows</div></div></div></footer>
 
 <script>
-  let currentStep = 1; const totalSteps = 4;
-  function changeStep(dir) { if (dir === 1 && currentStep === totalSteps) { submitForm(); return; } const next = currentStep + dir; if (next < 1 || next > totalSteps) return; document.getElementById('section' + currentStep).style.display = 'none'; document.getElementById('section' + next).style.display = 'block'; currentStep = next; updateProgress(); }
-  function updateProgress() { for (let i = 1; i <= totalSteps; i++) { const el = document.getElementById('prog' + i); const num = el.querySelector('.prog-num'); el.classList.remove('active', 'done'); if (i < currentStep) { el.classList.add('done'); num.textContent = '✓'; } else if (i === currentStep) { el.classList.add('active'); num.textContent = i; } else { num.textContent = i; } } for (let i = 1; i < totalSteps; i++) { const line = document.getElementById('line' + i); if (line) line.classList.toggle('done', i < currentStep); } const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); prevBtn.style.display = currentStep > 1 ? 'block' : 'none'; if (currentStep === totalSteps) { nextBtn.innerHTML = 'Submit Application <svg viewBox="0 0 24 24" style="fill:white;width:18px;height:18px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>'; } else { nextBtn.innerHTML = 'Next Step <svg viewBox="0 0 24 24" style="fill:white;width:18px;height:18px;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>'; } }
-  function submitForm() { document.getElementById('applicationForm').style.display = 'none'; document.getElementById('successCard').style.display = 'block'; document.getElementById('successCard').scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-  function resetForm() { document.getElementById('successCard').style.display = 'none'; document.getElementById('applicationForm').style.display = 'block'; currentStep = 1; for (let i = 1; i <= totalSteps; i++) { document.getElementById('section' + i).style.display = i === 1 ? 'block' : 'none'; } updateProgress(); }
-  document.querySelectorAll('.amount-pill').forEach(pill => { pill.addEventListener('click', function() { document.querySelectorAll('.amount-pill').forEach(p => p.classList.remove('active')); this.classList.add('active'); const custom = document.getElementById('custom_amount'); if (this.dataset.val === 'custom') { custom.style.display = 'block'; custom.focus(); } else { custom.style.display = 'none'; } }); });
-  updateProgress(); document.getElementById('prevBtn').style.display = 'none';
+  // Step config per form
+  const formConfig = {
+    membership: { total: 8, current: 1, prefix: 'm', sectionPrefix: 'section', formId: 'applicationForm', successId: 'successCardMembership', prevBtn: 'prevBtnM', nextBtn: 'nextBtnM' },
+    loan: { total: 4, current: 1, prefix: 'l', sectionPrefix: 'lsection', formId: 'loanForm', successId: 'successCardLoan', prevBtn: 'prevBtnL', nextBtn: 'nextBtnL' },
+    savings: { total: 3, current: 1, prefix: 's', sectionPrefix: 'ssection', formId: 'savingsForm', successId: 'successCardSavings', prevBtn: 'prevBtnS', nextBtn: 'nextBtnS' }
+  };
+
+  function switchForm(formName) {
+    document.querySelectorAll('.app-form-wrap').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.form-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('wrap' + capitalize(formName)).classList.add('active');
+    document.getElementById('tab' + capitalize(formName)).classList.add('active');
+  }
+
+  function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function changeStep(formName, dir) {
+    const cfg = formConfig[formName];
+    if (dir === 1 && cfg.current === cfg.total) { submitForm(formName); return; }
+    const next = cfg.current + dir;
+    if (next < 1 || next > cfg.total) return;
+    document.getElementById(cfg.sectionPrefix + cfg.current).style.display = 'none';
+    document.getElementById(cfg.sectionPrefix + next).style.display = 'block';
+    cfg.current = next;
+    updateProgress(formName);
+  }
+
+  function updateProgress(formName) {
+    const cfg = formConfig[formName];
+    for (let i = 1; i <= cfg.total; i++) {
+      const el = document.getElementById(cfg.prefix + 'prog' + i);
+      if (!el) continue;
+      const num = el.querySelector('.prog-num');
+      el.classList.remove('active', 'done');
+      if (i < cfg.current) { el.classList.add('done'); num.textContent = '✓'; }
+      else if (i === cfg.current) { el.classList.add('active'); num.textContent = i; }
+      else { num.textContent = i; }
+    }
+    for (let i = 1; i < cfg.total; i++) {
+      const line = document.getElementById(cfg.prefix + 'line' + i);
+      if (line) line.classList.toggle('done', i < cfg.current);
+    }
+    const prevBtn = document.getElementById(cfg.prevBtn);
+    const nextBtn = document.getElementById(cfg.nextBtn);
+    prevBtn.style.display = cfg.current > 1 ? 'block' : 'none';
+    if (cfg.current === cfg.total) {
+      nextBtn.innerHTML = 'Submit Application <svg viewBox="0 0 24 24" style="fill:white;width:18px;height:18px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+    } else {
+      nextBtn.innerHTML = 'Next Step <svg viewBox="0 0 24 24" style="fill:white;width:18px;height:18px;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>';
+    }
+  }
+
+  function submitForm(formName) {
+    const cfg = formConfig[formName];
+    document.getElementById(cfg.formId).style.display = 'none';
+    document.getElementById(cfg.successId).style.display = 'block';
+    document.getElementById(cfg.successId).scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function resetForm(formName) {
+    const cfg = formConfig[formName];
+    document.getElementById(cfg.successId).style.display = 'none';
+    document.getElementById(cfg.formId).style.display = 'block';
+    cfg.current = 1;
+    for (let i = 1; i <= cfg.total; i++) {
+      document.getElementById(cfg.sectionPrefix + i).style.display = i === 1 ? 'block' : 'none';
+    }
+    updateProgress(formName);
+  }
+
+  // Amount pill toggles (membership savings + dedicated savings form)
+  function setupAmountPills(groupId, customInputId) {
+    const group = document.getElementById(groupId);
+    if (!group) return;
+    group.querySelectorAll('.amount-pill').forEach(pill => {
+      pill.addEventListener('click', function () {
+        group.querySelectorAll('.amount-pill').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        const custom = document.getElementById(customInputId);
+        if (this.dataset.val === 'custom') { custom.style.display = 'block'; custom.focus(); }
+        else { custom.style.display = 'none'; }
+      });
+    });
+  }
+  setupAmountPills('amountOptionsSavings', 'custom_amount_savings');
+
+  // Product selection highlight (Slide 1)
+  document.querySelectorAll('input[name="product_interest"]').forEach(radio => {
+    radio.addEventListener('change', function () {
+      document.querySelectorAll('.product-opt').forEach(p => p.classList.remove('selected'));
+      this.closest('.product-opt').classList.add('selected');
+    });
+  });
+
+  // Init
+  Object.keys(formConfig).forEach(updateProgress);
 </script>
+
 </body>
 </html>
