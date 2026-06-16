@@ -2,1994 +2,1162 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join Us | Umoja Sacco</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
-        rel="stylesheet" />
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --g50: #fff0ee;
-            --g100: #ffd0cb;
-            --g200: #ffb3ab;
-            --g400: #f77060;
-            --g500: #f55544;
-            --g600: #d93f2e;
-            --g700: #14556c;
-            --g800: #0d3545;
-            --neutral50: #fafafa;
-            --neutral100: #f4f4f4;
-            --neutral200: #e8e8e8;
-            --neutral400: #a0a0a0;
-            --neutral600: #525252;
-            --neutral700: #3a3a3a;
-            --neutral800: #1c1c1c;
-            --white: #ffffff;
-            --radius-sm: 10px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --shadow-card: 0 2px 20px rgba(245, 85, 68, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
-            --shadow-hover: 0 8px 32px rgba(245, 85, 68, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--neutral50);
-            color: var(--neutral800);
-            font-size: 16px;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: 'Fraunces', serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        /* ── TOP BAR ── */
-        .top-bar {
-            background: var(--g700);
-            color: rgba(255, 255, 255, 0.88);
-            font-size: 13px;
-            padding: 8px 5%;
-        }
-
-        .top-bar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-        }
-
-        .top-bar-contact {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .top-bar-contact a {
-            color: rgba(255, 255, 255, 0.88);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-
-        .top-bar-contact a:hover {
-            color: #fff;
-        }
-
-        .top-bar-socials {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .top-bar-socials a {
-            color: rgba(255, 255, 255, 0.75);
-            text-decoration: none;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .top-bar-socials a:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-        }
-
-        .top-bar-socials svg {
-            width: 13px;
-            height: 13px;
-            fill: currentColor;
-        }
-
-        /* ── NAV ── */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--neutral200);
-            padding: 0 5%;
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 68px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .nav-logo-icon {
-            width: 38px;
-            height: 38px;
-            background: var(--g500);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-logo-icon svg {
-            fill: white;
-            width: 22px;
-            height: 22px;
-        }
-
-        .nav-logo-text {
-            font-family: 'Fraunces', serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--g700);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--neutral600);
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--g600);
-        }
-
-        .nav-cta {
-            background: var(--g500);
-            color: white !important;
-            padding: 9px 22px;
-            border-radius: var(--radius-sm);
-            font-weight: 600 !important;
-            transition: background 0.2s !important;
-        }
-
-        .nav-cta:hover {
-            background: var(--g600) !important;
-        }
-
-        /* Dropdown */
-        .nav-dropdown {
-            position: relative;
-        }
-
-        .nav-drop-btn {
-            background: none;
-            border: none;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--neutral600);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0;
-            transition: color 0.2s;
-        }
-
-        .nav-drop-btn:hover {
-            color: var(--g600);
-        }
-
-        .drop-arrow {
-            width: 10px;
-            height: 7px;
-            transition: transform 0.2s;
-        }
-
-        .nav-dropdown:hover .drop-arrow {
-            transform: rotate(180deg);
-        }
-
-        .nav-drop-menu {
-            position: absolute;
-            top: calc(100% + 14px);
-            left: 50%;
-            transform: translateX(-50%) translateY(6px);
-            background: white;
-            border: 1px solid var(--neutral200);
-            border-radius: var(--radius-md);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-            min-width: 230px;
-            padding: 8px 0;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.18s ease, transform 0.18s ease;
-            z-index: 200;
-        }
-
-        .nav-dropdown:hover .nav-drop-menu,
-        .nav-dropdown:focus-within .nav-drop-menu {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .nav-drop-menu a {
-            display: block;
-            padding: 10px 20px;
-            font-size: 14px;
-            color: var(--neutral700) !important;
-            text-decoration: none;
-            transition: background 0.15s;
-            white-space: nowrap;
-        }
-
-        .nav-drop-menu a:hover {
-            background: var(--g50);
-            color: var(--g600) !important;
-        }
-
-        .nav-drop-menu a+a {
-            border-top: 1px solid var(--neutral100);
-        }
-
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .nav-hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--neutral800);
-            border-radius: 2px;
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            padding: 12px 5% 20px;
-            border-top: 1px solid var(--neutral200);
-            background: white;
-        }
-
-        .mobile-menu.open {
-            display: flex;
-        }
-
-        .mobile-menu a {
-            padding: 10px 4px;
-            font-size: 15px;
-            color: var(--neutral700);
-            text-decoration: none;
-            border-bottom: 1px solid var(--neutral100);
-        }
-
-        .mob-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .mob-group-btn {
-            background: none;
-            border: none;
-            border-bottom: 1px solid var(--neutral100);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--neutral700);
-            text-align: left;
-            padding: 10px 4px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .mob-group-items {
-            display: none;
-            padding-left: 16px;
-        }
-
-        .mob-group.open .mob-group-items {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .mob-group-items a {
-            font-size: 14px;
-            color: var(--neutral600) !important;
-        }
-
-        @media (max-width: 960px) {
-            .nav-links {
-                display: none !important;
-            }
-
-            .nav-hamburger {
-                display: flex;
-            }
-        }
-
-        /* ── PAGE HERO ── */
-        .page-hero {
-            background: linear-gradient(135deg, var(--g800) 0%, var(--g700) 50%, var(--g500) 100%);
-            padding: 56px 5% 72px;
-        }
-
-        .page-hero-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .page-hero h1 {
-            font-size: clamp(32px, 4vw, 52px);
-            color: white;
-            margin-bottom: 14px;
-            letter-spacing: -0.02em;
-        }
-
-        .page-hero p {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 580px;
-            font-weight: 300;
-        }
-
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .breadcrumb a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            color: white;
-        }
-
-        .breadcrumb span {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        /* ── BENEFITS STRIP ── */
-        .benefits-strip {
-            background: var(--white);
-            border-bottom: 1px solid var(--neutral200);
-            padding: 32px 5%;
-        }
-
-        .benefits-strip-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .benefit-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--g50);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .benefit-icon svg {
-            fill: var(--g500);
-            width: 20px;
-            height: 20px;
-        }
-
-        .benefit-item h4 {
-            font-size: 14px;
-            color: var(--neutral800);
-            margin-bottom: 2px;
-        }
-
-        .benefit-item p {
-            font-size: 13px;
-            color: var(--neutral600);
-            line-height: 1.5;
-        }
-
-        /* ── FORM SECTION ── */
-        .join-section {
-            padding: 64px 5%;
-        }
-
-        .join-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.8fr;
-            gap: 56px;
-            align-items: start;
-        }
-
-        .join-info h2 {
-            font-size: clamp(24px, 2.5vw, 34px);
-            color: var(--neutral800);
-            margin-bottom: 14px;
-        }
-
-        .join-info p {
-            font-size: 15px;
-            color: var(--neutral600);
-            margin-bottom: 24px;
-            line-height: 1.7;
-        }
-
-        .info-checklist {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .info-checklist li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 14px;
-            color: var(--neutral700);
-        }
-
-        .chk {
-            width: 20px;
-            height: 20px;
-            background: var(--g500);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        .chk svg {
-            fill: white;
-            width: 10px;
-            height: 10px;
-        }
-
-        .info-note {
-            margin-top: 28px;
-            background: var(--g50);
-            border: 1px solid var(--g100);
-            border-left: 4px solid var(--g500);
-            border-radius: var(--radius-sm);
-            padding: 16px 18px;
-        }
-
-        .info-note strong {
-            display: block;
-            font-size: 13px;
-            color: var(--g700);
-            margin-bottom: 4px;
-        }
-
-        .info-note p {
-            font-size: 13px;
-            color: var(--neutral600);
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* ── FORM CARD ── */
-        .form-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-hover);
-            padding: 40px;
-            border: 1px solid var(--neutral200);
-        }
-
-        .form-header {
-            margin-bottom: 28px;
-        }
-
-        .form-header h3 {
-            font-size: 22px;
-            color: var(--neutral800);
-            margin-bottom: 6px;
-        }
-
-        .form-header p {
-            font-size: 14px;
-            color: var(--neutral600);
-        }
-
-        /* PROGRESS */
-        .form-progress {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 28px;
-            flex-wrap: wrap;
-            overflow-x: auto;
-        }
-
-        .prog-step {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--neutral400);
-        }
-
-        .prog-step.active {
-            color: var(--g600);
-        }
-
-        .prog-step.done {
-            color: var(--g500);
-        }
-
-        .prog-num {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--neutral200);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .prog-step.active .prog-num {
-            background: var(--g500);
-            color: white;
-        }
-
-        .prog-step.done .prog-num {
-            background: var(--g100);
-            color: var(--g600);
-        }
-
-        .prog-step span {
-            display: none;
-        }
-
-        @media (min-width: 900px) {
-            .prog-step span {
-                display: inline;
-            }
-        }
-
-        .prog-line {
-            height: 2px;
-            flex: 1;
-            min-width: 12px;
-            background: var(--neutral200);
-            border-radius: 1px;
-        }
-
-        .prog-line.done {
-            background: var(--g400);
-        }
-
-        /* FORM ELEMENTS */
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
-
-        .form-grid .full {
-            grid-column: 1 / -1;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        label {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--neutral700);
-        }
-
-        .req {
-            color: var(--g500);
-            margin-left: 2px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="number"],
-        input[type="date"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 11px 14px;
-            border: 1.5px solid var(--neutral200);
-            border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px;
-            color: var(--neutral800);
-            background: white;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: var(--g400);
-            box-shadow: 0 0 0 3px rgba(245, 85, 68, 0.1);
-        }
-
-        select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-            cursor: pointer;
-        }
-
-        textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-
-        .form-section-label {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-            color: var(--g600);
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--neutral200);
-            margin-bottom: 4px;
-            grid-column: 1/-1;
-        }
-
-        .upload-area {
-            border: 2px dashed var(--neutral200);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: border-color 0.2s, background 0.2s;
-            background: white;
-        }
-
-        .upload-area:hover {
-            border-color: var(--g400);
-            background: var(--g50);
-        }
-
-        .upload-area svg {
-            width: 26px;
-            height: 26px;
-            fill: var(--neutral400);
-            margin: 0 auto 8px;
-            display: block;
-        }
-
-        .upload-area p {
-            font-size: 13px;
-            color: var(--neutral600);
-        }
-
-        .upload-area span {
-            font-size: 11px;
-            color: var(--neutral400);
-            display: block;
-            margin-top: 2px;
-        }
-
-        .check-opt {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            cursor: pointer;
-            font-size: 14px;
-            color: var(--neutral700);
-        }
-
-        .check-opt input[type="checkbox"] {
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid var(--neutral400);
-            border-radius: 5px;
-            flex-shrink: 0;
-            margin-top: 2px;
-            cursor: pointer;
-            transition: all 0.15s;
-            display: grid;
-            place-items: center;
-        }
-
-        .check-opt input[type="checkbox"]:checked {
-            background: var(--g500);
-            border-color: var(--g500);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='9' viewBox='0 0 11 9'%3E%3Cpath d='M1 4l3.5 3.5L10 1' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .radio-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .radio-opt {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: var(--neutral700);
-            cursor: pointer;
-        }
-
-        .radio-opt input[type="radio"] {
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid var(--neutral400);
-            border-radius: 50%;
-            flex-shrink: 0;
-            cursor: pointer;
-            display: grid;
-            place-items: center;
-        }
-
-        .radio-opt input[type="radio"]:checked {
-            border-color: var(--g500);
-            background: var(--g500);
-            box-shadow: inset 0 0 0 3px white;
-        }
-
-        .tc-box {
-            border: 1px solid var(--neutral200);
-            border-radius: var(--radius-sm);
-            background: var(--neutral50);
-            padding: 20px;
-            max-height: 260px;
-            overflow-y: auto;
-            font-size: 13px;
-            color: var(--neutral600);
-            line-height: 1.8;
-        }
-
-        .tc-box h4 {
-            font-size: 14px;
-            color: var(--neutral800);
-            margin: 12px 0 4px;
-        }
-
-        .tc-box h4:first-child {
-            margin-top: 0;
-        }
-
-        .doc-req-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            border: 1.5px solid var(--neutral200);
-            border-radius: var(--radius-sm);
-            padding: 16px;
-            margin-bottom: 12px;
-            background: var(--neutral50);
-        }
-
-        .doc-req-icon {
-            width: 38px;
-            height: 38px;
-            background: var(--g100);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .doc-req-icon svg {
-            width: 18px;
-            height: 18px;
-            fill: var(--g600);
-        }
-
-        .doc-req-text strong {
-            display: block;
-            font-size: 14px;
-            color: var(--neutral800);
-            margin-bottom: 2px;
-        }
-
-        .doc-req-text span {
-            font-size: 13px;
-            color: var(--neutral600);
-        }
-
-        /* FORM FOOTER */
-        .form-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 28px;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .btn-back {
-            background: transparent;
-            border: 1.5px solid var(--neutral200);
-            padding: 12px 22px;
-            border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-            cursor: pointer;
-            color: var(--neutral600);
-            display: none;
-        }
-
-        .btn-next {
-            background: var(--g500);
-            color: white;
-            border: none;
-            padding: 13px 28px;
-            border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: auto;
-            transition: background 0.2s;
-        }
-
-        .btn-next:hover {
-            background: var(--g600);
-        }
-
-        .btn-next svg {
-            fill: white;
-            width: 18px;
-            height: 18px;
-        }
-
-        .secure-note {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            color: var(--neutral400);
-        }
-
-        .secure-note svg {
-            fill: var(--neutral400);
-            width: 14px;
-            height: 14px;
-        }
-
-        /* SUCCESS */
-        .success-card {
-            display: none;
-            text-align: center;
-            padding: 56px 32px;
-        }
-
-        .success-card.show {
-            display: block;
-        }
-
-        .success-icon {
-            width: 72px;
-            height: 72px;
-            background: var(--g50);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            border: 2px solid var(--g200);
-        }
-
-        .success-icon svg {
-            fill: var(--g500);
-            width: 34px;
-            height: 34px;
-        }
-
-        .success-card h3 {
-            font-size: 26px;
-            color: var(--neutral800);
-            margin-bottom: 10px;
-        }
-
-        .success-card p {
-            font-size: 15px;
-            color: var(--neutral600);
-            max-width: 400px;
-            margin: 0 auto 28px;
-            line-height: 1.7;
-        }
-
-        .success-note {
-            background: var(--g50);
-            border: 1px solid var(--g100);
-            border-radius: var(--radius-sm);
-            padding: 16px 20px;
-            font-size: 14px;
-            color: var(--g700);
-            text-align: left;
-            max-width: 400px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .success-note strong {
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        .btn-reset {
-            background: transparent;
-            border: 1.5px solid var(--g500);
-            color: var(--g600);
-            padding: 10px 28px;
-            border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
-            margin-right: 12px;
-        }
-
-        .btn-home {
-            background: var(--g500);
-            color: white;
-            padding: 10px 28px;
-            border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
-            border: none;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        @media (max-width: 960px) {
-            .join-inner {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-card {
-                padding: 24px 18px;
-            }
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background: var(--g800);
-            padding: 48px 5% 28px;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .footer-bottom p {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .spinner-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(4px);
-            z-index: 9999;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .spinner-overlay.active {
-            display: flex;
-        }
-
-        .spinner {
-            width: 48px;
-            height: 48px;
-            border: 4px solid var(--neutral200);
-            border-top-color: var(--g500);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .spinner-text {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--neutral600);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Redian Sacco | Membership Application</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style type="text/tailwindcss">
+    :root {
+      --color-red:    #f14e3f;
+      --color-red-dk: #c8311f;
+      --color-teal:   #215d72;
+      --color-navy:   #024460;
+      --color-navy-dk:#012e42;
+      --color-offwhite: #f7f8fa;
+      --color-smoke:    #eef0f3;
+      --color-border:   #dde1e6;
+      --color-muted:    #64748b;
+      --color-dark:     #0e1a24;
+      --font-display: "DM Serif Display", Georgia, serif;
+      --font-sans: "Inter", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); background: #fff; color: var(--color-dark); overflow-x: hidden; }
+    h1,h2,h3 { font-family: var(--font-display); }
+    body,nav { background: #fff; }
+
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; z-index: 50; padding: 0 20px; border-bottom: 1px solid var(--color-border); transition: box-shadow .3s; }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+
+    /* Dropdown fix — bridge gap so mouse can reach menu */
+    .nav-dd { position: relative; }
+    .nav-dd-menu {
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      width: 220px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+      padding: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s, transform .18s;
+      /* Bridge gap with pseudo-element */
+    }
+    .nav-dd::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 10px; /* invisible bridge */
+    }
+    .nav-dd:hover .nav-dd-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Mobile menu */
+    .mob-menu { max-height: 0; overflow: hidden; transition: max-height .35s; }
+    .mob-menu.open { max-height: 600px; }
+
+    /* Reveal animations */
+    .reveal, .reveal-left, .reveal-right { transition: opacity .55s, transform .55s; opacity: 0; }
+    .reveal { transform: translateY(24px); }
+    .reveal-left { transform: translateX(-24px); }
+    .reveal-right { transform: translateX(24px); }
+    .reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+    .d1{transition-delay:0.1s}.d2{transition-delay:0.18s}.d3{transition-delay:0.26s}.d4{transition-delay:0.34s}
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      background: var(--color-red); color: #fff; border: none;
+      padding: 13px 28px; font-family: var(--font-sans); font-size: 15px; font-weight: 700;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--color-red-dk); transform: translateY(-1px); }
+    .btn-outline {
+      background: 0 0; color: var(--color-navy); border: 1.5px solid var(--color-navy);
+      padding: 12px 26px; font-size: 15px; display: inline-flex; align-items: center;
+      gap: 8px; font-family: var(--font-sans); font-weight: 600; cursor: pointer; transition: .2s;
+    }
+    .btn-outline:hover { background: var(--color-navy); color: #fff; }
+
+    /* ── FORM ELEMENTS ── */
+    .field, .form-tab { font-size: 14px; font-family: var(--font-sans); }
+    .field {
+      width: 100%; padding: 11px 14px; border: 1.5px solid var(--color-border);
+      background: #fff; color: var(--color-dark);
+      transition: border-color .2s, box-shadow .2s; outline: 0;
+    }
+    .field:focus { border-color: var(--color-teal); box-shadow: 0 0 0 3px rgba(33,93,114,.1); }
+    select.field {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+      padding-right: 36px; appearance: none; cursor: pointer;
+    }
+    .flabel { font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 5px; text-transform: uppercase; letter-spacing: .04em; display: block; }
+    .req { color: var(--color-red); }
+
+    /* Progress steps */
+    .sdot {
+      width: 26px; height: 26px; border-radius: 50%; background: #e2e8f0; color: #94a3b8;
+      display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;
+      flex-shrink: 0; transition: .3s;
+    }
+    .sdot.active { background: var(--color-teal); color: #fff; box-shadow: 0 0 0 3px rgba(33,93,114,.2); }
+    .sdot.done { background: #16a34a; color: #fff; }
+    .sdot-label { font-size: 10px; font-weight: 600; color: #94a3b8; white-space: nowrap; }
+    .sdot-wrap.active .sdot-label { color: var(--color-teal); }
+    .sdot-wrap.done .sdot-label { color: #16a34a; }
+    .prog-fill { transition: width .4s cubic-bezier(.4,0,.2,1); }
+
+    /* Form step transitions */
+    .form-step { display: none; animation: .3s stepIn; }
+    .form-step.active { display: block; }
+    @keyframes stepIn { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+    .step-back { animation: .3s stepBack; }
+    @keyframes stepBack { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
+
+    /* Radio & checkbox */
+    .radio-opt {
+      padding: 11px 14px; border: 1.5px solid var(--color-border); background: #fff;
+      font-size: 14px; color: #475569; display: flex; align-items: center; gap: 10px;
+      cursor: pointer; font-weight: 500; transition: .15s;
+    }
+    .radio-opt input[type=radio] {
+      appearance: none; width: 17px; height: 17px; border: 2px solid #cbd5e1;
+      border-radius: 50%; display: grid; place-items: center; flex-shrink: 0;
+      cursor: pointer; transition: .15s;
+    }
+    .radio-opt input[type=radio]:checked { border-color: var(--color-teal); background: var(--color-teal); box-shadow: inset 0 0 0 3px #fff; }
+    .radio-opt:has(input:checked) { border-color: var(--color-teal); background: #f0f7fa; color: var(--color-navy); }
+
+    .chk-opt { font-size: 14px; color: #475569; display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+    .chk-opt input[type=checkbox] {
+      appearance: none; width: 18px; height: 18px; border: 2px solid #cbd5e1;
+      min-width: 18px; margin-top: 1px; transition: .15s; display: grid; place-items: center; cursor: pointer;
+    }
+    .chk-opt input[type=checkbox]:checked {
+      background: var(--color-teal); border-color: var(--color-teal);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='9' viewBox='0 0 11 9'%3E%3Cpath d='M1 4l3.5 3.5L10 1' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center;
+    }
+
+    /* Product cards */
+    .prod-card {
+      display: flex; align-items: center; gap: 14px; padding: 14px 16px;
+      border: 1.5px solid var(--color-border); cursor: pointer; background: #fff; transition: .18s;
+    }
+    .prod-card:hover, .prod-card.selected { border-color: var(--color-teal); background: #f0f7fa; }
+    .prod-card input[type=radio] {
+      appearance: none; width: 18px; height: 18px; border: 2px solid #cbd5e1;
+      border-radius: 50%; flex-shrink: 0; cursor: pointer; transition: .15s; display: grid; place-items: center;
+    }
+    .prod-card input[type=radio]:checked { border-color: var(--color-teal); background: var(--color-teal); box-shadow: inset 0 0 0 3px #fff; }
+
+    /* Upload zone */
+    .upload-zone {
+      border: 2px dashed var(--color-border); padding: 22px 16px; text-align: center;
+      cursor: pointer; transition: border-color .2s, background .2s; background: var(--color-offwhite);
+    }
+    .upload-zone:hover, .upload-zone.has-file { border-color: var(--color-teal); background: #f0f7fa; }
+    .upload-zone input[type=file] { display: none; }
+
+    /* T&C box */
+    .tc-box {
+      border: 1px solid var(--color-border); background: var(--color-offwhite);
+      padding: 18px; max-height: 240px; overflow-y: auto; font-size: 13px; color: #475569; line-height: 1.8;
+    }
+
+    /* Amount pills */
+    .apill {
+      font-size: 13px; color: #475569; text-align: center; padding: 10px 8px;
+      border: 1.5px solid var(--color-border); font-weight: 600; cursor: pointer;
+      transition: .15s; background: #fff;
+    }
+    .apill:hover, .apill.active { border-color: var(--color-teal); background: #f0f7fa; color: var(--color-navy); }
+
+    /* Spinner overlay */
+    .spinner-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(255,255,255,.88);
+      backdrop-filter: blur(6px); z-index: 9999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+    }
+    .spinner-overlay.active { display: flex; }
+    .spinner {
+      width: 48px; height: 48px; border: 4px solid var(--color-smoke);
+      border-top-color: var(--color-red); border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Debug panel */
+    .debug-toggle {
+      display: flex; align-items: center; gap: 8px; padding: 9px 14px;
+      background: #1e293b; border: none; font-family: var(--font-sans); font-size: 13px;
+      font-weight: 600; color: #94a3b8; cursor: pointer; transition: .2s;
+    }
+    .debug-toggle:hover { background: #273549; color: #e2e8f0; }
+    .debug-toggle.active { background: #0f3556; color: #7dd3fc; }
+
+    /* Marquee */
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-inner { display: flex; animation: 28s linear infinite marquee; }
+    .marquee-inner:hover { animation-play-state: paused; }
+  </style>
 </head>
 
 <body>
 
-    <div class="spinner-overlay" id="spinnerOverlay">
-        <div class="spinner"></div>
-        <div class="spinner-text">Submitting your application…</div>
+  <!-- SPINNER OVERLAY -->
+  <div class="spinner-overlay" id="spinnerOverlay">
+    <div class="spinner"></div>
+    <div style="font-size:15px;font-weight:600;color:var(--color-muted);font-family:var(--font-sans);">Submitting your application…</div>
+    <div style="font-size:13px;color:#94a3b8;font-family:var(--font-sans);">Please wait, do not close this tab.</div>
+  </div>
+
+  <!-- ── NAV ── -->
+  <nav id="mainNav">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-8">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
+        <img
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%23024460'/%3E%3Cpath d='M8 8h8c4 0 7 2.5 7 6.5 0 3-1.5 5-4 6l5 7.5H20l-4.5-7H12v7H8V8zm4 3.5v5h4c2 0 3-1 3-2.5s-1-2.5-3-2.5h-4z' fill='white'/%3E%3Cpath d='M25 22l3.5-14h2L27 22z' fill='%23f14e3f'/%3E%3C/svg%3E"
+          alt="Redian Sacco" class="w-9 h-9" />
+        <div>
+          <div class="font-bold text-[17px] leading-tight" style="font-family:'DM Serif Display',Georgia,serif;color:#024460;">Redian Sacco</div>
+          <div class="text-[9px] font-bold tracking-widest uppercase" style="color:#f14e3f;">Licensed · Trusted · Digital</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="index.html#about" class="px-4 py-2 text-[14px] font-medium text-slate-600 hover:text-[#024460] transition-colors">About</a>
+
+        <!-- Services dropdown -->
+        <div class="nav-dd">
+          <button class="px-4 py-2 text-[14px] font-medium text-slate-600 hover:text-[#024460] transition-colors flex items-center gap-1 bg-transparent border-none cursor-pointer" style="font-family:var(--font-sans);">
+            Services
+            <svg class="w-3 h-3" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="nav-dd-menu">
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Visa Branded ATMs</a>
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Mobile Banking</a>
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Paybill</a>
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Lipa Na Tower Merchant Settlement</a>
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Tower Sacco Agents</a>
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Internet Banking</a>
+            <a href="join.html" class="block px-3 py-2 text-sm font-semibold transition-colors" style="color:#f14e3f;">Join Us</a>
+          </div>
+        </div>
+
+        <!-- Products dropdown -->
+        <div class="nav-dd">
+          <button class="px-4 py-2 text-[14px] font-medium text-slate-600 hover:text-[#024460] transition-colors flex items-center gap-1 bg-transparent border-none cursor-pointer" style="font-family:var(--font-sans);">
+            Products
+            <svg class="w-3 h-3" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="nav-dd-menu">
+            <a href="products.html" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Savings Accounts</a>
+            <a href="products.html" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Loan Products</a>
+            <a href="products.html" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Fixed Deposits</a>
+            <a href="products.html" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Group Savings</a>
+          </div>
+        </div>
+
+        <!-- Resources dropdown -->
+        <div class="nav-dd">
+          <button class="px-4 py-2 text-[14px] font-medium text-slate-600 hover:text-[#024460] transition-colors flex items-center gap-1 bg-transparent border-none cursor-pointer" style="font-family:var(--font-sans);">
+            Resources
+            <svg class="w-3 h-3" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="nav-dd-menu">
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Downloads & Forms</a>
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">AGM Reports</a>
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Tenders</a>
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Careers</a>
+          </div>
+        </div>
+
+        <a href="index.html#contact" class="px-4 py-2 text-[14px] font-medium text-slate-600 hover:text-[#024460] transition-colors">Contact</a>
+      </div>
+
+      <!-- CTA -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="#" class="text-[14px] font-semibold transition-colors" style="color:#215d72;">Member Login</a>
+        <a href="join.html" class="btn-primary text-[14px] px-5 py-2.5">Join Sacco</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button id="navHamburger" class="lg:hidden flex flex-col gap-1.5 p-1 cursor-pointer bg-transparent border-none">
+        <span class="block w-6 h-0.5 bg-slate-800 transition-all"></span>
+        <span class="block w-6 h-0.5 bg-slate-800 transition-all"></span>
+        <span class="block w-5 h-0.5 bg-slate-800 transition-all"></span>
+      </button>
     </div>
 
-    <!-- TOP CONTACT BAR -->
-    <div class="top-bar">
-        <div class="top-bar-inner">
-            <div class="top-bar-contact">
-                <a href="tel:0792333111">
-                    <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor;">
-                        <path
-                            d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" />
-                    </svg>
-                    0792 333 111
-                </a>
-                <a href="mailto:customercare@umojasacco.co.ke">
-                    <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor;">
-                        <path
-                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                    </svg>
-                    customercare@umojasacco.co.ke
-                </a>
-            </div>
-            <div class="top-bar-socials">
-                <a href="https://www.facebook.com/UmojaSaccoLtd" target="_blank" title="Facebook"><svg
-                        viewBox="0 0 24 24">
-                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                    </svg></a>
-                <a href="https://twitter.com/umojasaccoltd" target="_blank" title="Twitter"><svg viewBox="0 0 24 24">
-                        <path
-                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg></a>
-                <a href="https://www.instagram.com/umoja_sacco" target="_blank" title="Instagram"><svg
-                        viewBox="0 0 24 24">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor"
-                            stroke-width="2" />
-                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
-                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
-                    </svg></a>
-            </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="mob-menu border-t border-slate-100 bg-white lg:hidden">
+      <div class="px-6 py-4 flex flex-col gap-0">
+        <a href="index.html#about" class="py-3 text-[15px] font-medium text-slate-700 border-b border-slate-100 block">About</a>
+        <a href="#" class="py-3 text-[15px] font-medium text-slate-700 border-b border-slate-100 block">Services</a>
+        <a href="products.html" class="py-3 text-[15px] font-medium text-slate-700 border-b border-slate-100 block">Products</a>
+        <a href="#" class="py-3 text-[15px] font-medium text-slate-700 border-b border-slate-100 block">Resources</a>
+        <a href="index.html#contact" class="py-3 text-[15px] font-medium text-slate-700 border-b border-slate-100 block">Contact</a>
+        <div class="flex gap-3 pt-4">
+          <a href="#" class="flex-1 text-center py-2.5 border font-semibold text-sm" style="border-color:#215d72;color:#215d72;">Member Login</a>
+          <a href="join.html" class="flex-1 text-center py-2.5 btn-primary justify-center text-sm">Join Sacco</a>
         </div>
+      </div>
     </div>
+  </nav>
 
-    <!-- NAV -->
-    <nav>
-        <div class="nav-inner">
-            <a href="index.html" class="nav-logo">
-                <div class="nav-logo-icon"><svg viewBox="0 0 24 24">
-                        <path
-                            d="M12 2L2 7v10c0 5.25 3.75 10.15 10 11.25C18.25 27.15 22 22.25 22 17V7L12 2zm0 2.18l8 4.44V17c0 4.25-2.83 8.25-8 9.43C6.83 25.25 4 21.25 4 17V8.62l8-4.44z" />
-                    </svg></div>
-                <div><span class="nav-logo-text">Umoja Sacco</span></div>
-            </a>
-            <div class="nav-links">
-                <a href="index.html#about">About</a>
-                <div class="nav-dropdown">
-                    <button class="nav-drop-btn" style="color:var(--g600);">Services <svg class="drop-arrow"
-                            viewBox="0 0 12 8">
-                            <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                fill="none" />
-                        </svg></button>
-                    <div class="nav-drop-menu">
-                        <a href="#">Visa Branded ATMs</a>
-                        <a href="#">Mobile Banking</a>
-                        <a href="#">Paybill</a>
-                        <a href="#">Lipa Na Umoja Merchant Settlement</a>
-                        <a href="#">Umoja Sacco Agents</a>
-                        <a href="#">Internet Banking</a>
-                        <a href="join.html">Join Us</a>
-                    </div>
-                </div>
-                <div class="nav-dropdown">
-                    <button class="nav-drop-btn">Products <svg class="drop-arrow" viewBox="0 0 12 8">
-                            <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                fill="none" />
-                        </svg></button>
-                    <div class="nav-drop-menu">
-                        <a href="products.html?type=savings">Savings Products</a>
-                        <a href="products.html?type=loan">Loan Products</a>
-                    </div>
-                </div>
-                <div class="nav-dropdown">
-                    <button class="nav-drop-btn">Resources <svg class="drop-arrow" viewBox="0 0 12 8">
-                            <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                fill="none" />
-                        </svg></button>
-                    <div class="nav-drop-menu">
-                        <a href="#">Sacco Downloads</a>
-                        <a href="#">Tenders</a>
-                        <a href="#">Notices</a>
-                        <a href="#">Careers</a>
-                    </div>
-                </div>
-                <a href="index.html#contact">Contact Us</a>
-                <a href="join.html" class="nav-cta">Join Now</a>
-            </div>
-            <button class="nav-hamburger" id="navHamburger"><span></span><span></span><span></span></button>
-        </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html#about">About</a>
-            <div class="mob-group">
-                <button class="mob-group-btn" onclick="this.parentElement.classList.toggle('open')">Services
-                    <span>▾</span></button>
-                <div class="mob-group-items">
-                    <a href="#">Visa Branded ATMs</a>
-                    <a href="#">Mobile Banking</a>
-                    <a href="#">Paybill</a>
-                    <a href="#">Internet Banking</a>
-                    <a href="join.html">Join Us</a>
-                </div>
-            </div>
-            <div class="mob-group">
-                <button class="mob-group-btn" onclick="this.parentElement.classList.toggle('open')">Products
-                    <span>▾</span></button>
-                <div class="mob-group-items">
-                    <a href="products.html?type=savings">Savings Products</a>
-                    <a href="products.html?type=loan">Loan Products</a>
-                </div>
-            </div>
-            <div class="mob-group">
-                <button class="mob-group-btn" onclick="this.parentElement.classList.toggle('open')">Resources
-                    <span>▾</span></button>
-                <div class="mob-group-items">
-                    <a href="#">Sacco Downloads</a><a href="#">Tenders</a><a href="#">Notices</a><a href="#">Careers</a>
-                </div>
-            </div>
-            <a href="index.html#contact">Contact Us</a>
-            <a href="join.html" class="nav-cta" style="display:inline-block;margin-top:8px;">Join Now</a>
-        </div>
-    </nav>
-
-    <!-- PAGE HERO -->
-    <div class="page-hero">
-        <div class="page-hero-inner">
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span>›</span>
-                <span>Membership Application</span>
-            </div>
-            <h1>Join Umoja Sacco</h1>
-            <p>Become a member today and start your journey to financial freedom — savings, loans, dividends, and more.
-            </p>
-        </div>
+  <!-- ── PAGE HERO ── -->
+  <div class="py-14 px-6 relative overflow-hidden" style="background:#024460;">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-2 mb-5 text-[13px]" style="color:rgba(255,255,255,0.5);">
+        <a href="index.html" class="hover:text-white transition-colors" style="color:rgba(255,255,255,0.65);">Home</a>
+        <span>›</span>
+        <span>Membership Application</span>
+      </div>
+      <div class="inline-block mb-4 px-4 py-1.5 text-xs font-bold tracking-widest uppercase border" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">Join Redian Sacco</div>
+      <h1 class="mb-4 text-white leading-tight" style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(32px,4.5vw,58px);">
+        Start your financial<br><em class="not-italic" style="color:#f14e3f;">freedom journey.</em>
+      </h1>
+      <p class="text-lg font-light max-w-xl" style="color:rgba(255,255,255,0.7);">
+        Become a Redian Sacco member today. Savings, loans, dividends — all digital, all in under 10 minutes.
+      </p>
     </div>
+    <!-- Decorative background element -->
+    <div class="absolute right-0 top-0 bottom-0 w-1/3 hidden lg:block" style="background:linear-gradient(to left, rgba(241,78,63,0.06), transparent);"></div>
+  </div>
 
-    <!-- BENEFITS STRIP -->
-    <div class="benefits-strip">
-        <div class="benefits-strip-inner">
-            <div class="benefit-item">
-                <div class="benefit-icon"><svg viewBox="0 0 24 24">
-                        <path
-                            d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" />
-                    </svg></div>
-                <div>
-                    <h4>Up to 14% Dividend</h4>
-                    <p>Annual dividend on your savings balance</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon"><svg viewBox="0 0 24 24">
-                        <path
-                            d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
-                    </svg></div>
-                <div>
-                    <h4>Loans in 24 Hours</h4>
-                    <p>Borrow up to 3× your savings balance</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon"><svg viewBox="0 0 24 24">
-                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
-                    </svg></div>
-                <div>
-                    <h4>SASRA Licensed</h4>
-                    <p>Regulated and trusted since 1999</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-icon"><svg viewBox="0 0 24 24">
-                        <path
-                            d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" />
-                    </svg></div>
-                <div>
-                    <h4>100% Digital</h4>
-                    <p>No branch visit — apply entirely online</p>
-                </div>
-            </div>
-        </div>
+  <!-- ── BENEFITS STRIP ── -->
+  <div class="py-3 overflow-hidden border-b border-slate-100" style="background:#f7f8fa;">
+    <div class="marquee-inner whitespace-nowrap">
+      <div class="flex items-center gap-10 px-6 text-xs font-semibold tracking-wide text-slate-400">
+        <span><span style="color:#f14e3f;" class="mr-1.5">◆</span>Up to 14% Annual Dividend</span>
+        <span><span style="color:#215d72;" class="mr-1.5">◆</span>Loans Approved in 24 Hours</span>
+        <span><span style="color:#f14e3f;" class="mr-1.5">◆</span>100% Digital Application</span>
+        <span><span style="color:#215d72;" class="mr-1.5">◆</span>SASRA Licensed & Regulated</span>
+        <span><span style="color:#f14e3f;" class="mr-1.5">◆</span>M-Pesa Integration</span>
+        <span><span style="color:#215d72;" class="mr-1.5">◆</span>Borrow up to 3x Your Savings</span>
+        <span><span style="color:#f14e3f;" class="mr-1.5">◆</span>Life Insurance Coverage</span>
+        <span><span style="color:#215d72;" class="mr-1.5">◆</span>18 Branches Nationwide</span>
+        <!-- duplicate for seamless loop -->
+        <span><span style="color:#f14e3f;" class="mr-1.5">◆</span>Up to 14% Annual Dividend</span>
+        <span><span style="color:#215d72;" class="mr-1.5">◆</span>Loans Approved in 24 Hours</span>
+        <span><span style="color:#f14e3f;" class="mr-1.5">◆</span>100% Digital Application</span>
+        <span><span style="color:#215d72;" class="mr-1.5">◆</span>SASRA Licensed & Regulated</span>
+        <span><span style="color:#f14e3f;" class="mr-1.5">◆</span>M-Pesa Integration</span>
+        <span><span style="color:#215d72;" class="mr-1.5">◆</span>Borrow up to 3x Your Savings</span>
+        <span><span style="color:#f14e3f;" class="mr-1.5">◆</span>Life Insurance Coverage</span>
+        <span><span style="color:#215d72;" class="mr-1.5">◆</span>18 Branches Nationwide</span>
+      </div>
     </div>
+  </div>
 
-    <!-- MEMBERSHIP APPLICATION -->
-    <section class="join-section">
-        <div class="join-inner">
+  <!-- ── MAIN SECTION ── -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
 
-            <!-- LEFT INFO PANEL -->
-            <div class="join-info">
-                <h2>Why become a member?</h2>
-                <p>Umoja Sacco has helped over 350,000 Kenyans build financial security. Joining takes less than 10
-                    minutes entirely online.</p>
-                <ul class="info-checklist">
-                    <li>
-                        <div class="chk"><svg viewBox="0 0 12 9">
-                                <path d="M1 4l3.5 3.5L11 1" stroke="white" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" fill="none" />
-                            </svg></div><span>Earn up to 14% annual dividend on deposits</span>
-                    </li>
-                    <li>
-                        <div class="chk"><svg viewBox="0 0 12 9">
-                                <path d="M1 4l3.5 3.5L11 1" stroke="white" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" fill="none" />
-                            </svg></div><span>Borrow up to 3× your savings — disbursed in 24 hours</span>
-                    </li>
-                    <li>
-                        <div class="chk"><svg viewBox="0 0 12 9">
-                                <path d="M1 4l3.5 3.5L11 1" stroke="white" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" fill="none" />
-                            </svg></div><span>Real-time account monitoring via member dashboard</span>
-                    </li>
-                    <li>
-                        <div class="chk"><svg viewBox="0 0 12 9">
-                                <path d="M1 4l3.5 3.5L11 1" stroke="white" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" fill="none" />
-                            </svg></div><span>Life insurance coverage linked to your savings</span>
-                    </li>
-                    <li>
-                        <div class="chk"><svg viewBox="0 0 12 9">
-                                <path d="M1 4l3.5 3.5L11 1" stroke="white" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" fill="none" />
-                            </svg></div><span>Access to 31 branches and 300+ agents nationwide</span>
-                    </li>
-                    <li>
-                        <div class="chk"><svg viewBox="0 0 12 9">
-                                <path d="M1 4l3.5 3.5L11 1" stroke="white" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" fill="none" />
-                            </svg></div><span>M-Pesa, mobile banking & internet banking access</span>
-                    </li>
-                </ul>
-                <div class="info-note">
-                    <strong>Registration Fee</strong>
-                    <p>A one-time registration fee of <strong>KSh 2,000</strong> applies. You'll receive an M-Pesa STK
-                        push after your application is reviewed.</p>
-                </div>
-                <div class="info-note" style="margin-top:16px;">
-                    <strong>Documents Required</strong>
-                    <p>National ID or Passport · KRA PIN Certificate · Passport-size photo</p>
-                </div>
-            </div>
+        <!-- LEFT INFO PANEL -->
+        <div class="reveal-left lg:col-span-2">
+          <h2 class="mb-4 text-slate-900" style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(24px,2.8vw,34px);">Why join Redian Sacco?</h2>
+          <p class="text-slate-500 text-[14px] leading-relaxed mb-7">Helping Kenyans build financial security since 2003. Our fully digital platform makes joining easier — and smarter — than ever.</p>
 
-            <!-- FORM CARD -->
-            <div class="form-card">
-                <!-- SUCCESS STATE -->
-                <div class="success-card" id="successCard">
-                    <div class="success-icon"><svg viewBox="0 0 24 24">
-                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                        </svg></div>
-                    <h3>Application Submitted!</h3>
-                    <p>Welcome to the Umoja Sacco family! Your membership application is under review.</p>
-                    <div class="success-note">
-                        <strong>What happens next:</strong>
-                        KYC verification in progress (24–48 hrs)<br>
-                        You'll receive an M-Pesa STK push for the KSh 2,000 registration fee<br>
-                        Member portal access granted on approval<br>
-                        WhatsApp confirmation sent to your phone
-                    </div>
-                    <div style="margin-top:24px;">
-                        <button class="btn-reset" onclick="resetForm()">Start New Application</button>
-                        <a href="index.html" class="btn-home">Back to Home</a>
-                    </div>
-                </div>
+          <ul class="flex flex-col gap-4 mb-8">
+            <li class="flex items-start gap-3 text-[14px] text-slate-700">
+              <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#024460;">
+                <svg class="w-3 h-3 fill-white" viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <span>Borrow up to <strong>3× your savings</strong>, disbursed within 24 hours via M-Pesa</span>
+            </li>
+            <li class="flex items-start gap-3 text-[14px] text-slate-700">
+              <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#024460;">
+                <svg class="w-3 h-3 fill-white" viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <span>Earn an annual dividend of <strong>up to 14%</strong> on your deposits</span>
+            </li>
+            <li class="flex items-start gap-3 text-[14px] text-slate-700">
+              <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#024460;">
+                <svg class="w-3 h-3 fill-white" viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <span>Real-time monitoring via your <strong>member dashboard</strong></span>
+            </li>
+            <li class="flex items-start gap-3 text-[14px] text-slate-700">
+              <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#024460;">
+                <svg class="w-3 h-3 fill-white" viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <span>Life insurance coverage <strong>linked to your savings balance</strong></span>
+            </li>
+            <li class="flex items-start gap-3 text-[14px] text-slate-700">
+              <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#024460;">
+                <svg class="w-3 h-3 fill-white" viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <span>Access to <strong>18 branches</strong> and M-Pesa, mobile & internet banking</span>
+            </li>
+            <li class="flex items-start gap-3 text-[14px] text-slate-700">
+              <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#024460;">
+                <svg class="w-3 h-3 fill-white" viewBox="0 0 12 9"><path d="M1 4l3.5 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <span>Zero paperwork — entire journey <strong>100% digital</strong></span>
+            </li>
+          </ul>
 
-                <!-- FORM -->
-                <div id="membershipForm">
-                    <!-- PROGRESS -->
-                    <div class="form-progress">
-                        <div class="prog-step active" id="prog1">
-                            <div class="prog-num">1</div><span>Welcome</span>
-                        </div>
-                        <div class="prog-line" id="line1"></div>
-                        <div class="prog-step" id="prog2">
-                            <div class="prog-num">2</div><span>Terms</span>
-                        </div>
-                        <div class="prog-line" id="line2"></div>
-                        <div class="prog-step" id="prog3">
-                            <div class="prog-num">3</div><span>Documents</span>
-                        </div>
-                        <div class="prog-line" id="line3"></div>
-                        <div class="prog-step" id="prog4">
-                            <div class="prog-num">4</div><span>Verification</span>
-                        </div>
-                        <div class="prog-line" id="line4"></div>
-                        <div class="prog-step" id="prog5">
-                            <div class="prog-num">5</div><span>Identity</span>
-                        </div>
-                        <div class="prog-line" id="line5"></div>
-                        <div class="prog-step" id="prog6">
-                            <div class="prog-num">6</div><span>Personal</span>
-                        </div>
-                        <div class="prog-line" id="line6"></div>
-                        <div class="prog-step" id="prog7">
-                            <div class="prog-num">7</div><span>Next of Kin</span>
-                        </div>
-                        <div class="prog-line" id="line7"></div>
-                        <div class="prog-step" id="prog8">
-                            <div class="prog-num">8</div><span>Confirm</span>
-                        </div>
-                    </div>
+          <div class="border-l-4 p-5 mb-5" style="border-left-color:#f14e3f;background:#f7f8fa;border:1px solid #e2e8f0;border-left-width:4px;">
+            <div class="text-sm font-bold text-slate-700 mb-1">Registration Fee</div>
+            <p class="text-sm text-slate-500 leading-relaxed">A one-time fee of <strong>KSh 2,000</strong> applies, paid via M-Pesa STK push after your application is reviewed.</p>
+          </div>
 
-                    <div class="form-header">
-                        <h3>Membership Application Form</h3>
-                        <p>All sections required. Data is securely encrypted and stored in our member system.</p>
-                    </div>
-
-                    <!-- STEP 1: Welcome & Product Interest -->
-                    <div id="step1">
-                        <div style="text-align:center;padding:8px 0 24px;">
-                            <h3 style="font-size:22px;color:var(--neutral800);margin-bottom:8px;">Open Your Account</h3>
-                            <p style="font-size:15px;color:var(--neutral600);">Select the product you're most interested
-                                in to personalise your application.</p>
-                        </div>
-                        <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
-                            <label
-                                style="display:flex;align-items:center;gap:14px;padding:16px 18px;border:1.5px solid var(--neutral200);border-radius:var(--radius-sm);cursor:pointer;background:var(--neutral50);transition:all 0.15s;"
-                                class="product-opt">
-                                <input type="radio" name="product_interest" value="savings"
-                                    style="appearance:none;width:18px;height:18px;border:2px solid var(--neutral400);border-radius:50%;display:grid;place-items:center;flex-shrink:0;cursor:pointer;" />
-                                <div
-                                    style="width:38px;height:38px;background:var(--g100);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                                    <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:var(--g600);">
-                                        <path
-                                            d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" />
-                                    </svg>
-                                </div>
-                                <div><strong style="font-size:15px;color:var(--neutral800);">Savings
-                                        Account</strong><span
-                                        style="display:block;font-size:13px;color:var(--neutral600);">Grow your money
-                                        with competitive dividends</span></div>
-                            </label>
-                            <label
-                                style="display:flex;align-items:center;gap:14px;padding:16px 18px;border:1.5px solid var(--neutral200);border-radius:var(--radius-sm);cursor:pointer;background:var(--neutral50);transition:all 0.15s;"
-                                class="product-opt">
-                                <input type="radio" name="product_interest" value="loan"
-                                    style="appearance:none;width:18px;height:18px;border:2px solid var(--neutral400);border-radius:50%;display:grid;place-items:center;flex-shrink:0;cursor:pointer;" />
-                                <div
-                                    style="width:38px;height:38px;background:var(--g100);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                                    <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:var(--g600);">
-                                        <path
-                                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
-                                    </svg>
-                                </div>
-                                <div><strong style="font-size:15px;color:var(--neutral800);">Loan Product</strong><span
-                                        style="display:block;font-size:13px;color:var(--neutral600);">Borrow up to 3×
-                                        your savings, fast approval</span></div>
-                            </label>
-                            <label
-                                style="display:flex;align-items:center;gap:14px;padding:16px 18px;border:1.5px solid var(--neutral200);border-radius:var(--radius-sm);cursor:pointer;background:var(--neutral50);transition:all 0.15s;"
-                                class="product-opt">
-                                <input type="radio" name="product_interest" value="both"
-                                    style="appearance:none;width:18px;height:18px;border:2px solid var(--neutral400);border-radius:50%;display:grid;place-items:center;flex-shrink:0;cursor:pointer;" />
-                                <div
-                                    style="width:38px;height:38px;background:var(--g100);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                                    <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:var(--g600);">
-                                        <path
-                                            d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
-                                    </svg>
-                                </div>
-                                <div><strong style="font-size:15px;color:var(--neutral800);">Both Savings &
-                                        Loan</strong><span
-                                        style="display:block;font-size:13px;color:var(--neutral600);">Open savings and
-                                        apply for a loan together</span></div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- STEP 2: Terms & Conditions -->
-                    <div id="step2" style="display:none;">
-                        <div class="form-grid">
-                            <div class="form-section-label">Terms & Conditions</div>
-                        </div>
-                        <div class="tc-box" style="margin-bottom:20px;">
-                            <h4>1. Membership</h4>
-                            <p>By joining Umoja Sacco, you agree to uphold the cooperative's bylaws and contribute
-                                regularly to your savings account. Membership is open to Kenyan citizens and residents
-                                aged 18 and above.</p>
-                            <h4>2. Contributions</h4>
-                            <p>A minimum monthly contribution of KSh 500 is required. Failure to contribute for three
-                                consecutive months may result in account suspension pending review.</p>
-                            <h4>3. Loans</h4>
-                            <p>Loan eligibility is based on your savings balance and creditworthiness as assessed by the
-                                SACCO. Loans are subject to approval by the credit committee.</p>
-                            <h4>4. Dividends</h4>
-                            <p>Dividends are declared annually at the AGM and are based on the SACCO's financial
-                                performance. Past dividend rates do not guarantee future returns.</p>
-                            <h4>5. Data Privacy</h4>
-                            <p>Your personal data is processed in accordance with Kenya's Data Protection Act 2019. We
-                                will not share your data with third parties without your consent except where required
-                                by law.</p>
-                            <h4>6. Account Closure</h4>
-                            <p>You may withdraw from membership by giving 90 days written notice. All outstanding loans
-                                must be settled before membership is terminated.</p>
-                        </div>
-                        <label class="check-opt"><input type="checkbox" id="agree_terms" /><span
-                                style="font-size:14px;color:var(--neutral700);">I have read and agree to the Umoja Sacco
-                                Membership Terms & Conditions <span class="req">*</span></span></label>
-                    </div>
-
-                    <!-- STEP 3: Documents Checklist -->
-                    <div id="step3" style="display:none;">
-                        <div class="form-grid">
-                            <div class="form-section-label">Document Requirements</div>
-                        </div>
-                        <p style="font-size:14px;color:var(--neutral600);margin-bottom:18px;">Please prepare and upload
-                            the following documents to complete your application.</p>
-                        <div class="doc-req-card">
-                            <div class="doc-req-icon"><svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
-                                </svg></div>
-                            <div class="doc-req-text"><strong>National ID / Passport</strong><span>Front and back of
-                                    your Kenya National ID, or bio-data page of your passport.</span></div>
-                        </div>
-                        <div class="doc-req-card">
-                            <div class="doc-req-icon"><svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
-                                </svg></div>
-                            <div class="doc-req-text"><strong>KRA PIN Certificate</strong><span>Your current Kenya
-                                    Revenue Authority PIN certificate (PDF or image).</span></div>
-                        </div>
-                        <div class="form-grid" style="margin-top:18px;">
-                            <div class="form-group">
-                                <label>Upload National ID / Passport <span class="req">*</span></label>
-                                <div class="upload-area" onclick="this.querySelector('input[type=file]').click()">
-                                    <input type="file" id="doc_id_passport" name="doc_id_passport"
-                                        accept=".jpg,.jpeg,.png,.pdf" style="display:none"
-                                        onchange="handleFileSelect(this)">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
-                                    </svg>
-                                    <p>Click to upload or drag & drop</p><span>JPG, PNG or PDF — max 5MB</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Upload KRA PIN Certificate <span class="req">*</span></label>
-                                <div class="upload-area" onclick="this.querySelector('input[type=file]').click()">
-                                    <input type="file" id="doc_kra_pin" name="doc_kra_pin" accept=".jpg,.jpeg,.png,.pdf"
-                                        style="display:none" onchange="handleFileSelect(this)">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
-                                    </svg>
-                                    <p>Click to upload or drag & drop</p><span>JPG, PNG or PDF — max 5MB</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- STEP 4: Verification -->
-                    <div id="step4" style="display:none;">
-                        <div class="form-grid">
-                            <div class="form-section-label">Contact Verification</div>
-                            <div class="form-group full">
-                                <label for="v_country">Country of Residence <span class="req">*</span></label>
-                                <select id="v_country">
-                                    <option value="">— Select Country —</option>
-                                    <option selected>Kenya</option>
-                                    <option>Uganda</option>
-                                    <option>Tanzania</option>
-                                    <option>Rwanda</option>
-                                    <option>South Sudan</option>
-                                    <option>Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="v_email">Email Address <span class="req">*</span></label>
-                                <input type="email" id="v_email" placeholder="you@example.com" />
-                            </div>
-                            <div class="form-group">
-                                <label for="v_phone">Phone Number <span class="req">*</span></label>
-                                <input type="tel" id="v_phone" placeholder="+254 7XX XXX XXX" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- STEP 5: Identity -->
-                    <div id="step5" style="display:none;">
-                        <div class="form-grid">
-                            <div class="form-section-label">Identification Document</div>
-                            <div class="form-group full">
-                                <label>Identification Type <span class="req">*</span></label>
-                                <div class="radio-group">
-                                    <label class="radio-opt"><input type="radio" name="id_type" value="national_id"
-                                            checked /> National ID</label>
-                                    <label class="radio-opt"><input type="radio" name="id_type" value="passport" />
-                                        Passport</label>
-                                </div>
-                            </div>
-                            <div class="form-group full">
-                                <label for="id_number">ID / Passport Number <span class="req">*</span></label>
-                                <input type="text" id="id_number" placeholder="e.g. 12345678" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- STEP 6: Personal Details -->
-                    <div id="step6" style="display:none;">
-                        <div class="form-grid">
-                            <div class="form-section-label">Personal Information</div>
-                            <div class="form-group">
-                                <label for="p_fname">Full Name <span class="req">*</span></label>
-                                <input type="text" id="p_fname" placeholder="e.g. Amina Wanjiku Odhiambo" />
-                            </div>
-                            <div class="form-group">
-                                <label for="p_idno">ID Number <span class="req">*</span></label>
-                                <input type="text" id="p_idno" placeholder="12345678" />
-                            </div>
-                            <div class="form-group">
-                                <label for="p_dob">Date of Birth <span class="req">*</span></label>
-                                <input type="date" id="p_dob" />
-                            </div>
-                            <div class="form-group">
-                                <label>Gender <span class="req">*</span></label>
-                                <div class="radio-group">
-                                    <label class="radio-opt"><input type="radio" name="gender" value="female" />
-                                        Female</label>
-                                    <label class="radio-opt"><input type="radio" name="gender" value="male" />
-                                        Male</label>
-                                    <label class="radio-opt"><input type="radio" name="gender" value="other" /> Prefer
-                                        not to say</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="p_marital">Marital Status</label>
-                                <select id="p_marital">
-                                    <option value="">— Select —</option>
-                                    <option>Single</option>
-                                    <option>Married</option>
-                                    <option>Divorced</option>
-                                    <option>Widowed</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="p_occupation">Occupation</label>
-                                <input type="text" id="p_occupation"
-                                    placeholder="e.g. Teacher, Nurse, Business Owner" />
-                            </div>
-                            <div class="form-section-label">Address Details</div>
-                            <div class="form-group full">
-                                <label for="p_addr">Address Line <span class="req">*</span></label>
-                                <input type="text" id="p_addr" placeholder="e.g. House No., Street, Estate" />
-                            </div>
-                            <div class="form-group">
-                                <label for="p_city">City / Town <span class="req">*</span></label>
-                                <input type="text" id="p_city" placeholder="e.g. Nairobi" />
-                            </div>
-                            <div class="form-group">
-                                <label for="p_county">County / Region <span class="req">*</span></label>
-                                <input type="text" id="p_county" placeholder="e.g. Nairobi County" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- STEP 7: Next of Kin -->
-                    <div id="step7" style="display:none;">
-                        <div class="form-grid">
-                            <div class="form-section-label">Next of Kin Details</div>
-                            <div class="form-group">
-                                <label for="k_name">Full Name <span class="req">*</span></label>
-                                <input type="text" id="k_name" placeholder="e.g. John Odhiambo" />
-                            </div>
-                            <div class="form-group">
-                                <label for="k_relation">Relationship <span class="req">*</span></label>
-                                <select id="k_relation">
-                                    <option value="">— Select —</option>
-                                    <option>Spouse</option>
-                                    <option>Parent</option>
-                                    <option>Child</option>
-                                    <option>Sibling</option>
-                                    <option>Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="k_phone">Phone Number <span class="req">*</span></label>
-                                <input type="tel" id="k_phone" placeholder="+254 7XX XXX XXX" />
-                            </div>
-                            <div class="form-group">
-                                <label for="k_id">ID / Passport Number <span class="req">*</span></label>
-                                <input type="text" id="k_id" placeholder="12345678" />
-                            </div>
-                            <div class="form-group">
-                                <label for="k_email">Email Address</label>
-                                <input type="email" id="k_email" placeholder="kin@example.com" />
-                            </div>
-                            <div class="form-group">
-                                <label for="k_dob">Date of Birth</label>
-                                <input type="date" id="k_dob" />
-                            </div>
-                            <div class="form-group full">
-                                <label for="k_address">Physical Address</label>
-                                <input type="text" id="k_address" placeholder="e.g. House No., Street, Town" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- STEP 8: Review & Declaration -->
-                    <div id="step8" style="display:none;">
-                        <div class="form-grid">
-                            <div class="form-section-label">Review & Declaration</div>
-                        </div>
-                        <div
-                            style="background:var(--neutral50);border:1px solid var(--neutral200);border-radius:var(--radius-sm);padding:20px;margin-bottom:20px;">
-                            <p style="font-size:14px;color:var(--neutral600);line-height:1.8;">By submitting this
-                                application, I confirm that:</p>
-                            <ul
-                                style="font-size:14px;color:var(--neutral600);line-height:2;padding-left:20px;margin-top:8px;">
-                                <li>All information provided is true, accurate, and complete to the best of my
-                                    knowledge.</li>
-                                <li>I authorise Umoja Sacco to verify my documents and conduct KYC as permitted by law.
-                                </li>
-                                <li>I understand the minimum contribution requirements and loan eligibility criteria.
-                                </li>
-                                <li>My data will be stored and processed in accordance with the Privacy Policy and
-                                    Kenya's Data Protection Act 2019.</li>
-                                <li>I agree to pay the one-time registration fee of KSh 2,000 upon approval.</li>
-                            </ul>
-                        </div>
-                        <label class="check-opt" style="margin-bottom:20px;align-items:flex-start;gap:12px;">
-                            <input type="checkbox" id="final_agree" style="margin-top:2px;" />
-                            <span style="font-size:14px;color:var(--neutral700);line-height:1.6;">I have read and agree
-                                to the <a href="#" style="color:var(--g600);text-decoration:underline;">Membership Terms
-                                    & Conditions</a> and <a href="#"
-                                    style="color:var(--g600);text-decoration:underline;">Privacy Policy</a>. <span
-                                    class="req">*</span></span>
-                        </label>
-                        <div class="form-group">
-                            <label for="m_signature">Digital Signature (Full Legal Name) <span
-                                    class="req">*</span></label>
-                            <input type="text" id="m_signature"
-                                placeholder="Type your full name as your digital signature"
-                                style="font-style:italic;" />
-                            <p style="font-size:12px;color:var(--neutral400);margin-top:4px;">This serves as your
-                                electronic signature for the membership agreement.</p>
-                        </div>
-                        <div
-                            style="background:var(--g50);border:1px solid var(--g200);border-radius:var(--radius-sm);padding:16px 18px;display:flex;gap:12px;align-items:flex-start;margin-top:20px;">
-                            <svg style="fill:var(--g500);width:20px;height:20px;flex-shrink:0;margin-top:2px;"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
-                            </svg>
-                            <div>
-                                <div style="font-size:14px;font-weight:600;color:var(--g700);margin-bottom:4px;">What
-                                    happens after submission?</div>
-                                <p style="font-size:13px;color:var(--g700);line-height:1.7;">Your application goes to
-                                    our onboarding team. KYC is verified within 24–48 hours. On approval, you'll receive
-                                    an M-Pesa STK push for the registration fee and instant access to your member
-                                    portal.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FOOTER NAVIGATION -->
-                    <div class="form-footer" id="formFooter">
-                        <div class="secure-note"><svg viewBox="0 0 24 24">
-                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
-                            </svg>256-bit encrypted & secure</div>
-                        <button class="btn-back" id="btnBack" onclick="changeStep(-1)">← Back</button>
-                        <button class="btn-next" id="btnNext" onclick="changeStep(1)">Next Step <svg
-                                viewBox="0 0 24 24">
-                                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
-                            </svg></button>
-                    </div>
-                </div><!-- end membershipForm -->
-            </div><!-- end form-card -->
-
+          <div class="border-l-4 p-5" style="border-left-color:#215d72;background:#f7f8fa;border:1px solid #e2e8f0;border-left-width:4px;">
+            <div class="text-sm font-bold text-slate-700 mb-1">Documents Required</div>
+            <p class="text-sm text-slate-500 leading-relaxed">National ID or Passport · KRA PIN Certificate · Passport-size photo · KSh 2,000 registration fee</p>
+          </div>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;">
-                <div>
-                    <div
-                        style="font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:white;margin-bottom:10px;">
-                        Umoja Sacco</div>
-                    <p style="font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:260px;">A basket for
-                        all your financial needs — empowering members across Kenya through reliable savings, loans, and
-                        digital banking.</p>
+        <!-- FORM CARD -->
+        <div class="reveal-right lg:col-span-3">
+          <div class="border border-slate-200 overflow-hidden shadow-xl">
+
+            <!-- Success state -->
+            <div id="joinSuccess" class="hidden">
+              <div class="p-8 text-center bg-white">
+                <div class="w-16 h-16 border-2 border-green-200 flex items-center justify-center mx-auto mb-5 bg-green-50">
+                  <svg class="w-8 h-8 fill-green-500" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                 </div>
-                <div>
-                    <h4
-                        style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.85);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;">
-                        Services</h4>
-                    <a href="#"
-                        style="display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:8px;">Mobile
-                        Banking</a>
-                    <a href="#"
-                        style="display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:8px;">Paybill</a>
-                    <a href="#"
-                        style="display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:8px;">Sacco
-                        Agents</a>
+                <h3 class="text-2xl text-slate-900 mb-3" style="font-family:'DM Serif Display',Georgia,serif;">Application Submitted!</h3>
+                <p class="text-slate-500 text-sm max-w-sm mx-auto mb-6 leading-relaxed">Welcome to Redian Sacco! Your membership application is under review. A WhatsApp confirmation is on its way.</p>
+                <div class="p-5 text-left text-sm mb-6 max-w-sm mx-auto border border-slate-100 bg-slate-50">
+                  <div class="font-bold mb-2 text-slate-700">What happens next:</div>
+                  <div class="flex flex-col gap-1.5 text-slate-500">
+                    <div>Application record created in member system</div>
+                    <div>KYC verification in progress (24–48 hrs)</div>
+                    <div>M-Pesa STK push for KSh 2,000 registration fee</div>
+                    <div>Digital membership agreement sent on approval</div>
+                  </div>
                 </div>
-                <div>
-                    <h4
-                        style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.85);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;">
-                        Products</h4>
-                    <a href="products.html?type=savings"
-                        style="display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:8px;">Savings</a>
-                    <a href="products.html?type=loan"
-                        style="display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:8px;">Loans</a>
-                    <a href="join.html"
-                        style="display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:8px;">Join
-                        Us</a>
+                <div class="flex gap-3 justify-center flex-wrap">
+                  <button onclick="resetJoinForm()" class="px-6 py-2.5 border font-semibold text-sm cursor-pointer hover:bg-slate-50 transition-all bg-white" style="border-color:#215d72;color:#215d72;">Start New Application</button>
+                  <a href="index.html" class="btn-primary text-sm px-5 py-2.5">Back to Home</a>
                 </div>
-                <div>
-                    <h4
-                        style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.85);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;">
-                        Contact</h4>
-                    <a href="tel:+254792333111"
-                        style="display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:8px;">+254
-                        792 333 111</a>
-                    <a href="mailto:customercare@umojasacco.co.ke"
-                        style="display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:8px;">customercare@umojasacco.co.ke</a>
-                    <a href="index.html#contact"
-                        style="display:block;font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:8px;">Contact
-                        Page</a>
+              </div>
+              <!-- Debug payload -->
+              <div class="mt-0">
+                <button class="debug-toggle w-full" id="successDebugToggle" onclick="toggleSuccessDebug()">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
+                  View Submitted Payload
+                </button>
+                <div id="successDebugPanel" style="display:none;" class="bg-slate-900 border border-slate-800">
+                  <div class="flex items-center justify-between px-4 py-2.5 border-b border-slate-800">
+                    <span class="text-xs font-bold text-slate-400 tracking-widest uppercase">Request Payload</span>
+                    <span class="text-xs text-slate-600">Simulated backend POST</span>
+                  </div>
+                  <pre id="debugPayload" class="p-4 text-xs text-green-400 font-mono overflow-auto max-h-72 leading-relaxed">// Payload will appear here after submission</pre>
                 </div>
+              </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 Umoja Sacco Ltd. Licensed by SASRA. All rights reserved.</p>
-                <p style="color:rgba(255,255,255,0.4);font-size:13px;">Regulated by SASRA · 31 Branches · 350,000+
-                    Members</p>
+
+            <!-- The form itself -->
+            <div id="joinForm">
+              <!-- Progress bar header -->
+              <div class="p-6 pb-0 bg-white">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest" id="jStepLabel">Step 1 of 8: Select Product</span>
+                  <span class="text-xs font-bold" id="jStepPct" style="color:#215d72;">12%</span>
+                </div>
+                <div class="h-1.5 bg-slate-100 overflow-hidden mb-4">
+                  <div class="h-full prog-fill" id="jProgressBar" style="width:12%;background:#215d72;"></div>
+                </div>
+                <!-- Step dots -->
+                <div class="flex items-center gap-1 overflow-x-auto pb-3">
+                  <div class="sdot-wrap flex items-center gap-1 active" id="jswrap1"><div class="sdot active" id="jsdot1">1</div><div class="sdot-label">Product</div></div>
+                  <div class="flex-1 h-px bg-slate-200 min-w-2" id="jline1"></div>
+                  <div class="sdot-wrap flex items-center gap-1" id="jswrap2"><div class="sdot" id="jsdot2">2</div><div class="sdot-label">Terms</div></div>
+                  <div class="flex-1 h-px bg-slate-200 min-w-2" id="jline2"></div>
+                  <div class="sdot-wrap flex items-center gap-1" id="jswrap3"><div class="sdot" id="jsdot3">3</div><div class="sdot-label">Docs</div></div>
+                  <div class="flex-1 h-px bg-slate-200 min-w-2" id="jline3"></div>
+                  <div class="sdot-wrap flex items-center gap-1" id="jswrap4"><div class="sdot" id="jsdot4">4</div><div class="sdot-label">Verify</div></div>
+                  <div class="flex-1 h-px bg-slate-200 min-w-2" id="jline4"></div>
+                  <div class="sdot-wrap flex items-center gap-1" id="jswrap5"><div class="sdot" id="jsdot5">5</div><div class="sdot-label">ID</div></div>
+                  <div class="flex-1 h-px bg-slate-200 min-w-2" id="jline5"></div>
+                  <div class="sdot-wrap flex items-center gap-1" id="jswrap6"><div class="sdot" id="jsdot6">6</div><div class="sdot-label">Personal</div></div>
+                  <div class="flex-1 h-px bg-slate-200 min-w-2" id="jline6"></div>
+                  <div class="sdot-wrap flex items-center gap-1" id="jswrap7"><div class="sdot" id="jsdot7">7</div><div class="sdot-label">Kin</div></div>
+                  <div class="flex-1 h-px bg-slate-200 min-w-2" id="jline7"></div>
+                  <div class="sdot-wrap flex items-center gap-1" id="jswrap8"><div class="sdot" id="jsdot8">8</div><div class="sdot-label">Submit</div></div>
+                </div>
+              </div>
+
+              <div class="px-7 pb-7 pt-3 bg-white">
+
+                <!-- STEP 1: Product selection -->
+                <div class="form-step active" id="jsection1">
+                  <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Select Account Type</div>
+                  <div class="flex flex-col gap-3">
+                    <label class="prod-card">
+                      <input type="radio" name="j_product" value="savings" />
+                      <div class="w-9 h-9 flex items-center justify-center flex-shrink-0" style="background:#f0f7fa;">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#215d72;"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                      </div>
+                      <div>
+                        <div class="font-semibold text-slate-900 text-sm">Savings Account</div>
+                        <div class="text-slate-500 text-xs mt-0.5">Grow your money with up to 14% dividends — from KSh 500/month</div>
+                      </div>
+                    </label>
+                    <label class="prod-card">
+                      <input type="radio" name="j_product" value="loan" />
+                      <div class="w-9 h-9 flex items-center justify-center flex-shrink-0" style="background:#fff4f3;">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#f14e3f;"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                      </div>
+                      <div>
+                        <div class="font-semibold text-slate-900 text-sm">Loan Product</div>
+                        <div class="text-slate-500 text-xs mt-0.5">Borrow up to 3× your savings — approval in 24 hours</div>
+                      </div>
+                    </label>
+                    <label class="prod-card">
+                      <input type="radio" name="j_product" value="both" />
+                      <div class="w-9 h-9 flex items-center justify-center flex-shrink-0" style="background:#f0fdf4;">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#16a34a;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                      </div>
+                      <div>
+                        <div class="font-semibold text-slate-900 text-sm">Both Savings & Loan</div>
+                        <div class="text-slate-500 text-xs mt-0.5">Open a savings account and simultaneously apply for a loan</div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- STEP 2: Terms -->
+                <div class="form-step" id="jsection2">
+                  <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Terms & Conditions</div>
+                  <div class="tc-box mb-5">
+                    <h4 class="font-semibold text-slate-800 text-sm mb-1">1. Membership</h4>
+                    <p>By joining Redian Sacco, you agree to uphold the cooperative's bylaws and contribute regularly. Membership is open to Kenyan citizens and residents aged 18 and above.</p>
+                    <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">2. Contributions</h4>
+                    <p>A minimum monthly contribution of KSh 500 is required. Failure to contribute for three consecutive months may result in account suspension pending review.</p>
+                    <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">3. Loans</h4>
+                    <p>Loan eligibility is based on your savings balance and creditworthiness. Loans are subject to approval by the credit committee. You may borrow up to 3× your savings balance.</p>
+                    <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">4. Dividends</h4>
+                    <p>Dividends are declared annually at the AGM based on the Sacco's financial performance. The indicative rate is 14% p.a. Past rates do not guarantee future returns.</p>
+                    <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">5. Data Privacy</h4>
+                    <p>Your personal data is processed in accordance with Kenya's Data Protection Act 2019. We will never sell your data to third parties without consent except where required by law.</p>
+                    <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">6. Account Closure</h4>
+                    <p>You may withdraw membership by giving 90 days written notice. All outstanding loans must be settled before membership is terminated.</p>
+                  </div>
+                  <label class="chk-opt"><input type="checkbox" id="j_agree_terms" /><span class="text-sm">I have read and agree to the Terms & Conditions <span class="req">*</span></span></label>
+                </div>
+
+                <!-- STEP 3: Documents upload -->
+                <div class="form-step" id="jsection3">
+                  <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Required Documents</div>
+                  <p class="text-slate-500 text-sm mb-5">Upload the following documents. You can photograph them with your phone.</p>
+
+                  <div class="flex items-start gap-3 mb-3 p-4 border border-slate-100 bg-slate-50">
+                    <div class="w-8 h-8 flex items-center justify-center flex-shrink-0" style="background:#f0f7fa;">
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" style="fill:#215d72;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                    </div>
+                    <div>
+                      <div class="font-semibold text-slate-800 text-sm">National ID / Passport</div>
+                      <div class="text-slate-500 text-xs mt-0.5">Front and back of your Kenya National ID, or passport bio-data page</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 mb-6 p-4 border border-slate-100 bg-slate-50">
+                    <div class="w-8 h-8 flex items-center justify-center flex-shrink-0" style="background:#f0f7fa;">
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" style="fill:#215d72;"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    </div>
+                    <div>
+                      <div class="font-semibold text-slate-800 text-sm">KRA PIN Certificate</div>
+                      <div class="text-slate-500 text-xs mt-0.5">Your current Kenya Revenue Authority PIN certificate (PDF or image)</div>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- ID Upload -->
+                    <div>
+                      <label class="flabel">Upload ID / Passport <span class="req">*</span></label>
+                      <div class="upload-zone" id="zone_id" onclick="document.getElementById('doc_id_passport').click()">
+                        <input type="file" id="doc_id_passport" accept=".jpg,.jpeg,.png,.pdf" onchange="handleUpload(this,'zone_id','fname_id')">
+                        <svg class="w-7 h-7 fill-slate-300 mx-auto mb-2" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+                        <p class="text-slate-500 text-xs">Click or drag to upload</p>
+                        <span class="text-slate-400 text-xs block mt-1">JPG, PNG or PDF · max 5MB</span>
+                        <p class="text-xs font-semibold mt-2 hidden" id="fname_id" style="color:#215d72;"></p>
+                      </div>
+                    </div>
+                    <!-- KRA PIN Upload -->
+                    <div>
+                      <label class="flabel">Upload KRA PIN <span class="req">*</span></label>
+                      <div class="upload-zone" id="zone_kra" onclick="document.getElementById('doc_kra_pin').click()">
+                        <input type="file" id="doc_kra_pin" accept=".jpg,.jpeg,.png,.pdf" onchange="handleUpload(this,'zone_kra','fname_kra')">
+                        <svg class="w-7 h-7 fill-slate-300 mx-auto mb-2" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+                        <p class="text-slate-500 text-xs">Click or drag to upload</p>
+                        <span class="text-slate-400 text-xs block mt-1">JPG, PNG or PDF · max 5MB</span>
+                        <p class="text-xs font-semibold mt-2 hidden" id="fname_kra" style="color:#215d72;"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- STEP 4: Contact verification -->
+                <div class="form-step" id="jsection4">
+                  <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Contact Verification</div>
+                  <div class="mb-4">
+                    <label class="flabel">Country of Residence <span class="req">*</span></label>
+                    <select class="field" id="j_country">
+                      <option value="">Select Country</option>
+                      <option selected>Kenya</option>
+                      <option>Uganda</option>
+                      <option>Tanzania</option>
+                      <option>Rwanda</option>
+                      <option>South Sudan</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label class="flabel">Email Address <span class="req">*</span></label>
+                      <input type="email" class="field" id="j_email" placeholder="you@example.com" />
+                    </div>
+                    <div>
+                      <label class="flabel">Phone Number <span class="req">*</span></label>
+                      <input type="tel" class="field" id="j_phone" placeholder="+254 7XX XXX XXX" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- STEP 5: ID type -->
+                <div class="form-step" id="jsection5">
+                  <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Identification Document</div>
+                  <div class="mb-4">
+                    <label class="flabel">Identification Type <span class="req">*</span></label>
+                    <div class="flex gap-3 flex-wrap">
+                      <label class="radio-opt flex-1"><input type="radio" name="j_id_type" value="national_id" checked /> National ID</label>
+                      <label class="radio-opt flex-1"><input type="radio" name="j_id_type" value="passport" /> Passport</label>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="flabel">ID / Passport Number <span class="req">*</span></label>
+                    <input type="text" class="field" id="j_id_number" placeholder="e.g. 12345678" />
+                  </div>
+                </div>
+
+                <!-- STEP 6: Personal details -->
+                <div class="form-step" id="jsection6">
+                  <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Personal Details</div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <label class="flabel">Full Name <span class="req">*</span></label>
+                      <input type="text" class="field" id="j_fname" placeholder="Amina Wanjiku Odhiambo" />
+                    </div>
+                    <div>
+                      <label class="flabel">ID Number <span class="req">*</span></label>
+                      <input type="text" class="field" id="j_idno" placeholder="12345678" />
+                    </div>
+                    <div>
+                      <label class="flabel">Date of Birth <span class="req">*</span></label>
+                      <input type="date" class="field" id="j_dob" />
+                    </div>
+                    <div>
+                      <label class="flabel">Gender <span class="req">*</span></label>
+                      <select class="field" id="j_gender">
+                        <option value="">Select</option>
+                        <option>Female</option>
+                        <option>Male</option>
+                        <option>Prefer not to say</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="flabel">Marital Status</label>
+                      <select class="field" id="j_marital">
+                        <option value="">Select</option>
+                        <option>Single</option>
+                        <option>Married</option>
+                        <option>Divorced</option>
+                        <option>Widowed</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="flabel">Occupation</label>
+                      <input type="text" class="field" id="j_occupation" placeholder="e.g. Teacher, Nurse" />
+                    </div>
+                  </div>
+                  <div class="pt-4 border-t border-slate-100">
+                    <div class="text-xs font-bold tracking-widest uppercase mb-4" style="color:#215d72;">Address Details</div>
+                    <div class="mb-4">
+                      <label class="flabel">Address Line <span class="req">*</span></label>
+                      <input type="text" class="field" id="j_addr" placeholder="House No., Street, Estate" />
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label class="flabel">City / Town <span class="req">*</span></label>
+                        <input type="text" class="field" id="j_city" placeholder="Nairobi" />
+                      </div>
+                      <div>
+                        <label class="flabel">Postal Code</label>
+                        <input type="text" class="field" id="j_zip" placeholder="00100" />
+                      </div>
+                      <div>
+                        <label class="flabel">County <span class="req">*</span></label>
+                        <input type="text" class="field" id="j_county" placeholder="Nairobi County" />
+                      </div>
+                      <div>
+                        <label class="flabel">Country</label>
+                        <select class="field" id="j_addr_country">
+                          <option selected>Kenya</option>
+                          <option>Uganda</option>
+                          <option>Tanzania</option>
+                          <option>Rwanda</option>
+                          <option>Other</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- STEP 7: Next of Kin -->
+                <div class="form-step" id="jsection7">
+                  <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Next of Kin</div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <label class="flabel">Full Name <span class="req">*</span></label>
+                      <input type="text" class="field" id="j_kin_name" placeholder="John Odhiambo" />
+                    </div>
+                    <div>
+                      <label class="flabel">Relationship <span class="req">*</span></label>
+                      <select class="field" id="j_kin_relation">
+                        <option value="">Select</option>
+                        <option>Spouse</option>
+                        <option>Parent</option>
+                        <option>Child</option>
+                        <option>Sibling</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="flabel">Phone Number <span class="req">*</span></label>
+                      <input type="tel" class="field" id="j_kin_phone" placeholder="+254 7XX XXX XXX" />
+                    </div>
+                    <div>
+                      <label class="flabel">ID / Passport Number <span class="req">*</span></label>
+                      <input type="text" class="field" id="j_kin_id" placeholder="12345678" />
+                    </div>
+                    <div>
+                      <label class="flabel">Email Address</label>
+                      <input type="email" class="field" id="j_kin_email" placeholder="kin@example.com" />
+                    </div>
+                    <div>
+                      <label class="flabel">Date of Birth</label>
+                      <input type="date" class="field" id="j_kin_dob" />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="flabel">Physical Address</label>
+                    <input type="text" class="field" id="j_kin_address" placeholder="House No., Street, Town" />
+                  </div>
+                </div>
+
+                <!-- STEP 8: Review & Declaration -->
+                <div class="form-step" id="jsection8">
+                  <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Review & Declaration</div>
+                  <div class="p-5 mb-5 bg-slate-50 border border-slate-100">
+                    <p class="text-sm text-slate-600 leading-relaxed mb-3">By submitting this form, I confirm that:</p>
+                    <ul class="text-sm text-slate-600 flex flex-col gap-2 pl-4">
+                      <li class="list-disc">All information provided is true and accurate to the best of my knowledge.</li>
+                      <li class="list-disc">I have read and agree to the Redian Sacco membership terms and bylaws.</li>
+                      <li class="list-disc">I consent to KYC verification and credit checks as permitted by law.</li>
+                      <li class="list-disc">I agree to pay the KSh 2,000 registration fee within 7 days of approval.</li>
+                      <li class="list-disc">My data will be stored and processed in accordance with the Privacy Policy.</li>
+                    </ul>
+                  </div>
+                  <div class="mb-5">
+                    <label class="chk-opt">
+                      <input type="checkbox" id="j_final_agree" />
+                      <span class="text-sm">I agree to the <a href="#" style="color:#215d72;" class="underline">Terms & Conditions</a> and <a href="#" style="color:#215d72;" class="underline">Privacy Policy</a>. <span class="req">*</span></span>
+                    </label>
+                  </div>
+                  <div class="mb-5">
+                    <label class="flabel">Digital Signature (Full Legal Name) <span class="req">*</span></label>
+                    <input type="text" class="field" id="j_signature" placeholder="Type your full name as your digital signature" style="font-style:italic;" />
+                    <p class="text-xs text-slate-400 mt-1">This serves as your electronic signature for the membership agreement.</p>
+                  </div>
+                  <div class="p-4 border-l-4 bg-slate-50" style="border-left-color:#215d72;">
+                    <div class="text-sm font-bold text-slate-700 mb-1">What happens after submission?</div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Your application enters our member system instantly. You'll receive a WhatsApp confirmation within 5 minutes. Full approval takes 24–48 hours, after which you'll receive a digital membership agreement to sign.</p>
+                  </div>
+                </div>
+
+                <!-- Nav buttons -->
+                <div class="flex items-center justify-between mt-7 pt-5 border-t border-slate-100">
+                  <button type="button" id="jPrevBtn" onclick="jChangeStep(-1)"
+                    class="hidden items-center gap-2 px-5 py-2.5 border border-slate-200 text-slate-600 font-semibold text-sm cursor-pointer hover:bg-slate-50 transition-all bg-white">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                    Back
+                  </button>
+                  <div class="flex items-center gap-2 text-xs text-slate-400 ml-0">
+                    <svg class="w-3.5 h-3.5 fill-slate-300" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                    256-bit encrypted
+                  </div>
+                  <button type="button" id="jNextBtn" onclick="jChangeStep(1)" class="btn-primary ml-auto">
+                    Next Step
+                    <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                  </button>
+                </div>
+
+              </div><!-- /px-7 -->
+            </div><!-- /joinForm -->
+          </div><!-- /border card -->
+        </div><!-- /form col -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="py-16 px-6" style="background:#012e42;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <div class="flex items-center gap-2.5 mb-5">
+            <div class="w-9 h-9 flex items-center justify-center" style="background:#215d72;">
+              <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
             </div>
+            <div>
+              <div class="font-bold text-[16px] text-white" style="font-family:'DM Serif Display',Georgia,serif;">Redian Sacco</div>
+              <div class="text-[9px] font-bold tracking-widest uppercase" style="color:#f14e3f;">Cooperative · Licensed · Digital</div>
+            </div>
+          </div>
+          <p class="text-white/35 text-sm leading-relaxed max-w-60">Empowering Kenyans through cooperative savings, accessible loans, and modern digital banking since 2003.</p>
         </div>
-    </footer>
+        <div>
+          <h4 class="text-xs font-bold text-white/60 tracking-widest uppercase mb-5">Services</h4>
+          <div class="flex flex-col gap-3">
+            <a href="#" class="text-sm text-white/35 hover:text-white/70 transition-colors">Savings Accounts</a>
+            <a href="#" class="text-sm text-white/35 hover:text-white/70 transition-colors">Loan Products</a>
+            <a href="#" class="text-sm text-white/35 hover:text-white/70 transition-colors">Fixed Deposits</a>
+            <a href="#" class="text-sm text-white/35 hover:text-white/70 transition-colors">Group Savings</a>
+            <a href="#" class="text-sm text-white/35 hover:text-white/70 transition-colors">Mobile Banking</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-white/60 tracking-widest uppercase mb-5">Membership</h4>
+          <div class="flex flex-col gap-3">
+            <a href="join.html" class="text-sm text-white/35 hover:text-white/70 transition-colors">Apply Online</a>
+            <a href="#" class="text-sm text-white/35 hover:text-white/70 transition-colors">Member Portal</a>
+            <a href="#" class="text-sm text-white/35 hover:text-white/70 transition-colors">Dividends</a>
+            <a href="#" class="text-sm text-white/35 hover:text-white/70 transition-colors">AGM Reports</a>
+            <a href="#" class="text-sm text-white/35 hover:text-white/70 transition-colors">Downloads & Forms</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-white/60 tracking-widest uppercase mb-5">Contact</h4>
+          <div class="flex flex-col gap-3">
+            <a href="tel:+254784202649" class="text-sm text-white/35 hover:text-white/70 transition-colors">+254 784202649</a>
+            <a href="mailto:enquiry@rediansoftware.com" class="text-sm text-white/35 hover:text-white/70 transition-colors">enquiry@rediansoftware.com</a>
+            <span class="text-sm text-white/35">10th Floor, Westpark Towers, Westlands, Nairobi</span>
+            <a href="#" class="text-sm text-white/35 hover:text-white/70 transition-colors">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t pt-7 flex flex-col sm:flex-row items-center justify-between gap-4" style="border-color:rgba(255,255,255,0.06);">
+        <p class="text-xs text-white/20">© 2026 Redian Sacco Ltd. SASRA Licence No. CS/001/2026. All rights reserved.</p>
+        <div class="text-xs text-white/15">SASRA Licensed · 18 Branches · 120,000+ Members</div>
+      </div>
+    </div>
+  </footer>
 
-    <script>
-        // Hamburger
-        document.getElementById('navHamburger').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.toggle('open');
+  <script>
+    // ── NAV ──
+    window.addEventListener('scroll', () => {
+      document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+    });
+    document.getElementById('navHamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+
+    // ── SCROLL REVEAL ──
+    const revEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revEls.forEach(el => revObs.observe(el));
+
+    // ── PRODUCT CARD HIGHLIGHT ──
+    document.querySelectorAll('input[name="j_product"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+        document.querySelectorAll('.prod-card').forEach(c => c.classList.remove('selected'));
+        this.closest('.prod-card').classList.add('selected');
+      });
+    });
+
+    // ── FILE UPLOAD HANDLER ──
+    function handleUpload(input, zoneId, nameId) {
+      const file = input.files[0];
+      if (!file) return;
+      const zone = document.getElementById(zoneId);
+      const nameEl = document.getElementById(nameId);
+      if (file.size > 5 * 1024 * 1024) {
+        alert('File too large. Maximum size is 5MB.');
+        input.value = '';
+        return;
+      }
+      zone.classList.add('has-file');
+      nameEl.textContent = file.name;
+      nameEl.classList.remove('hidden');
+    }
+
+    // Drag and drop
+    document.querySelectorAll('.upload-zone').forEach(zone => {
+      zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('has-file'); });
+      zone.addEventListener('dragleave', () => { if (!zone.querySelector('input').files.length) zone.classList.remove('has-file'); });
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        const input = zone.querySelector('input[type="file"]');
+        if (input && e.dataTransfer.files.length) {
+          // We can't directly assign to input.files, so we trigger the onchange handler
+          const dt = e.dataTransfer;
+          const file = dt.files[0];
+          const nameId = zone.querySelector('p[id]') ? zone.querySelector('p[id]').id : null;
+          if (nameId && file) {
+            zone.classList.add('has-file');
+            document.getElementById(nameId).textContent = file.name;
+            document.getElementById(nameId).classList.remove('hidden');
+          }
+        }
+      });
+    });
+
+    // ── FORM STEPPER ──
+    const J_TOTAL = 8;
+    let jCurrent = 1;
+
+    const jStepsInfo = [
+      'Step 1 of 8: Select Product',
+      'Step 2 of 8: Terms & Conditions',
+      'Step 3 of 8: Upload Documents',
+      'Step 4 of 8: Contact Verification',
+      'Step 5 of 8: Identification',
+      'Step 6 of 8: Personal Details',
+      'Step 7 of 8: Next of Kin',
+      'Step 8 of 8: Review & Submit'
+    ];
+
+    function jChangeStep(dir) {
+      if (dir === 1 && jCurrent === J_TOTAL) { jSubmit(); return; }
+      const next = jCurrent + dir;
+      if (next < 1 || next > J_TOTAL) return;
+
+      const curr = document.getElementById('jsection' + jCurrent);
+      curr.classList.remove('active');
+
+      const newPanel = document.getElementById('jsection' + next);
+      newPanel.classList.add('active');
+      if (dir < 0) {
+        newPanel.classList.add('step-back');
+        setTimeout(() => newPanel.classList.remove('step-back'), 350);
+      }
+
+      jCurrent = next;
+      jUpdateProgress();
+    }
+
+    function jUpdateProgress() {
+      const pct = Math.round((jCurrent / J_TOTAL) * 100);
+      document.getElementById('jProgressBar').style.width = pct + '%';
+      document.getElementById('jStepPct').textContent = pct + '%';
+      document.getElementById('jStepLabel').textContent = jStepsInfo[jCurrent - 1];
+
+      for (let i = 1; i <= J_TOTAL; i++) {
+        const dot = document.getElementById('jsdot' + i);
+        const wrap = document.getElementById('jswrap' + i);
+        const line = document.getElementById('jline' + i);
+        if (!dot || !wrap) continue;
+
+        dot.classList.remove('active', 'done');
+        wrap.classList.remove('active', 'done');
+
+        if (i < jCurrent) {
+          dot.classList.add('done');
+          dot.textContent = '✓';
+          wrap.classList.add('done');
+        } else if (i === jCurrent) {
+          dot.classList.add('active');
+          dot.textContent = i;
+          wrap.classList.add('active');
+        } else {
+          dot.textContent = i;
+        }
+
+        if (line) line.style.background = i < jCurrent ? '#16a34a' : '';
+      }
+
+      const prevBtn = document.getElementById('jPrevBtn');
+      const nextBtn = document.getElementById('jNextBtn');
+      prevBtn.style.display = jCurrent > 1 ? 'flex' : 'none';
+
+      if (jCurrent === J_TOTAL) {
+        nextBtn.innerHTML = 'Submit Application <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+        nextBtn.style.background = '#16a34a';
+      } else {
+        nextBtn.innerHTML = 'Next Step <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>';
+        nextBtn.style.background = '';
+      }
+    }
+
+    // ── COLLECT FORM DATA ──
+    function jCollectData() {
+      const data = {
+        _form: 'membership_application',
+        _submittedAt: new Date().toISOString(),
+        _endpoint: '/api/v1/members/apply'
+      };
+
+      // Text/select/radio/checkbox fields
+      document.getElementById('joinForm').querySelectorAll('input:not([type=file]), select, textarea').forEach(el => {
+        if (!el.id && !el.name) return;
+        const key = el.id || el.name;
+        if (el.type === 'radio') { if (el.checked) data[key] = el.value; }
+        else if (el.type === 'checkbox') { data[key] = el.checked; }
+        else { data[key] = el.value; }
+      });
+
+      // File fields — record name/size/type metadata (can't JSON.stringify File objects)
+      ['doc_id_passport', 'doc_kra_pin'].forEach(id => {
+        const input = document.getElementById(id);
+        if (input && input.files[0]) {
+          const f = input.files[0];
+          data[id] = { fileName: f.name, fileSize: f.size, fileType: f.type };
+        } else {
+          data[id] = null;
+        }
+      });
+
+      return data;
+    }
+
+    // ── SIMULATE BACKEND SUBMISSION ──
+    async function jSubmit() {
+      const payload = jCollectData();
+
+      // Build a realistic multipart FormData (files included)
+      const formData = new FormData();
+      Object.entries(payload).forEach(([k, v]) => {
+        if (typeof v === 'object' && v !== null && !(v instanceof File)) {
+          formData.append(k, JSON.stringify(v));
+        } else {
+          formData.append(k, v ?? '');
+        }
+      });
+
+      // Attach actual file objects
+      ['doc_id_passport', 'doc_kra_pin'].forEach(id => {
+        const input = document.getElementById(id);
+        if (input && input.files[0]) formData.append(id + '_file', input.files[0], input.files[0].name);
+      });
+
+      // Show spinner
+      document.getElementById('spinnerOverlay').classList.add('active');
+
+      try {
+        // Simulated POST — uses jsonplaceholder as a real HTTP round-trip
+        await fetch('https://jsonplaceholder.typicode.com/posts', {
+          method: 'POST',
+          body: formData
         });
+        // Artificial delay so loading feels real
+        await new Promise(r => setTimeout(r, 1400));
+      } catch (e) {
+        console.error('Submission error:', e);
+      }
 
-        // Product option hover styling
-        document.querySelectorAll('.product-opt').forEach(opt => {
-            opt.addEventListener('click', function () {
-                document.querySelectorAll('.product-opt').forEach(o => { o.style.borderColor = 'var(--neutral200)'; o.style.background = 'var(--neutral50)'; });
-                this.style.borderColor = 'var(--g400)';
-                this.style.background = 'var(--g50)';
-                const radio = this.querySelector('input[type="radio"]');
-                if (radio) { radio.checked = true; radio.style.borderColor = 'var(--g500)'; radio.style.background = 'var(--g500)'; radio.style.boxShadow = 'inset 0 0 0 3px white'; }
-            });
-        });
+      document.getElementById('spinnerOverlay').classList.remove('active');
 
-        const TOTAL_STEPS = 8;
-        let currentStep = 1;
+      // Show success
+      document.getElementById('joinForm').style.display = 'none';
+      const succ = document.getElementById('joinSuccess');
+      succ.classList.remove('hidden');
+      succ.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-        function changeStep(dir) {
-            if (dir === 1 && currentStep === TOTAL_STEPS) { submitForm(); return; }
-            const next = currentStep + dir;
-            if (next < 1 || next > TOTAL_STEPS) return;
-            document.getElementById('step' + currentStep).style.display = 'none';
-            document.getElementById('step' + next).style.display = 'block';
-            currentStep = next;
-            updateProgress();
-        }
+      // Populate debug payload
+      document.getElementById('debugPayload').textContent = JSON.stringify({
+        request: {
+          method: 'POST',
+          url: '/api/v1/members/apply',
+          headers: { 'Content-Type': 'multipart/form-data', 'X-Requested-With': 'XMLHttpRequest' }
+        },
+        payload: payload,
+        files: ['doc_id_passport', 'doc_kra_pin'].map(id => {
+          const input = document.getElementById(id);
+          const f = input && input.files[0];
+          return f ? { field: id, fileName: f.name, fileSize: f.size, fileType: f.type } : { field: id, fileName: null };
+        }),
+        response: { status: 201, body: { success: true, applicationId: 'RD-APP-' + Date.now(), message: 'Application received. KYC verification will be completed within 48 hours.' } }
+      }, null, 2);
+    }
 
-        function updateProgress() {
-            for (let i = 1; i <= TOTAL_STEPS; i++) {
-                const el = document.getElementById('prog' + i);
-                const num = el.querySelector('.prog-num');
-                el.classList.remove('active', 'done');
-                if (i < currentStep) { el.classList.add('done'); num.textContent = '✓'; }
-                else if (i === currentStep) { el.classList.add('active'); num.textContent = i; }
-                else { num.textContent = i; }
-            }
-            for (let i = 1; i < TOTAL_STEPS; i++) {
-                const line = document.getElementById('line' + i);
-                if (line) line.classList.toggle('done', i < currentStep);
-            }
-            const back = document.getElementById('btnBack');
-            const next = document.getElementById('btnNext');
-            back.style.display = currentStep > 1 ? 'block' : 'none';
-            if (currentStep === TOTAL_STEPS) {
-                next.innerHTML = 'Submit Application <svg viewBox="0 0 24 24" style="fill:white;width:18px;height:18px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
-            } else {
-                next.innerHTML = 'Next Step <svg viewBox="0 0 24 24" style="fill:white;width:18px;height:18px;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>';
-            }
-        }
+    function toggleSuccessDebug() {
+      const panel = document.getElementById('successDebugPanel');
+      const btn = document.getElementById('successDebugToggle');
+      const visible = panel.style.display !== 'none';
+      panel.style.display = visible ? 'none' : 'block';
+      btn.classList.toggle('active', !visible);
+    }
 
-        async function submitForm() {
-            const formData = new FormData();
-            formData.append('formType', 'membership');
-            formData.append('submittedAt', new Date().toISOString());
+    function resetJoinForm() {
+      document.getElementById('joinSuccess').classList.add('hidden');
+      document.getElementById('joinForm').style.display = '';
 
-            document.getElementById('membershipForm').querySelectorAll('input, select, textarea').forEach(el => {
-                if (!el.id) return;
-                if (el.type === 'file') {
-                    if (el.files[0]) formData.append(el.id, el.files[0], el.files[0].name);
-                } else if (el.type === 'checkbox') {
-                    formData.append(el.id, el.checked);
-                } else {
-                    formData.append(el.id, el.value);
-                }
-            });
+      // Reset step panels
+      for (let i = 1; i <= J_TOTAL; i++) {
+        const p = document.getElementById('jsection' + i);
+        if (p) p.classList.remove('active');
+      }
+      document.getElementById('jsection1').classList.add('active');
+      jCurrent = 1;
+      jUpdateProgress();
 
-            document.getElementById('spinnerOverlay').classList.add('active');
-            try {
-                await fetch('https://jsonplaceholder.typicode.com/posts', {
-                    method: 'POST',
-                    body: formData
-                });
-            } catch (e) { console.error(e); }
-            document.getElementById('spinnerOverlay').classList.remove('active');
+      // Reset inputs
+      document.getElementById('joinForm').querySelectorAll('input, select, textarea').forEach(el => {
+        if (el.type === 'checkbox' || el.type === 'radio') el.checked = false;
+        else if (el.tagName === 'SELECT') el.selectedIndex = 0;
+        else el.value = '';
+      });
 
-            document.getElementById('membershipForm').style.display = 'none';
-            const sc = document.getElementById('successCard');
-            sc.classList.add('show');
-            sc.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+      // Reset upload zones
+      ['zone_id', 'zone_kra'].forEach(id => {
+        const z = document.getElementById(id);
+        if (z) z.classList.remove('has-file');
+      });
+      ['fname_id', 'fname_kra'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) { el.textContent = ''; el.classList.add('hidden'); }
+      });
 
-        function handleFileSelect(input) {
-            const area = input.closest('.upload-area');
-            const file = input.files[0];
-            if (!file) return;
-            const existing = area.querySelector('.upload-filename');
-            if (existing) existing.remove();
-            const nameEl = document.createElement('p');
-            nameEl.className = 'upload-filename';
-            nameEl.style.cssText = 'font-size:13px;color:var(--g600);font-weight:600;margin-top:6px;';
-            nameEl.textContent = '✓ ' + file.name;
-            area.appendChild(nameEl);
-            area.style.borderColor = 'var(--g400)';
-            area.style.background = 'var(--g50)';
-        }
+      document.querySelectorAll('.prod-card').forEach(c => c.classList.remove('selected'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-        document.querySelectorAll('.upload-area').forEach(area => {
-            area.addEventListener('dragover', e => {
-                e.preventDefault();
-                area.style.borderColor = 'var(--g500)';
-                area.style.background = 'var(--g50)';
-            });
-            area.addEventListener('dragleave', () => {
-                area.style.borderColor = '';
-                area.style.background = '';
-            });
-            area.addEventListener('drop', e => {
-                e.preventDefault();
-                const input = area.querySelector('input[type="file"]');
-                if (input && e.dataTransfer.files.length) {
-                    input.files = e.dataTransfer.files;
-                    handleFileSelect(input);
-                }
-            });
-        });
+    // Init
+    jUpdateProgress();
+  </script>
 
-        function resetForm() {
-            document.getElementById('successCard').classList.remove('show');
-            document.getElementById('membershipForm').style.display = 'block';
-            currentStep = 1;
-            for (let i = 1; i <= TOTAL_STEPS; i++) {
-                document.getElementById('step' + i).style.display = i === 1 ? 'block' : 'none';
-            }
-            updateProgress();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Init
-        updateProgress();
-    </script>
 </body>
-
 </html>
