@@ -110,7 +110,8 @@
             <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Mobile
               Banking</a>
             <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Paybill</a>
-            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Lipa Na Redian
+            <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Lipa Na
+              Redian
               Merchant Settlement</a>
             <a href="#" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Redian Sacco
               Agents</a>
@@ -1813,8 +1814,23 @@
       document.getElementById('spinnerOverlay').classList.add('active');
 
       try {
-        await fetch('https://jsonplaceholder.typicode.com/posts', { method: 'POST', body: formData });
-        await new Promise(r => setTimeout(r, 1400)); // realistic delay
+        const zohoPayload = {
+          request: {
+            method: 'POST',
+            url: '/api/v1/members/apply',
+            headers: { 'Content-Type': 'multipart/form-data' }
+          },
+          payload,
+          response: {
+            status: 201,
+            body: { success: true, applicationId: 'RD-APP-' + Date.now(), message: 'Application received.' }
+          }
+        };
+        await fetch('https://flow.zoho.com/920894939/flow/webhook/incoming?zapikey=1001.7d11a0e3503e956e5080d92dce321884.68ef335d3cc243ddf197e37a813df439&isdebug=true', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(zohoPayload)
+        });
       } catch (e) { console.error(e); }
 
       document.getElementById('spinnerOverlay').classList.remove('active');
