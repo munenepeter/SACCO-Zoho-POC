@@ -39,6 +39,8 @@
         <div class="card">
             <h2>Login</h2>
 
+            <!-- Start of Source Code from Zoho Webform -->
+
             <!-- Note :    - You can modify the font style and form style to suit your website.    - Code lines with comments Do not remove this code are required for the form to work properly, make sure that you do not remove these lines of code.    - The Mandatory check script can modified as to suit your business needs.    - It is important that you test the modified form before going live.-->
             <div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm'
                 style='background-color: white;color: black;max-width: 600px;'>
@@ -420,14 +422,19 @@
                     <script> 							function addAriaChecked7310745000001809474() { var checkboxElem = event.target; if (checkboxElem != undefined && checkboxElem.checked) { checkboxElem.ariaChecked = 'true'; } else if (checkboxElem != undefined && !checkboxElem.checked) { checkboxElem.ariaChecked = 'false'; } } function addAriaSelected7310745000001809474() { var optionElem = event.target; var previousSelectedOption = optionElem.querySelector('[aria-selected=true]'); if (previousSelectedOption) { previousSelectedOption.removeAttribute('aria-selected'); } optionElem.querySelectorAll('option')[optionElem.selectedIndex].ariaSelected = 'true'; } function validateEmail7310745000001809474() { var form = document.forms['WebToLeads7310745000001809474']; var emailFld = form.querySelectorAll('[ftype=email]'); var i; for (i = 0; i < emailFld.length; i++) { var emailVal = emailFld[i].value; if ((emailVal.replace(/^\s+|\s+$/g, '')).length != 0) { var atpos = emailVal.indexOf('@'); var dotpos = emailVal.lastIndexOf('.'); if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) { alert('Please enter a valid email address. '); emailFld[i].focus(); return false; } } } return true; } function checkMandatory7310745000001809474(isAjax) { var mndFileds = new Array('Last Name'); var fldLangVal = new Array('Product Name'); for (i = 0; i < mndFileds.length; i++) { var fieldObj = document.forms['WebToLeads7310745000001809474'][mndFileds[i]]; if (fieldObj) { if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) { if (fieldObj.type == 'file') { alert('Please select a file to upload.'); fieldObj.focus(); return false; } alert(fldLangVal[i] + ' cannot be empty.'); fieldObj.focus(); return false; } else if (fieldObj.nodeName == 'SELECT') { if (fieldObj.options[fieldObj.selectedIndex].value == '-None-') { alert(fldLangVal[i] + ' cannot be none.'); fieldObj.focus(); return false; } } else if (fieldObj.type == 'checkbox') { if (fieldObj.checked == false) { alert('Please accept  ' + fldLangVal[i]); fieldObj.focus(); return false; } } try { if (fieldObj.name == 'Last Name') { name = fieldObj.value; } } catch (e) { } } } if (!validateEmail7310745000001809474()) { return false; } var urlparams = new URLSearchParams(window.location.search); if (urlparams.has('service') && (urlparams.get('service') === 'smarturl')) { var webform = document.getElementById('webform7310745000001809474'); var service = urlparams.get('service'); var smarturlfield = document.createElement('input'); smarturlfield.setAttribute('type', 'hidden'); smarturlfield.setAttribute('value', service); smarturlfield.setAttribute('name', 'service'); webform.appendChild(smarturlfield); } document.querySelector('.crmWebToEntityForm .formsubmit').setAttribute('disabled', true); } function tooltipShow7310745000001809474(el) { var tooltip = el.nextElementSibling; var tooltipDisplay = tooltip.style.display; if (tooltipDisplay == 'none') { var allTooltip = document.getElementsByClassName('zcwf_tooltip_over'); for (i = 0; i < allTooltip.length; i++) { allTooltip[i].style.display = 'none'; } tooltip.style.display = 'block'; } else { tooltip.style.display = 'none'; } } 						
                     </script>
                     <script id='webformDependencyScript7310745000001809474'
-                        src='https://crm.zohopublic.com/crm/WebFormDependencies?rid=58d2ccb2012c603804f46780fae14fab2b9bbf0c0c1014bbae6d3fe77cfcdf39%27> 					</script> 					<!-- Do not remove this --- Analytics Tracking code starts --> 					<script id = '
+                        src='https://crm.zohopublic.com/crm/WebFormDependencies?rid=58d2ccb2012c603804f46780fae14fab2b9bbf0c0c1014bbae6d3fe77cfcdf39%27'> 		
+                    </script>
+                    <!-- Do not remove this --- Analytics Tracking code starts --> 					
+                    <script id = '
                         wf_anal'
                         src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=882f5e6332fdab209dc0697bdd902d0ec09f646c21c0d6cf104088b9a9f6c6af3d29cb70fad0092862353ba6a8305a6agid13c6daa498bf017692252f9ca43b36a62790658cfca23d8504a6ec82a7a38639gid6bdaff3b6b8c760499be33bddf351b23d6e038936b2478397e02efbfdee7a96dgid526db0ef7ca2bb639454331ccb81994eb875fadee5e5418b2651e613b87d9f5c&tw=78196216ae66a5e1aa1599ff741a30df28af8847cd7bd9c5b5e884b0a2be3c6f%27'>
-                        </script>
+                    </script>
                     <!-- Do not remove this --- Analytics Tracking code ends. -->
                 </form>
 
             </div>
+
+            <!-- End of Source Code from Zoho Webform -->
 
         </div>
     </div>
