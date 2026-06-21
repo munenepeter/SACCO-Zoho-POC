@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redian Sacco | Loan Application</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-red: #f14e3f;
+      --color-red-dk: #c8311f;
+      --color-teal: #215d72;
+      --color-navy: #024460;
+      --color-offwhite: #f7f8fa;
+      --color-smoke: #eef0f3;
+      --color-border: #dde1e6;
+      --color-muted: #64748b;
+      --color-dark: #0e1a24;
+      --font-display: "DM Serif Display", Georgia, serif;
+      --font-sans: "Inter", system-ui, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      background: #fff;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-dark);
+      font-size: 14px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-display);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* ---- layout shell ---- */
+    .zwiz-wrap {
+      padding: 0;
+    }
+
+    /* ---- progress header ---- */
+    .zwiz-progress {
+      margin-bottom: 28px;
+    }
+
+    .zwiz-progress-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    #zStepLabel {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    #zStepPct {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-teal);
+    }
+
+    .zwiz-bar-track {
+      height: 6px;
+      background: var(--color-smoke);
+      overflow: hidden;
+    }
+
+    .zwiz-bar-fill {
+      height: 100%;
+      background: var(--color-teal);
+      transition: width .4s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .zwiz-dots {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 16px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .sdot-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .sdot {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: .3s;
+    }
+
+    .sdot.active {
+      background: var(--color-teal);
+      color: #fff;
+      box-shadow: 0 0 0 3px rgba(33, 93, 114, .2);
+    }
+
+    .sdot.done {
+      background: #16a34a;
+      color: #fff;
+    }
+
+    .sdot-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: #94a3b8;
+      white-space: nowrap;
+    }
+
+    .sdot-wrap.active .sdot-label {
+      color: var(--color-teal);
+    }
+
+    .sdot-wrap.done .sdot-label {
+      color: #16a34a;
+    }
+
+    .zwiz-line {
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+      min-width: 8px;
+    }
+
+    /* ---- steps ---- */
+    .form-step {
+      display: none;
+      animation: stepIn .3s;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    @keyframes stepIn {
+      from {
+        opacity: 0;
+        transform: translateX(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .zwiz-section-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-smoke);
+    }
+
+    .zwiz-section-hint {
+      font-size: 13px;
+      color: var(--color-muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* ---- fields ---- */
+    .flabel {
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      display: block;
+    }
+
+    .req {
+      color: var(--color-red);
+    }
+
+    .field {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--color-border);
+      background: #fff;
+      color: var(--color-dark);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      outline: 0;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .field:focus {
+      border-color: var(--color-teal);
+      box-shadow: 0 0 0 3px rgba(33, 93, 114, .1);
+    }
+
+    select.field {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    textarea.field {
+      resize: vertical;
+      min-height: 88px;
+      font-family: var(--font-sans);
+    }
+
+    .zgrid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .zfull {
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 560px) {
+      .zgrid2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---- radio / checkbox options ---- */
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .radio-opt {
+      padding: 11px 14px;
+      border: 1.5px solid var(--color-border);
+      font-size: 14px;
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-weight: 500;
+      background: #fff;
+      transition: .15s;
+    }
+
+    .radio-opt input[type=radio] {
+      appearance: none;
+      width: 17px;
+      height: 17px;
+      border: 2px solid #cbd5e1;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: .15s;
+    }
+
+    .radio-opt input[type=radio]:checked {
+      border-color: var(--color-teal);
+      background: var(--color-teal);
+      box-shadow: inset 0 0 0 3px #fff;
+    }
+
+    .radio-opt:has(input:checked) {
+      border-color: var(--color-teal);
+      background: #f0f7fa;
+      color: var(--color-navy);
+    }
+
+    .chk-opt {
+      font-size: 14px;
+      color: #475569;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .chk-opt input[type=checkbox] {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      border: 2px solid #cbd5e1;
+      margin-top: 1px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: .15s;
+    }
+
+    .chk-opt input[type=checkbox]:checked {
+      background: var(--color-teal);
+      border-color: var(--color-teal);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='9' viewBox='0 0 11 9'%3E%3Cpath d='M1 4l3.5 3.5L10 1' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* ---- buttons / nav ---- */
+    .zwiz-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-smoke);
+    }
+
+    .btn-primary {
+      background: var(--color-red);
+      color: #fff;
+      border: none;
+      padding: 13px 28px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background .2s, transform .15s;
+      margin-left: auto;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-red-dk);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-navy);
+      border: 1.5px solid var(--color-navy);
+      padding: 12px 26px;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .btn-outline:hover {
+      background: var(--color-navy);
+      color: #fff;
+    }
+
+    .zicon {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="zwiz-wrap">
+
+    <!-- Note:
+       - Code lines with comments "Do not remove this code" are required for the form to work properly with Zoho CRM.
+       - The Mandatory check script can be modified to suit business needs.
+       - Test the modified form before going live. -->
+    <div id='crmWebToEntityForm' class='crmWebToEntityForm'>
+      <form id='webform7310745000001849114' action='https://crm.zoho.com/crm/WebForm'
+        name='WebForm7310745000001849114' method='POST'
+        onSubmit='javascript:document.charset="UTF-8"; return checkMandatory7310745000001849114()'
+        accept-charset='UTF-8'>
+        <input type='text' style='display:none;' name='xnQsjsdp'
+          value='2e8e275743bf36d814c447943e5ce1bb91361e813b800e14151d55be59db1a7c'></input>
+        <input type='hidden' name='zc_gad' id='zc_gad' value=''></input>
+        <input type='text' style='display:none;' name='xmIwtLD'
+          value='73eb2e9a37cbb1928e53524cfa3ec03b5ea3ffdadc2f9feb2e941f82f267c64cf80296a527b0f316d98e5756bc1147ac'></input>
+        <input type='text' style='display:none;' name='actionType' value='Q3VzdG9tTW9kdWxlOQ=='></input>
+        <input type='text' style='display:none;' name='returnURL'
+          value='https://cool-dango-8b8e56.netlify.app/'></input>
+        <!-- Do not remove this code. -->
+
+        <!-- Progress -->
+        <div class="zwiz-progress">
+          <div class="zwiz-progress-top">
+            <span id="zStepLabel">Step 1 of 6: Loan Details</span>
+            <span id="zStepPct">17%</span>
+          </div>
+          <div class="zwiz-bar-track">
+            <div class="zwiz-bar-fill" id="zProgressBar" style="width:17%;"></div>
+          </div>
+          <div class="zwiz-dots">
+            <div class="sdot-wrap active" id="zswrap1">
+              <div class="sdot active" id="zsdot1">1</div>
+              <div class="sdot-label">Details</div>
+            </div>
+            <div class="zwiz-line" id="zline1"></div>
+            <div class="sdot-wrap" id="zswrap2">
+              <div class="sdot" id="zsdot2">2</div>
+              <div class="sdot-label">Employment</div>
+            </div>
+            <div class="zwiz-line" id="zline2"></div>
+            <div class="sdot-wrap" id="zswrap3">
+              <div class="sdot" id="zsdot3">3</div>
+              <div class="sdot-label">Guarantors</div>
+            </div>
+            <div class="zwiz-line" id="zline3"></div>
+            <div class="sdot-wrap" id="zswrap4">
+              <div class="sdot" id="zsdot4">4</div>
+              <div class="sdot-label">Eligibility</div>
+            </div>
+            <div class="zwiz-line" id="zline4"></div>
+            <div class="sdot-wrap" id="zswrap5">
+              <div class="sdot" id="zsdot5">5</div>
+              <div class="sdot-label">Approval</div>
+            </div>
+            <div class="zwiz-line" id="zline5"></div>
+            <div class="sdot-wrap" id="zswrap6">
+              <div class="sdot" id="zsdot6">6</div>
+              <div class="sdot-label">Status</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 1: Details -->
+        <div class="form-step active" id="zsection1">
+          <div class="zwiz-section-title">Loan Details</div>
+          <div class="zgrid2">
+            <div>
+              <label class="flabel" for="NAME">Member Number <span class="req">*</span></label>
+              <input type="text" class="field" id="NAME" aria-required="true" aria-label="NAME" name="NAME"
+                maxlength="120" placeholder="RD-002345">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF8">Loan Type</label>
+              <select class="field" id="COBJ9CF8" onChange="addAriaSelected7310745000001849114()"
+                aria-label="COBJ9CF8" name="COBJ9CF8">
+                <option value="-None-">Select Loan Type</option>
+                <option value="Emergency Loan">Emergency Loan</option>
+                <option value="Development Loan">Development Loan</option>
+                <option value="School Fees Loan">School Fees Loan</option>
+                <option value="Business Loan">Business Loan</option>
+                <option value="Asset Financing">Asset Financing</option>
+                <option value="Salary Advance">Salary Advance</option>
+              </select>
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF68">Loan Amount Requested (KSh)</label>
+              <input type="number" class="field" id="COBJ9CF68" aria-label="COBJ9CF68" name="COBJ9CF68"
+                maxlength="16" placeholder="150000">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF56">Repayment Period</label>
+              <select class="field" id="COBJ9CF56" name="COBJ9CF56">
+                <option value="">Select</option>
+                <option value="3">3 months</option>
+                <option value="6">6 months</option>
+                <option value="12">12 months</option>
+                <option value="24">24 months</option>
+                <option value="36">36 months</option>
+                <option value="48">48 months</option>
+                <option value="60">60 months</option>
+              </select>
+            </div>
+          </div>
+          <div class="zfull">
+            <label class="flabel" for="COBJ9CF5">Loan Purpose</label>
+            <input type="text" class="field" id="COBJ9CF5" aria-label="COBJ9CF5" name="COBJ9CF5"
+              placeholder="e.g. School fees">
+          </div>
+        </div>
+
+        <!-- STEP 2: Employment -->
+        <div class="form-step" id="zsection2">
+          <div class="zwiz-section-title">Employment &amp; Income</div>
+          <div class="zfull">
+            <label class="flabel" style="margin-bottom:10px;">Employment Status</label>
+            <div class="radio-group">
+              <label class="radio-opt"><input type="radio" name="COBJ9CF10" value="Employed" /> Employed</label>
+              <label class="radio-opt"><input type="radio" name="COBJ9CF10" value="Self-employed" />
+                Self-employed</label>
+              <label class="radio-opt"><input type="radio" name="COBJ9CF10" value="Business Owner" /> Business
+                Owner</label>
+              <label class="radio-opt"><input type="radio" name="COBJ9CF10" value="Retired" /> Retired</label>
+            </div>
+          </div>
+          <div class="zgrid2">
+            <div>
+              <label class="flabel" for="COBJ9CF70">Net Monthly Income (KSh)</label>
+              <input type="number" class="field" id="COBJ9CF70" aria-label="COBJ9CF70" name="COBJ9CF70"
+                maxlength="16" placeholder="85000">
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Guarantors -->
+        <div class="form-step" id="zsection3">
+          <div class="zwiz-section-title">Guarantors</div>
+          <div class="zfull">
+            <label class="flabel" for="COBJ9CF2">Guarantors Name</label>
+            <input type="text" class="field" id="COBJ9CF2" aria-label="COBJ9CF2" name="COBJ9CF2"
+              placeholder="Grace Njeri">
+          </div>
+        </div>
+
+        <!-- STEP 4: Eligibility & Security -->
+        <div class="form-step" id="zsection4">
+          <div class="zwiz-section-title">Eligibility &amp; Security</div>
+          <div class="zwiz-section-hint">Underwriting review details used to assess this application.</div>
+          <div class="zgrid2">
+            <div>
+              <label class="flabel" for="COBJ9CF69">Existing Loan Balance (KSh)</label>
+              <input type="number" class="field" id="COBJ9CF69" aria-label="COBJ9CF69" name="COBJ9CF69"
+                maxlength="16">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF11">Eligibility Status</label>
+              <select class="field" id="COBJ9CF11" onChange="addAriaSelected7310745000001849114()"
+                aria-label="COBJ9CF11" name="COBJ9CF11">
+                <option value="-None-">Select Eligibility Status</option>
+                <option value="Eligible">Eligible</option>
+                <option value="Not Eligible">Not Eligible</option>
+              </select>
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF6">Security Type</label>
+              <select class="field" id="COBJ9CF6" onChange="addAriaSelected7310745000001849114()"
+                aria-label="COBJ9CF6" name="COBJ9CF6">
+                <option value="-None-">Select Security Type</option>
+                <option value="Salary">Salary</option>
+                <option value="Savings">Savings</option>
+                <option value="Gurantors">Guarantors</option>
+                <option value="Property">Property</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+            <div style="display:flex;align-items:flex-end;">
+              <label class="chk-opt">
+                <input type="checkbox" aria-checked="false" id="COBJ9CF51" aria-label="COBJ9CF51" name="COBJ9CF51"
+                  maxlength="3" onclick="addAriaChecked7310745000001849114()">
+                <span>Documents Complete</span>
+              </label>
+            </div>
+          </div>
+          <div class="zfull">
+            <label class="flabel" for="COBJ9CF1">Eligibility Remarks</label>
+            <textarea class="field" id="COBJ9CF1" aria-label="COBJ9CF1" name="COBJ9CF1" rows="3"></textarea>
+          </div>
+          <div class="zfull">
+            <label class="flabel" for="COBJ9CF3">Review Notes</label>
+            <textarea class="field" id="COBJ9CF3" aria-label="COBJ9CF3" name="COBJ9CF3" rows="3"></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 5: Approval & Disbursement -->
+        <div class="form-step" id="zsection5">
+          <div class="zwiz-section-title">Approval &amp; Disbursement</div>
+          <div class="zwiz-section-hint">Filled in once the loan has been approved and is ready for payout.</div>
+          <div class="zgrid2">
+            <div>
+              <label class="flabel" for="COBJ9CF66">Approved Amount (KSh)</label>
+              <input type="number" class="field" id="COBJ9CF66" aria-label="COBJ9CF66" name="COBJ9CF66"
+                maxlength="16">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF53">Approved Tenure (Months)</label>
+              <input type="number" class="field" id="COBJ9CF53" aria-label="COBJ9CF53" name="COBJ9CF53"
+                maxlength="9">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF52">Approval Date</label>
+              <input type="date" class="field" id="COBJ9CF52" aria-label="COBJ9CF52" name="COBJ9CF52">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF54">First Repayment Date</label>
+              <input type="date" class="field" id="COBJ9CF54" aria-label="COBJ9CF54" name="COBJ9CF54">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF7">Repayment Frequency</label>
+              <select class="field" id="COBJ9CF7" onChange="addAriaSelected7310745000001849114()"
+                aria-label="COBJ9CF7" name="COBJ9CF7">
+                <option value="-None-">Select Repayment Frequency</option>
+                <option value="Daily">Daily</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Quarterly">Quarterly</option>
+              </select>
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF9">Disbursement Method</label>
+              <select class="field" id="COBJ9CF9" onChange="addAriaSelected7310745000001849114()"
+                aria-label="COBJ9CF9" name="COBJ9CF9">
+                <option value="-None-">Select Disbursement Method</option>
+                <option value="Mpesa">Mpesa</option>
+                <option value="Bank Account">Bank Account</option>
+              </select>
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF67">Disbursed Amount (KSh)</label>
+              <input type="number" class="field" id="COBJ9CF67" aria-label="COBJ9CF67" name="COBJ9CF67"
+                maxlength="16">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF55">Disbursement Date</label>
+              <input type="date" class="field" id="COBJ9CF55" aria-label="COBJ9CF55" name="COBJ9CF55">
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 6: Repayment & Status -->
+        <div class="form-step" id="zsection6">
+          <div class="zwiz-section-title">Repayment &amp; Status</div>
+          <div class="zwiz-section-hint">Ongoing monitoring, deferral, and rejection tracking fields.</div>
+          <div class="zgrid2">
+            <div>
+              <label class="flabel" for="COBJ9CF60">Loan Number</label>
+              <input type="text" class="field" id="COBJ9CF60" aria-label="COBJ9CF60" name="COBJ9CF60" maxlength="9">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF57">Next Review Date</label>
+              <input type="date" class="field" id="COBJ9CF57" aria-label="COBJ9CF57" name="COBJ9CF57">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF71">Repaid Amount (KSh)</label>
+              <input type="number" class="field" id="COBJ9CF71" aria-label="COBJ9CF71" name="COBJ9CF71"
+                maxlength="16">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF73">Outstanding Balance (KSh)</label>
+              <input type="number" class="field" id="COBJ9CF73" aria-label="COBJ9CF73" name="COBJ9CF73"
+                maxlength="16">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF58">Days Overdue</label>
+              <input type="number" class="field" id="COBJ9CF58" aria-label="COBJ9CF58" name="COBJ9CF58"
+                maxlength="9">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF72">Overdue Amount (KSh)</label>
+              <input type="number" class="field" id="COBJ9CF72" aria-label="COBJ9CF72" name="COBJ9CF72"
+                maxlength="16">
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF59">Rejection Date</label>
+              <input type="date" class="field" id="COBJ9CF59" aria-label="COBJ9CF59" name="COBJ9CF59">
+            </div>
+          </div>
+          <div class="zfull">
+            <label class="flabel" for="COBJ9CF12">Deferral Reason</label>
+            <textarea class="field" id="COBJ9CF12" aria-label="COBJ9CF12" name="COBJ9CF12" rows="3"></textarea>
+          </div>
+          <div class="zfull">
+            <label class="flabel" for="COBJ9CF13">Rejection Reason</label>
+            <textarea class="field" id="COBJ9CF13" aria-label="COBJ9CF13" name="COBJ9CF13" rows="3"></textarea>
+          </div>
+        </div>
+
+        <input type='text' type='hidden' style='display: none;' name='aG9uZXlwb3Q' value='' />
+
+        <!-- Nav -->
+        <div class="zwiz-nav">
+          <button type="button" id="zPrevBtn" class="btn-outline hidden" onclick="zChangeStep(-1)">
+            <svg class="zicon" viewBox="0 0 24 24">
+              <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>Back
+          </button>
+          <button type="button" id="zNextBtn" class="btn-primary" onclick="zChangeStep(1)">
+            Next Step
+            <svg class="zicon" style="fill:#fff;" viewBox="0 0 24 24">
+              <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+            </svg>
+          </button>
+          <input type='submit' id='formsubmit' role='button' class='btn-primary hidden' value='Submit Application'
+            aria-label='Submit' title='Submit'>
+        </div>
+        <!-- Do not remove this --- Analytics Tracking code starts -->
+        <script id='wf_anal'
+          src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=56c8dbdd7977cfa54714cafc6d4f688bc37a936c8cc1e07d060bb35dfd40b9b39a034ff1b70dfcf6b48dbd140c2b597fgid9d6800006530287cfe120526bdda1e6c59b9cf70cad9198daf24abf284823158gid845a1f2a9272519c5c96d59f1533996777311c2eb2978e71942b181f91f920bbgida284c91c5ddeb6a88099096595a8e731feeb5ea2972a8274f2e43cdf9cb5d10c&tw=6cb3818f0dad50e26b00b7ef1f23d255b3585c420ac3ca644b40e7a6760d9aca'>
+        </script>
+        <!-- Do not remove this --- Analytics Tracking code ends. -->
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    function addAriaChecked7310745000001849114() {
+      var checkboxElem = event.target;
+      if (checkboxElem != undefined && checkboxElem.checked) {
+        checkboxElem.ariaChecked = 'true';
+      } else if (checkboxElem != undefined && !checkboxElem.checked) {
+        checkboxElem.ariaChecked = 'false';
+      }
+    }
+    function addAriaSelected7310745000001849114() {
+      var optionElem = event.target;
+      var previousSelectedOption = optionElem.querySelector('[aria-selected=true]');
+      if (previousSelectedOption) {
+        previousSelectedOption.removeAttribute('aria-selected');
+      }
+      optionElem.querySelectorAll('option')[optionElem.selectedIndex].ariaSelected = 'true';
+    }
+    function checkMandatory7310745000001849114(isAjax) {
+      var mndFileds = new Array('NAME');
+      var fldLangVal = new Array('Member Number');
+      for (i = 0; i < mndFileds.length; i++) {
+        var fieldObj = document.forms['WebForm7310745000001849114'][mndFileds[i]];
+        if (fieldObj) {
+          if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) {
+            if (fieldObj.type == 'file') {
+              alert('Please select a file to upload.');
+              fieldObj.focus();
+              zJumpToFieldStep(fieldObj);
+              return false;
+            }
+            alert(fldLangVal[i] + ' cannot be empty.');
+            fieldObj.focus();
+            zJumpToFieldStep(fieldObj);
+            return false;
+          } else if (fieldObj.nodeName == 'SELECT') {
+            if (fieldObj.options[fieldObj.selectedIndex].value == '-None-') {
+              alert(fldLangVal[i] + ' cannot be none.');
+              fieldObj.focus();
+              zJumpToFieldStep(fieldObj);
+              return false;
+            }
+          } else if (fieldObj.type == 'checkbox') {
+            if (fieldObj.checked == false) {
+              alert('Please accept  ' + fldLangVal[i]);
+              fieldObj.focus();
+              zJumpToFieldStep(fieldObj);
+              return false;
+            }
+          }
+        }
+      }
+      document.querySelector('.crmWebToEntityForm #formsubmit').setAttribute('disabled', true);
+    }
+
+    /* ---- step wizard controller ---- */
+    var zTotalSteps = 6;
+    var zCurrentStep = 1;
+    var zStepTitles = ['Loan Details', 'Employment & Income', 'Guarantors', 'Eligibility & Security', 'Approval & Disbursement', 'Repayment & Status'];
+
+    function zEl(id) { return document.getElementById(id); }
+
+    function zJumpToFieldStep(fieldObj) {
+      var stepEl = fieldObj.closest ? fieldObj.closest('.form-step') : null;
+      if (!stepEl) return;
+      var match = /zsection(\d+)/.exec(stepEl.id);
+      if (match) {
+        zCurrentStep = parseInt(match[1], 10);
+        zRender();
+      }
+    }
+
+    function zRender() {
+      for (var i = 1; i <= zTotalSteps; i++) {
+        var sec = zEl('zsection' + i);
+        if (sec) sec.classList.toggle('active', i === zCurrentStep);
+
+        var dot = zEl('zsdot' + i);
+        var wrap = zEl('zswrap' + i);
+        if (dot) {
+          dot.classList.remove('active', 'done');
+          if (i < zCurrentStep) {
+            dot.classList.add('done');
+            dot.innerHTML = '&#10003;';
+          } else {
+            dot.textContent = i;
+            if (i === zCurrentStep) dot.classList.add('active');
+          }
+        }
+        if (wrap) {
+          wrap.classList.toggle('active', i === zCurrentStep);
+          wrap.classList.toggle('done', i < zCurrentStep);
+        }
+        if (i < zTotalSteps) {
+          var line = zEl('zline' + i);
+          if (line) line.style.background = (i < zCurrentStep) ? '#16a34a' : '#e2e8f0';
+        }
+      }
+      zEl('zStepLabel').textContent = 'Step ' + zCurrentStep + ' of ' + zTotalSteps + ': ' + zStepTitles[zCurrentStep - 1];
+      var pct = Math.round((zCurrentStep / zTotalSteps) * 100);
+      zEl('zStepPct').textContent = pct + '%';
+      zEl('zProgressBar').style.width = pct + '%';
+      zEl('zPrevBtn').classList.toggle('hidden', zCurrentStep === 1);
+      zEl('zNextBtn').classList.toggle('hidden', zCurrentStep === zTotalSteps);
+      zEl('formsubmit').classList.toggle('hidden', zCurrentStep !== zTotalSteps);
+      zSendHeight();
+    }
+
+    function zChangeStep(dir) {
+      var next = zCurrentStep + dir;
+      if (next < 1 || next > zTotalSteps) return;
+      zCurrentStep = next;
+      zRender();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function zSendHeight() {
+      try {
+        var h = document.documentElement.scrollHeight;
+        parent.postMessage({ type: 'zohoLoanFormHeight', height: h }, '*');
+      } catch (e) { }
+    }
+
+    window.addEventListener('load', zSendHeight);
+    window.addEventListener('resize', zSendHeight);
+    zRender();
+  </script>
+</body>
+
+</html>

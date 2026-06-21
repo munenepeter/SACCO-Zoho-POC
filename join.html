@@ -247,8 +247,6 @@
           <div class="nav-dd-menu">
             <a href="products.html" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Savings Accounts</a>
             <a href="products.html" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Loan Products</a>
-            <a href="products.html" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Fixed Deposits</a>
-            <a href="products.html" class="block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">Group Savings</a>
           </div>
         </div>
 
@@ -900,7 +898,7 @@ if (jCurrent === J_TOTAL) {
     jUpdateProgress();
 
     // ── Load Zoho form component ──
-fetch('zoho-form.html')
+fetch('leads-zoho-form.html')
   .then(r => r.text())
   .then(html => {
     document.getElementById('zohoFormMount').innerHTML = html;

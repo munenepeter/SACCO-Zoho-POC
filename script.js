@@ -226,7 +226,7 @@ function updateKinIdField() {
 }
 
 // ── Load Zoho membership form component ──
-fetch('zoho-form.html')
+fetch('leads-zoho-form.html')
   .then(r => r.text())
   .then(html => {
     const mount = document.getElementById('zohoFormMount');
