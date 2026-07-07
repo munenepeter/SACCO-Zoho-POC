@@ -267,80 +267,54 @@
       }
     }
 
-    /* ---- radio / checkbox options ---- */
-    .radio-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    /* ---- review step ---- */
+    .review-section {
+      margin-bottom: 20px;
     }
 
-    .radio-opt {
-      padding: 11px 14px;
-      border: 1.5px solid var(--color-border);
+    .review-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--color-smoke);
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 16px;
+    }
+
+    @media (max-width: 480px) {
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .review-item-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--color-muted);
+      margin-bottom: 2px;
+    }
+
+    .review-item-value {
       font-size: 14px;
-      color: #475569;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
+      color: var(--color-dark);
       font-weight: 500;
-      background: #fff;
-      transition: .15s;
+      word-break: break-word;
     }
 
-    .radio-opt input[type=radio] {
-      appearance: none;
-      width: 17px;
-      height: 17px;
-      border: 2px solid #cbd5e1;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      cursor: pointer;
-      transition: .15s;
-    }
-
-    .radio-opt input[type=radio]:checked {
-      border-color: var(--color-teal);
-      background: var(--color-teal);
-      box-shadow: inset 0 0 0 3px #fff;
-    }
-
-    .radio-opt:has(input:checked) {
-      border-color: var(--color-teal);
-      background: #f0f7fa;
-      color: var(--color-navy);
-    }
-
-    .chk-opt {
-      font-size: 14px;
-      color: #475569;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      cursor: pointer;
-    }
-
-    .chk-opt input[type=checkbox] {
-      appearance: none;
-      width: 18px;
-      height: 18px;
-      min-width: 18px;
-      border: 2px solid #cbd5e1;
-      margin-top: 1px;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      transition: .15s;
-    }
-
-    .chk-opt input[type=checkbox]:checked {
-      background: var(--color-teal);
-      border-color: var(--color-teal);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='9' viewBox='0 0 11 9'%3E%3Cpath d='M1 4l3.5 3.5L10 1' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
+    .review-item-value.empty {
+      color: #cbd5e1;
+      font-style: italic;
+      font-weight: 400;
     }
 
     /* ---- buttons / nav ---- */
@@ -416,15 +390,15 @@
        - The Mandatory check script can be modified to suit business needs.
        - Test the modified form before going live. -->
     <div id='crmWebToEntityForm' class='crmWebToEntityForm'>
-      <form id='webform7310745000001849114' action='https://crm.zoho.com/crm/WebForm'
-        name='WebForm7310745000001849114' method='POST'
-        onSubmit='javascript:document.charset="UTF-8"; return checkMandatory7310745000001849114()'
+      <form id='webform7310745000002183540' action='https://crm.zoho.com/crm/WebForm'
+        name='WebForm7310745000002183540' method='POST'
+        onSubmit='javascript:document.charset="UTF-8"; return checkMandatory7310745000002183540()'
         accept-charset='UTF-8'>
         <input type='text' style='display:none;' name='xnQsjsdp'
-          value='ce14eed0f4fa71aa861000be6a799df80ecf3a9618e96854dda1fbc7845fec81'></input>
+          value='386614837e608e616c30d2f432cae759d5eda6e4b0e65a8c648c7dc049ab9d8f'></input>
         <input type='hidden' name='zc_gad' id='zc_gad' value=''></input>
         <input type='text' style='display:none;' name='xmIwtLD'
-          value='15d5eed31af9727b888ffb51a497335c8db27cdbede87399d1e2dd1ef34c00e0e1aa4764909b4154187a90497a88b241'></input>
+          value='93b980b74ecd28272400231f5f62c58b0f7b263eee73233f798ec0757b5b877ba4756e80744d3e26d5356eb16163887b'></input>
         <input type='text' style='display:none;' name='actionType' value='Q3VzdG9tTW9kdWxlOQ=='></input>
         <input type='text' style='display:none;' name='returnURL'
           value='https://redian-sacco-poc.netlify.app/loan-application-success'></input>
@@ -433,11 +407,11 @@
         <!-- Progress -->
         <div class="zwiz-progress">
           <div class="zwiz-progress-top">
-            <span id="zStepLabel">Step 1 of 6: Loan Details</span>
-            <span id="zStepPct">17%</span>
+            <span id="zStepLabel">Step 1 of 3: Loan Details &amp; Purpose</span>
+            <span id="zStepPct">33%</span>
           </div>
           <div class="zwiz-bar-track">
-            <div class="zwiz-bar-fill" id="zProgressBar" style="width:17%;"></div>
+            <div class="zwiz-bar-fill" id="zProgressBar" style="width:33%;"></div>
           </div>
           <div class="zwiz-dots">
             <div class="sdot-wrap active" id="zswrap1">
@@ -447,27 +421,12 @@
             <div class="zwiz-line" id="zline1"></div>
             <div class="sdot-wrap" id="zswrap2">
               <div class="sdot" id="zsdot2">2</div>
-              <div class="sdot-label">Employment</div>
+              <div class="sdot-label">Employment &amp; Security</div>
             </div>
             <div class="zwiz-line" id="zline2"></div>
             <div class="sdot-wrap" id="zswrap3">
               <div class="sdot" id="zsdot3">3</div>
-              <div class="sdot-label">Guarantors</div>
-            </div>
-            <div class="zwiz-line" id="zline3"></div>
-            <div class="sdot-wrap" id="zswrap4">
-              <div class="sdot" id="zsdot4">4</div>
-              <div class="sdot-label">Eligibility</div>
-            </div>
-            <div class="zwiz-line" id="zline4"></div>
-            <div class="sdot-wrap" id="zswrap5">
-              <div class="sdot" id="zsdot5">5</div>
-              <div class="sdot-label">Approval</div>
-            </div>
-            <div class="zwiz-line" id="zline5"></div>
-            <div class="sdot-wrap" id="zswrap6">
-              <div class="sdot" id="zsdot6">6</div>
-              <div class="sdot-label">Status</div>
+              <div class="sdot-label">Review</div>
             </div>
           </div>
         </div>
@@ -477,30 +436,29 @@
           <div class="zwiz-section-title">Loan Details</div>
           <div class="zgrid2">
             <div>
-              <label class="flabel" for="NAME">Member Number <span class="req">*</span></label>
+              <label class="flabel" for="NAME">Member No <span class="req">*</span></label>
               <input type="text" class="field" id="NAME" aria-required="true" aria-label="NAME" name="NAME"
                 maxlength="120" placeholder="RD-002345">
             </div>
             <div>
               <label class="flabel" for="COBJ9CF8">Loan Type</label>
-              <select class="field" id="COBJ9CF8" onChange="addAriaSelected7310745000001849114()"
+              <select class="field" id="COBJ9CF8" onChange="addAriaSelected7310745000002183540()"
                 aria-label="COBJ9CF8" name="COBJ9CF8">
-                <option value="-None-">Select Loan Type</option>
-                <option value="Emergency Loan">Emergency Loan</option>
-                <option value="Development Loan">Development Loan</option>
-                <option value="School Fees Loan">School Fees Loan</option>
-                <option value="Business Loan">Business Loan</option>
-                <option value="Asset Financing">Asset Financing</option>
-                <option value="Salary Advance">Salary Advance</option>
+                <option value="-None-">-None-</option>
+                <option value="Business loan">Business loan</option>
+                <option value="Mortgages &amp; Asset Finance">Mortgages &amp; Asset Finance</option>
+                <option selected value="Personal loan">Personal loan</option>
+                <option value="Student &amp; Educational loan">Student &amp; Educational loan</option>
+                <option value="Dividend Advance loans">Dividend Advance loans</option>
               </select>
             </div>
             <div>
-              <label class="flabel" for="COBJ9CF68">Loan Amount Requested (KSh)</label>
+              <label class="flabel" for="COBJ9CF68">Loan Amount (KSh)</label>
               <input type="number" class="field" id="COBJ9CF68" aria-label="COBJ9CF68" name="COBJ9CF68"
                 maxlength="16" placeholder="150000">
             </div>
             <div>
-              <label class="flabel" for="COBJ9CF56">Repayment Period</label>
+              <label class="flabel" for="COBJ9CF56">Repayment Period (Months)</label>
               <select class="field" id="COBJ9CF56" name="COBJ9CF56">
                 <option value="">Select</option>
                 <option value="3">3 months</option>
@@ -515,197 +473,113 @@
           </div>
           <div class="zfull">
             <label class="flabel" for="COBJ9CF5">Loan Purpose</label>
-            <input type="text" class="field" id="COBJ9CF5" aria-label="COBJ9CF5" name="COBJ9CF5"
-              placeholder="e.g. School fees">
+            <textarea class="field" id="COBJ9CF5" aria-label="COBJ9CF5" name="COBJ9CF5" rows="3"
+              placeholder="e.g. School fees"></textarea>
           </div>
         </div>
 
-        <!-- STEP 2: Employment -->
+        <!-- STEP 2: Employment & Security -->
         <div class="form-step" id="zsection2">
-          <div class="zwiz-section-title">Employment &amp; Income</div>
-          <div class="zfull">
-            <label class="flabel" style="margin-bottom:10px;">Employment Status</label>
-            <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="COBJ9CF10" value="Employed" /> Employed</label>
-              <label class="radio-opt"><input type="radio" name="COBJ9CF10" value="Self-employed" />
-                Self-employed</label>
-              <label class="radio-opt"><input type="radio" name="COBJ9CF10" value="Business Owner" /> Business
-                Owner</label>
-              <label class="radio-opt"><input type="radio" name="COBJ9CF10" value="Retired" /> Retired</label>
-            </div>
-          </div>
+          <div class="zwiz-section-title">Employment &amp; Security</div>
           <div class="zgrid2">
-            <div>
-              <label class="flabel" for="COBJ9CF70">Net Monthly Income (KSh)</label>
-              <input type="number" class="field" id="COBJ9CF70" aria-label="COBJ9CF70" name="COBJ9CF70"
-                maxlength="16" placeholder="85000">
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 3: Guarantors -->
-        <div class="form-step" id="zsection3">
-          <div class="zwiz-section-title">Guarantors</div>
-          <div class="zfull">
-            <label class="flabel" for="COBJ9CF2">Guarantors Name</label>
-            <input type="text" class="field" id="COBJ9CF2" aria-label="COBJ9CF2" name="COBJ9CF2"
-              placeholder="Grace Njeri">
-          </div>
-        </div>
-
-        <!-- STEP 4: Eligibility & Security -->
-        <div class="form-step" id="zsection4">
-          <div class="zwiz-section-title">Eligibility &amp; Security</div>
-          <div class="zwiz-section-hint">Underwriting review details used to assess this application.</div>
-          <div class="zgrid2">
-            <div>
-              <label class="flabel" for="COBJ9CF69">Existing Loan Balance (KSh)</label>
-              <input type="number" class="field" id="COBJ9CF69" aria-label="COBJ9CF69" name="COBJ9CF69"
-                maxlength="16">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF11">Eligibility Status</label>
-              <select class="field" id="COBJ9CF11" onChange="addAriaSelected7310745000001849114()"
-                aria-label="COBJ9CF11" name="COBJ9CF11">
-                <option value="-None-">Select Eligibility Status</option>
-                <option value="Eligible">Eligible</option>
-                <option value="Not Eligible">Not Eligible</option>
-              </select>
-            </div>
             <div>
               <label class="flabel" for="COBJ9CF6">Security Type</label>
-              <select class="field" id="COBJ9CF6" onChange="addAriaSelected7310745000001849114()"
+              <select class="field" id="COBJ9CF6" onChange="onSecurityTypeChange(this)"
                 aria-label="COBJ9CF6" name="COBJ9CF6">
-                <option value="-None-">Select Security Type</option>
+                <option value="-None-">-None-</option>
                 <option value="Salary">Salary</option>
-                <option value="Savings">Savings</option>
-                <option value="Gurantors">Guarantors</option>
-                <option value="Property">Property</option>
-                <option value="Others">Others</option>
+                <option selected value="Savings">Savings</option>
+                <option value="Gurantors">Gurantors</option>
               </select>
             </div>
-            <div style="display:flex;align-items:flex-end;">
-              <label class="chk-opt">
-                <input type="checkbox" aria-checked="false" id="COBJ9CF51" aria-label="COBJ9CF51" name="COBJ9CF51"
-                  maxlength="3" onclick="addAriaChecked7310745000001849114()">
-                <span>Documents Complete</span>
-              </label>
+          </div>
+
+          <!-- Shown only when Security Type = Salary -->
+          <div class="zgrid2 hidden" id="employmentIncomeBlock">
+            <div>
+              <label class="flabel" for="COBJ9CF10">Employement Status</label>
+              <select class="field" id="COBJ9CF10" onChange="addAriaSelected7310745000002183540()"
+                aria-label="COBJ9CF10" name="COBJ9CF10">
+                <option value="-None-">-None-</option>
+                <option selected value="Employed">Employed</option>
+                <option value="Self Employed">Self Employed</option>
+                <option value="Not Employed">Not Employed</option>
+              </select>
+            </div>
+            <div>
+              <label class="flabel" for="COBJ9CF70">Net Income</label>
+              <input type="number" class="field" id="COBJ9CF70" aria-label="COBJ9CF70" name="COBJ9CF70"
+                maxlength="16">
             </div>
           </div>
-          <div class="zfull">
-            <label class="flabel" for="COBJ9CF1">Eligibility Remarks</label>
-            <textarea class="field" id="COBJ9CF1" aria-label="COBJ9CF1" name="COBJ9CF1" rows="3"></textarea>
-          </div>
-          <div class="zfull">
-            <label class="flabel" for="COBJ9CF3">Review Notes</label>
-            <textarea class="field" id="COBJ9CF3" aria-label="COBJ9CF3" name="COBJ9CF3" rows="3"></textarea>
+
+          <!-- Shown only when Security Type = Gurantors. Not a real Zoho field —
+               these inputs are intentionally left without a `name` attribute so
+               nothing here is submitted to Zoho (Guarantors aren't in the target form). -->
+          <div class="zfull hidden" id="guarantorsBlock">
+            <label class="flabel" style="margin-bottom:10px;">Guarantors</label>
+            <div id="guarantorRows"></div>
+            <button type="button" class="btn-outline" id="addGuarantorBtn"
+              style="padding:8px 16px;font-size:13px;margin-top:4px;">+ Add Guarantor</button>
           </div>
         </div>
 
-        <!-- STEP 5: Approval & Disbursement -->
-        <div class="form-step" id="zsection5">
-          <div class="zwiz-section-title">Approval &amp; Disbursement</div>
-          <div class="zwiz-section-hint">Filled in once the loan has been approved and is ready for payout.</div>
-          <div class="zgrid2">
-            <div>
-              <label class="flabel" for="COBJ9CF66">Approved Amount (KSh)</label>
-              <input type="number" class="field" id="COBJ9CF66" aria-label="COBJ9CF66" name="COBJ9CF66"
-                maxlength="16">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF53">Approved Tenure (Months)</label>
-              <input type="number" class="field" id="COBJ9CF53" aria-label="COBJ9CF53" name="COBJ9CF53"
-                maxlength="9">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF52">Approval Date</label>
-              <input type="text" class="field dateinput" id="COBJ9CF52" aria-label="COBJ9CF52" name="COBJ9CF52"
-                placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" inputmode="numeric">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF54">First Repayment Date</label>
-              <input type="text" class="field dateinput" id="COBJ9CF54" aria-label="COBJ9CF54" name="COBJ9CF54"
-                placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" inputmode="numeric">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF7">Repayment Frequency</label>
-              <select class="field" id="COBJ9CF7" onChange="addAriaSelected7310745000001849114()"
-                aria-label="COBJ9CF7" name="COBJ9CF7">
-                <option value="-None-">Select Repayment Frequency</option>
-                <option value="Daily">Daily</option>
-                <option value="Monthly">Monthly</option>
-                <option value="Quarterly">Quarterly</option>
-              </select>
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF9">Disbursement Method</label>
-              <select class="field" id="COBJ9CF9" onChange="addAriaSelected7310745000001849114()"
-                aria-label="COBJ9CF9" name="COBJ9CF9">
-                <option value="-None-">Select Disbursement Method</option>
-                <option value="Mpesa">Mpesa</option>
-                <option value="Bank Account">Bank Account</option>
-              </select>
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF67">Disbursed Amount (KSh)</label>
-              <input type="number" class="field" id="COBJ9CF67" aria-label="COBJ9CF67" name="COBJ9CF67"
-                maxlength="16">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF55">Disbursement Date</label>
-              <input type="text" class="field dateinput" id="COBJ9CF55" aria-label="COBJ9CF55" name="COBJ9CF55"
-                placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" inputmode="numeric">
-            </div>
-          </div>
-        </div>
+        <!-- STEP 3: Review & Submit -->
+        <div class="form-step" id="zsection3">
+          <div class="zwiz-section-title">Review &amp; Submit</div>
+          <p class="zwiz-section-hint">Please confirm your details below before submitting your application.</p>
 
-        <!-- STEP 6: Repayment & Status -->
-        <div class="form-step" id="zsection6">
-          <div class="zwiz-section-title">Repayment &amp; Status</div>
-          <div class="zwiz-section-hint">Ongoing monitoring, deferral, and rejection tracking fields.</div>
-          <div class="zgrid2">
-            <div>
-              <label class="flabel" for="COBJ9CF60">Loan Number</label>
-              <input type="text" class="field" id="COBJ9CF60" aria-label="COBJ9CF60" name="COBJ9CF60" maxlength="9">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF57">Next Review Date</label>
-              <input type="text" class="field dateinput" id="COBJ9CF57" aria-label="COBJ9CF57" name="COBJ9CF57"
-                placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" inputmode="numeric">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF71">Repaid Amount (KSh)</label>
-              <input type="number" class="field" id="COBJ9CF71" aria-label="COBJ9CF71" name="COBJ9CF71"
-                maxlength="16">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF73">Outstanding Balance (KSh)</label>
-              <input type="number" class="field" id="COBJ9CF73" aria-label="COBJ9CF73" name="COBJ9CF73"
-                maxlength="16">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF58">Days Overdue</label>
-              <input type="number" class="field" id="COBJ9CF58" aria-label="COBJ9CF58" name="COBJ9CF58"
-                maxlength="9">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF72">Overdue Amount (KSh)</label>
-              <input type="number" class="field" id="COBJ9CF72" aria-label="COBJ9CF72" name="COBJ9CF72"
-                maxlength="16">
-            </div>
-            <div>
-              <label class="flabel" for="COBJ9CF59">Rejection Date</label>
-              <input type="text" class="field dateinput" id="COBJ9CF59" aria-label="COBJ9CF59" name="COBJ9CF59"
-                placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" inputmode="numeric">
+          <div class="review-section">
+            <div class="review-section-title">Loan Details</div>
+            <div class="review-grid">
+              <div>
+                <div class="review-item-label">Member No</div>
+                <div class="review-item-value" id="rv_memberNo">—</div>
+              </div>
+              <div>
+                <div class="review-item-label">Loan Type</div>
+                <div class="review-item-value" id="rv_loanType">—</div>
+              </div>
+              <div>
+                <div class="review-item-label">Loan Amount</div>
+                <div class="review-item-value" id="rv_loanAmount">—</div>
+              </div>
+              <div>
+                <div class="review-item-label">Repayment Period</div>
+                <div class="review-item-value" id="rv_repayPeriod">—</div>
+              </div>
+              <div>
+                <div class="review-item-label">Loan Purpose</div>
+                <div class="review-item-value" id="rv_purpose">—</div>
+              </div>
+              <div>
+                <div class="review-item-label">Security Type</div>
+                <div class="review-item-value" id="rv_securityType">—</div>
+              </div>
             </div>
           </div>
-          <div class="zfull">
-            <label class="flabel" for="COBJ9CF12">Deferral Reason</label>
-            <textarea class="field" id="COBJ9CF12" aria-label="COBJ9CF12" name="COBJ9CF12" rows="3"></textarea>
+
+          <div class="review-section hidden" id="rv_employmentSection">
+            <div class="review-section-title">Employment &amp; Income</div>
+            <div class="review-grid">
+              <div>
+                <div class="review-item-label">Employment Status</div>
+                <div class="review-item-value" id="rv_empStatus">—</div>
+              </div>
+              <div>
+                <div class="review-item-label">Net Income</div>
+                <div class="review-item-value" id="rv_netIncome">—</div>
+              </div>
+            </div>
           </div>
-          <div class="zfull">
-            <label class="flabel" for="COBJ9CF13">Rejection Reason</label>
-            <textarea class="field" id="COBJ9CF13" aria-label="COBJ9CF13" name="COBJ9CF13" rows="3"></textarea>
+
+          <div class="review-section hidden" id="rv_guarantorsSection">
+            <div class="review-section-title">Guarantors
+              <span
+                style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--color-muted);">(for
+                your reference only — not sent to Zoho)</span>
+            </div>
+            <div class="review-grid" id="rv_guarantorsList"></div>
           </div>
         </div>
 
@@ -729,7 +603,7 @@
         </div>
         <!-- Do not remove this --- Analytics Tracking code starts -->
         <script id='wf_anal'
-          src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=1ac792f97722bbeadad039f745332014f5f2396ff1cf891af14640c24678c2566e1eeab5c146efe9afd724bc45fa9d50gidb38e19d6636c1bebaa5bfb6e0497da8a9f932e60b7076c5a334246f8d4d62ae5gid2497f36350263744bfedb5e37ac256a89f9bfe762a8fb9103c12b74eaf234599gidf8f094136e27b0e50d1c92cdc821c2154019b6ab24808ec5ac8f07664903d28c&tw=50d3a28ae13b31c1528b6403310828d6d280bd1d6cdba239597f22d8685f5c34'>
+          src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=b3d7af05d1d65a0ae174683bbea02d1c041668c7dcfc43072d57a583fd9492ed8be7efd345affcfeb1b710fed975a5ccgida45ab38d86d66a51c8e62fb2095a880e490eb64153b6418686e093c0e767ec87giddf1f32a75ee5fcdcc578a313ff5f2fe564f5c2977cdabd551c45026c7f3d9203gidb475b36e893c3ab359496d4b1c1545a010bee03b349f3a616e09f76b7c406158&tw=31b10b7134db58fe68ed884dfb5eaed7966d59ac609e146cc6c5757dec35b9b3'>
         </script>
         <!-- Do not remove this --- Analytics Tracking code ends. -->
       </form>
@@ -738,15 +612,7 @@
   </div>
 
   <script>
-    function addAriaChecked7310745000001849114() {
-      var checkboxElem = event.target;
-      if (checkboxElem != undefined && checkboxElem.checked) {
-        checkboxElem.ariaChecked = 'true';
-      } else if (checkboxElem != undefined && !checkboxElem.checked) {
-        checkboxElem.ariaChecked = 'false';
-      }
-    }
-    function addAriaSelected7310745000001849114() {
+    function addAriaSelected7310745000002183540() {
       var optionElem = event.target;
       var previousSelectedOption = optionElem.querySelector('[aria-selected=true]');
       if (previousSelectedOption) {
@@ -754,11 +620,11 @@
       }
       optionElem.querySelectorAll('option')[optionElem.selectedIndex].ariaSelected = 'true';
     }
-    function checkMandatory7310745000001849114(isAjax) {
+    function checkMandatory7310745000002183540(isAjax) {
       var mndFileds = new Array('NAME');
-      var fldLangVal = new Array('Member Number');
+      var fldLangVal = new Array('Member No');
       for (i = 0; i < mndFileds.length; i++) {
-        var fieldObj = document.forms['WebForm7310745000001849114'][mndFileds[i]];
+        var fieldObj = document.forms['WebForm7310745000002183540'][mndFileds[i]];
         if (fieldObj) {
           if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) {
             if (fieldObj.type == 'file') {
@@ -792,9 +658,9 @@
     }
 
     /* ---- step wizard controller ---- */
-    var zTotalSteps = 6;
+    var zTotalSteps = 3;
     var zCurrentStep = 1;
-    var zStepTitles = ['Loan Details', 'Employment & Income', 'Guarantors', 'Eligibility & Security', 'Approval & Disbursement', 'Repayment & Status'];
+    var zStepTitles = ['Loan Details & Purpose', 'Employment & Security', 'Review & Submit'];
 
     function zEl(id) { return document.getElementById(id); }
 
@@ -805,6 +671,75 @@
       if (match) {
         zCurrentStep = parseInt(match[1], 10);
         zRender();
+      }
+    }
+
+    function zBuildReview() {
+      function val(id) {
+        var el = document.getElementById(id);
+        if (!el) return '';
+        if (el.tagName === 'SELECT') {
+          var v = el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : '';
+          return (v === '-None-') ? '' : v;
+        }
+        return el.value.trim();
+      }
+
+      function set(id, v) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = v || '—';
+        el.classList.toggle('empty', !v);
+      }
+
+      set('rv_memberNo', val('NAME'));
+      set('rv_loanType', val('COBJ9CF8'));
+      set('rv_loanAmount', val('COBJ9CF68'));
+      set('rv_repayPeriod', val('COBJ9CF56') ? val('COBJ9CF56') + ' months' : '');
+      set('rv_purpose', val('COBJ9CF5'));
+
+      var securityType = document.getElementById('COBJ9CF6').value;
+      set('rv_securityType', val('COBJ9CF6'));
+
+      var employmentSection = zEl('rv_employmentSection');
+      if (securityType === 'Salary') {
+        employmentSection.classList.remove('hidden');
+        set('rv_empStatus', val('COBJ9CF10'));
+        set('rv_netIncome', val('COBJ9CF70'));
+      } else {
+        employmentSection.classList.add('hidden');
+      }
+
+      var guarantorsSection = zEl('rv_guarantorsSection');
+      var guarantorsList = zEl('rv_guarantorsList');
+      if (securityType === 'Gurantors') {
+        guarantorsSection.classList.remove('hidden');
+        guarantorsList.innerHTML = '';
+        var names = Array.prototype.map.call(
+          document.querySelectorAll('#guarantorRows .guarantor-row input'),
+          function (input) { return input.value.trim(); }
+        ).filter(Boolean);
+        if (names.length) {
+          names.forEach(function (name, i) {
+            var item = document.createElement('div');
+            var label = document.createElement('div');
+            label.className = 'review-item-label';
+            label.textContent = 'Guarantor ' + (i + 1);
+            var value = document.createElement('div');
+            value.className = 'review-item-value';
+            value.textContent = name;
+            item.appendChild(label);
+            item.appendChild(value);
+            guarantorsList.appendChild(item);
+          });
+        } else {
+          var emptyMsg = document.createElement('div');
+          emptyMsg.className = 'review-item-value empty';
+          emptyMsg.textContent = 'No guarantors added yet';
+          guarantorsList.appendChild(emptyMsg);
+        }
+      } else {
+        guarantorsSection.classList.add('hidden');
       }
     }
 
@@ -841,6 +776,7 @@
       zEl('zPrevBtn').classList.toggle('hidden', zCurrentStep === 1);
       zEl('zNextBtn').classList.toggle('hidden', zCurrentStep === zTotalSteps);
       zEl('formsubmit').classList.toggle('hidden', zCurrentStep !== zTotalSteps);
+      if (zCurrentStep === zTotalSteps) { zBuildReview(); }
       zSendHeight();
     }
 
@@ -870,6 +806,48 @@
         input.value = v;
       });
     });
+
+    /* ---- Security Type conditional reveal ----
+       Employment Status / Net Income show only when Security Type = "Salary".
+       Guarantors subform shows only when Security Type = "Gurantors". */
+    function onSecurityTypeChange(select) {
+      addAriaSelected7310745000002183540(); // keep Zoho's aria bookkeeping in sync
+      var val = select.value;
+      var employmentBlock = document.getElementById('employmentIncomeBlock');
+      var guarantorsBlock = document.getElementById('guarantorsBlock');
+
+      employmentBlock.classList.toggle('hidden', val !== 'Salary');
+      guarantorsBlock.classList.toggle('hidden', val !== 'Gurantors');
+
+      if (val === 'Gurantors' && guarantorRowsContainer.children.length === 0) {
+        addGuarantorRow();
+      }
+    }
+
+    /* ---- Guarantors subform (display-only, never submitted to Zoho) ----
+       Rows are added/removed dynamically. Inputs deliberately have no
+       `name` attribute, so this data is not part of the submitted form. */
+    var guarantorRowsContainer = document.getElementById('guarantorRows');
+    var guarantorRowCount = 0;
+
+    function addGuarantorRow() {
+      guarantorRowCount++;
+      var row = document.createElement('div');
+      row.className = 'guarantor-row';
+      row.style.cssText = 'display:flex;gap:8px;align-items:center;margin-bottom:10px;';
+      row.innerHTML =
+        '<input type="text" class="field" placeholder="Guarantor ' + guarantorRowCount + ' name" ' +
+        'aria-label="Guarantor ' + guarantorRowCount + ' name" style="flex:1;">' +
+        '<button type="button" class="guarantor-remove-btn" aria-label="Remove guarantor" ' +
+        'style="border:1.5px solid var(--color-border);background:#fff;color:#94a3b8;width:40px;height:40px;flex-shrink:0;cursor:pointer;font-size:16px;line-height:1;">&times;</button>';
+      row.querySelector('.guarantor-remove-btn').addEventListener('click', function () {
+        row.remove();
+        if (guarantorRowsContainer.children.length === 0) addGuarantorRow();
+      });
+      guarantorRowsContainer.appendChild(row);
+    }
+
+    document.getElementById('addGuarantorBtn').addEventListener('click', addGuarantorRow);
   </script>
 </body>
 
