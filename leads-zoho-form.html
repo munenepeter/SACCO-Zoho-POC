@@ -267,103 +267,6 @@
       }
     }
 
-    /* ---- account type cards (Step 1) ---- */
-    .acct-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    @media (max-width: 480px) {
-      .acct-cards {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .acct-card {
-      border: 1.5px solid var(--color-border);
-      padding: 14px 16px;
-      cursor: pointer;
-      transition: border-color .18s, background .18s;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 14px;
-      position: relative;
-      background: #fff;
-    }
-
-    .acct-card input[type=radio] {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .acct-card-icon {
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    .acct-card-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--color-dark);
-    }
-
-    .acct-card-desc {
-      font-size: 11px;
-      color: var(--color-muted);
-      line-height: 1.4;
-    }
-
-    .acct-card.selected,
-    .acct-card:has(input:checked) {
-      border-color: var(--color-teal);
-      background: #f0f7fa;
-    }
-
-    .acct-card-check {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 2px solid var(--color-border);
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: .2s;
-    }
-
-    .acct-card.selected .acct-card-check,
-    .acct-card:has(input:checked) .acct-card-check {
-      background: var(--color-teal);
-      border-color: var(--color-teal);
-    }
-
-    .acct-card-check::after {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #fff;
-      display: none;
-    }
-
-    .acct-card.selected .acct-card-check::after,
-    .acct-card:has(input:checked) .acct-card-check::after {
-      display: block;
-    }
-
-    /* both option spans full width */
-    .acct-cards .acct-card-full {
-      grid-column: 1 / -1;
-    }
-
     /* ---- checkbox ---- */
     .chk-opt {
       font-size: 14px;
@@ -536,36 +439,6 @@
       fill: currentColor;
     }
 
-    /* ---- welcome hero (Step 1) ---- */
-    .welcome-hero {
-      text-align: center;
-      padding: 8px 0 24px;
-    }
-
-    .welcome-hero h2 {
-      font-size: clamp(20px, 3vw, 26px);
-      color: var(--color-dark);
-      margin-bottom: 8px;
-      line-height: 1.25;
-    }
-
-    .welcome-hero p {
-      font-size: 13px;
-      color: var(--color-muted);
-      line-height: 1.6;
-      max-width: 360px;
-      margin: 0 auto 24px;
-    }
-
-    .acct-type-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      color: #475569;
-      margin-bottom: 12px;
-      text-align: left;
-    }
   </style>
 </head>
 
@@ -577,133 +450,74 @@
        - The Mandatory check script can be modified to suit business needs.
        - Test the modified form before going live. -->
     <div id='crmWebToEntityForm' class='crmWebToEntityForm'>
-      <form id='webform7310745000001809474' action='https://crm.zoho.com/crm/WebToLeadForm'
-        name='WebToLeads7310745000001809474' method='POST'
-        onSubmit='javascript:document.charset="UTF-8"; return checkMandatory7310745000001809474()'
+      <form id='webform7310745000002125094' action='https://crm.zoho.com/crm/WebToLeadForm'
+        name='WebToLeads7310745000002125094' method='POST'
+        onSubmit='javascript:document.charset="UTF-8"; return checkMandatory7310745000002125094()'
         accept-charset='UTF-8'>
 
         <!-- Do not remove this code. -->
         <input type='text' style='display:none;' name='xnQsjsdp'
-          value='8dbccf5f259ec10b9d2d29736ba78c1c17184d353c2254b063a467922e0f6d87'></input>
+          value='2ef56b030a4438f27d66211f1ed1de3e72181c31711320d8acfc4f1bea8173ec'></input>
         <input type='hidden' name='zc_gad' id='zc_gad' value=''></input>
         <input type='text' style='display:none;' name='xmIwtLD'
-          value='2c9666e6330f07b65dedaf10d19c1f095d265a2c0f65033200deb389834b309723996436487c2a09a09002740bd62577'></input>
+          value='4926ca4d7c7d655b0525dc0e6d33ec2a1298559429ea9befb8165c9203f74894ea341c30eab46dd97f237255a1117d20'></input>
         <input type='text' style='display:none;' name='actionType' value='TGVhZHM='></input>
         <input type='text' style='display:none;' name='returnURL'
-          value='https://redian-sacco-poc.netlify.app/leads-application-success'></input>
+          value='https://redian-sacco-poc.netlify.app/'></input>
         <!-- Do not remove this code. -->
 
         <!-- Progress -->
         <div class="zwiz-progress">
           <div class="zwiz-progress-top">
-            <span id="zStepLabel">Step 1 of 5: Welcome</span>
-            <span id="zStepPct">20%</span>
+            <span id="zStepLabel">Step 1 of 4: Personal Information</span>
+            <span id="zStepPct">25%</span>
           </div>
           <div class="zwiz-bar-track">
-            <div class="zwiz-bar-fill" id="zProgressBar" style="width:20%;"></div>
+            <div class="zwiz-bar-fill" id="zProgressBar" style="width:25%;"></div>
           </div>
           <div class="zwiz-dots">
             <div class="sdot-wrap active" id="zswrap1">
               <div class="sdot active" id="zsdot1">1</div>
-              <div class="sdot-label">Welcome</div>
+              <div class="sdot-label">Personal</div>
             </div>
             <div class="zwiz-line" id="zline1"></div>
             <div class="sdot-wrap" id="zswrap2">
               <div class="sdot" id="zsdot2">2</div>
-              <div class="sdot-label">Personal</div>
+              <div class="sdot-label">Address</div>
             </div>
             <div class="zwiz-line" id="zline2"></div>
             <div class="sdot-wrap" id="zswrap3">
               <div class="sdot" id="zsdot3">3</div>
-              <div class="sdot-label">Address</div>
+              <div class="sdot-label">Terms</div>
             </div>
             <div class="zwiz-line" id="zline3"></div>
             <div class="sdot-wrap" id="zswrap4">
               <div class="sdot" id="zsdot4">4</div>
-              <div class="sdot-label">Terms</div>
-            </div>
-            <div class="zwiz-line" id="zline4"></div>
-            <div class="sdot-wrap" id="zswrap5">
-              <div class="sdot" id="zsdot5">5</div>
               <div class="sdot-label">Review</div>
             </div>
           </div>
         </div>
 
         <!-- ═══════════════════════════════════════
-             STEP 1 — Welcome & Account Type
+             STEP 1 — Personal Info
         ════════════════════════════════════════ -->
         <div class="form-step active" id="zsection1">
-          <div class="zwiz-section-title">Select Account Type</div>
-
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <label class="acct-card" id="acctCard_loan" onclick="syncAcctCard()">
-              <input type="radio" name="LEADCF5" value="Loan Product" id="acct_loan" onchange="syncAcctCard()">
-              <div class="acct-card-check"></div>
-              <div style="width:36px;height:36px;background:#fff4f3;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <svg style="width:20px;height:20px;fill:#f14e3f;" viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
-              </div>
-              <div>
-                <div style="font-weight:600;font-size:14px;color:#0e1a24;">Loan Product</div>
-                <div style="font-size:12px;color:#64748b;margin-top:2px;">Borrow up to 3× your savings — approval in 24 hours.</div>
-              </div>
-            </label>
-            <label class="acct-card" id="acctCard_savings" onclick="syncAcctCard()">
-              <input type="radio" name="LEADCF5" value="Savings Account" id="acct_savings" onchange="syncAcctCard()">
-              <div class="acct-card-check"></div>
-              <div style="width:36px;height:36px;background:#f0f7fa;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <svg style="width:20px;height:20px;fill:#215d72;" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
-              </div>
-              <div>
-                <div style="font-weight:600;font-size:14px;color:#0e1a24;">Savings Account</div>
-                <div style="font-size:12px;color:#64748b;margin-top:2px;">Grow your money with up to 14% dividends — from KSh 500/month.</div>
-              </div>
-            </label>
-            <label class="acct-card" id="acctCard_both" onclick="syncAcctCard()">
-              <input type="radio" name="LEADCF5" value="Both (Both Savings &amp; Loan)" id="acct_both" onchange="syncAcctCard()">
-              <div class="acct-card-check"></div>
-              <div style="width:36px;height:36px;background:#f0fdf4;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <svg style="width:20px;height:20px;fill:#16a34a;" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-              </div>
-              <div>
-                <div style="font-weight:600;font-size:14px;color:#0e1a24;">Both Savings &amp; Loan</div>
-                <div style="font-size:12px;color:#64748b;margin-top:2px;">Open a savings account and simultaneously apply for a loan.</div>
-              </div>
-            </label>
-          </div>
-        </div>
-
-        <!-- ═══════════════════════════════════════
-             STEP 2 — Personal Info
-        ════════════════════════════════════════ -->
-        <div class="form-step" id="zsection2">
           <div class="zwiz-section-title">Personal Information</div>
           <div class="zgrid2">
-            <div class="zfull" style="grid-column:1/-1;margin-bottom:0;">
-              <label class="flabel" for="LEADCF15">Full Name</label>
-              <input type="text" class="field" id="LEADCF15" aria-label="LEADCF15" name="LEADCF15" maxlength="255"
-                placeholder="e.g. Jane Wanjiru Kamau">
-            </div>
-          </div>
-          <div class="zgrid2">
             <div>
-              <label class="flabel" for="Last_Name">Product Name <span class="req">*</span></label>
+              <label class="flabel" for="First_Name">First Name</label>
+              <input type="text" class="field" id="First_Name" aria-label="First Name" name="First Name"
+                maxlength="40" placeholder="e.g. Jane">
+            </div>
+            <div>
+              <label class="flabel" for="Last_Name">Last Name <span class="req">*</span></label>
               <input type="text" class="field" id="Last_Name" aria-required="true" aria-label="Last Name"
-                name="Last Name" maxlength="80" placeholder="e.g. Loan Product A">
+                name="Last Name" maxlength="80" placeholder="e.g. Wanjiru Kamau">
             </div>
             <div>
               <label class="flabel" for="LEADCF3">ID No</label>
               <input type="text" class="field" id="LEADCF3" aria-label="LEADCF3" name="LEADCF3" maxlength="255"
                 placeholder="e.g. 12345678">
-            </div>
-            <div>
-              <label class="flabel" for="LEADCF7">Identification Type</label>
-              <select class="field" id="LEADCF7" onChange="addAriaSelected7310745000001809474()"
-                aria-label="LEADCF7" name="LEADCF7">
-                <option value="-None-">Select ID Type</option>
-                <option value="Kenyan Id">Kenyan ID</option>
-                <option value="Passport">Passport</option>
-              </select>
             </div>
             <div>
               <label class="flabel" for="Phone">Phone</label>
@@ -716,28 +530,42 @@
                 name="Email" maxlength="100" placeholder="jane@example.com">
             </div>
             <div>
-              <label class="flabel" for="LEADCF6">KYC Status</label>
-              <select class="field" id="LEADCF6" onChange="addAriaSelected7310745000001809474()"
-                aria-label="LEADCF6" name="LEADCF6">
-                <option value="-None-">Select KYC Status</option>
-                <option value="In progress">In Progress</option>
-                <option value="Sucess">Success</option>
-                <option value="Fail">Fail</option>
-              </select>
+              <label class="flabel" for="LEADCF69">Expected Contribution</label>
+              <input type="text" class="field" id="LEADCF69" aria-label="LEADCF69" name="LEADCF69" maxlength="16"
+                placeholder="e.g. 5000">
             </div>
           </div>
         </div>
 
         <!-- ═══════════════════════════════════════
-             STEP 3 — Address
+             STEP 2 — Address
         ════════════════════════════════════════ -->
-        <div class="form-step" id="zsection3">
-          <div class="zwiz-section-title">Address &amp; Next of Kin</div>
+        <div class="form-step" id="zsection2">
+          <div class="zwiz-section-title">Address</div>
           <div class="zgrid2">
             <div>
-              <label class="flabel" for="Address_-_City">Address — Country</label>
+              <label class="flabel" for="Address_-_Country_/_Region">Country / Region</label>
+              <select class="field" id="Address_-_Country_/_Region" onChange="addAriaSelected7310745000002125094()"
+                aria-label="Address - Country / Region" name="Address - Country / Region">
+                <option selected value="Kenya">Kenya</option>
+              </select>
+            </div>
+            <div>
+              <label class="flabel" for="Address_-_City">City</label>
               <input type="text" class="field" id="Address_-_City" aria-label="Address - City"
-                name="Address - City" maxlength="255" placeholder="e.g. Kenya">
+                name="Address - City" maxlength="255" placeholder="e.g. Nairobi">
+            </div>
+            <div>
+              <label class="flabel" for="Address_-_Street_Address">Street Address</label>
+              <input type="text" class="field" id="Address_-_Street_Address" aria-label="Address - Street Address"
+                name="Address - Street Address" maxlength="255" placeholder="e.g. Moi Avenue">
+            </div>
+            <div>
+              <label class="flabel" for="Address_-_State_/_Province">State / Province</label>
+              <select class="field" id="Address_-_State_/_Province" onChange="addAriaSelected7310745000002125094()"
+                aria-label="Address - State / Province" name="Address - State / Province">
+                <option selected value="-None-">-None-</option>
+              </select>
             </div>
             <div>
               <label class="flabel" for="Address_-_Zip_/_Postal_Code">Postal Code</label>
@@ -745,29 +573,13 @@
                 aria-label="Address - Zip / Postal Code" name="Address - Zip / Postal Code" maxlength="255"
                 placeholder="e.g. 00100">
             </div>
-            <div>
-              <label class="flabel" for="LEADCF13">Kin Address — State / Province</label>
-              <select class="field" id="LEADCF13" onChange="addAriaSelected7310745000001809474()"
-                aria-label="LEADCF13" name="LEADCF13">
-                <option value="-None-">Select State / Province</option>
-              </select>
-            </div>
-            <div>
-              <label class="flabel" for="LEADCF17">Kin Relationship</label>
-              <select class="field" id="LEADCF17" onChange="addAriaSelected7310745000001809474()"
-                aria-label="LEADCF17" name="LEADCF17">
-                <option value="-None-">Select Relationship</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-              </select>
-            </div>
           </div>
         </div>
 
         <!-- ═══════════════════════════════════════
-             STEP 4 — Terms & Conditions
+             STEP 3 — Terms & Conditions
         ════════════════════════════════════════ -->
-        <div class="form-step" id="zsection4">
+        <div class="form-step" id="zsection3">
           <div class="zwiz-section-title">Terms &amp; Conditions</div>
           <p class="zwiz-section-hint">Please read and accept the terms below to continue your application.</p>
 
@@ -801,49 +613,34 @@
 
           <label class="chk-opt">
             <input type="checkbox" aria-checked="false" id="LEADCF53" aria-label="LEADCF53" name="LEADCF53"
-              maxlength="3" onclick="addAriaChecked7310745000001809474()">
+              maxlength="3" onclick="addAriaChecked7310745000002125094()">
             <span>I have read and agree to the <strong>Terms and Conditions</strong> of Redian Sacco. <span
                 class="req">*</span></span>
           </label>
         </div>
 
         <!-- ═══════════════════════════════════════
-             STEP 5 — Review & Submit
+             STEP 4 — Review & Submit
         ════════════════════════════════════════ -->
-        <div class="form-step" id="zsection5">
+        <div class="form-step" id="zsection4">
           <div class="zwiz-section-title">Review &amp; Submit</div>
           <p class="zwiz-section-hint">Please confirm your details below before submitting your application.</p>
-
-          <!-- Account Type -->
-          <div class="review-section">
-            <div class="review-section-title">Account Type</div>
-            <div class="review-grid">
-              <div>
-                <div class="review-item-label">Product / Account Type</div>
-                <div class="review-item-value" id="rv_acctType">—</div>
-              </div>
-            </div>
-          </div>
 
           <!-- Personal Info -->
           <div class="review-section">
             <div class="review-section-title">Personal Information</div>
             <div class="review-grid">
               <div>
-                <div class="review-item-label">Full Name</div>
-                <div class="review-item-value" id="rv_fullName">—</div>
+                <div class="review-item-label">First Name</div>
+                <div class="review-item-value" id="rv_firstName">—</div>
               </div>
               <div>
-                <div class="review-item-label">Product Name</div>
-                <div class="review-item-value" id="rv_productName">—</div>
+                <div class="review-item-label">Last Name</div>
+                <div class="review-item-value" id="rv_lastName">—</div>
               </div>
               <div>
                 <div class="review-item-label">ID No</div>
                 <div class="review-item-value" id="rv_idNo">—</div>
-              </div>
-              <div>
-                <div class="review-item-label">Identification Type</div>
-                <div class="review-item-value" id="rv_idType">—</div>
               </div>
               <div>
                 <div class="review-item-label">Phone</div>
@@ -854,31 +651,35 @@
                 <div class="review-item-value" id="rv_email">—</div>
               </div>
               <div>
-                <div class="review-item-label">KYC Status</div>
-                <div class="review-item-value" id="rv_kyc">—</div>
+                <div class="review-item-label">Expected Contribution</div>
+                <div class="review-item-value" id="rv_contribution">—</div>
               </div>
             </div>
           </div>
 
           <!-- Address -->
           <div class="review-section">
-            <div class="review-section-title">Address &amp; Next of Kin</div>
+            <div class="review-section-title">Address</div>
             <div class="review-grid">
               <div>
-                <div class="review-item-label">Country</div>
+                <div class="review-item-label">Country / Region</div>
                 <div class="review-item-value" id="rv_country">—</div>
+              </div>
+              <div>
+                <div class="review-item-label">City</div>
+                <div class="review-item-value" id="rv_city">—</div>
+              </div>
+              <div>
+                <div class="review-item-label">Street Address</div>
+                <div class="review-item-value" id="rv_street">—</div>
+              </div>
+              <div>
+                <div class="review-item-label">State / Province</div>
+                <div class="review-item-value" id="rv_state">—</div>
               </div>
               <div>
                 <div class="review-item-label">Postal Code</div>
                 <div class="review-item-value" id="rv_postal">—</div>
-              </div>
-              <div>
-                <div class="review-item-label">Kin State / Province</div>
-                <div class="review-item-value" id="rv_kinState">—</div>
-              </div>
-              <div>
-                <div class="review-item-label">Kin Relationship</div>
-                <div class="review-item-value" id="rv_kinRel">—</div>
               </div>
             </div>
           </div>
@@ -916,12 +717,12 @@
 
         <!-- Do not remove this --- Analytics Tracking code starts -->
         <script id='wf_anal'
-          src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=24b56b7ec57fe500e0b2c43aa048ffe60f97ec2f31459c43c84e9063caa84e2b014dde35d6112dd40994c65a765d6e44gid50606f6e474ff666fef898f6ad3ca42262b004aad38292a5a8515f61fbaf173bgid37831eac63e1f9deab8cd6e0b71dc4a1c45d61973e52ccb0c1557b26a9071286gidbb6d42dff6807c193f09d63ae9f4d6586e15d0378f786f5e20994511bfd21cd7&tw=d63b52c2eeeb4526dbb1e4c4622444651071f1153dfc502825b334c48fa8cf6a'>
+          src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=6dc2251e4887167ea5bee71db58f1acd0bc97808ac6b790a242157c7d546e000c9202cba688c7dc6f91c8b24e4041003gid7a9f5a39731caf47ac7df31dc662cc10f2f20b624df6a1d9d95633eb171b6021gidaa43f6064d2193e143da20f26b9043cb53d1fce2453c48df1267407e306c3bb4gidbc6d10443a89b1c834ed61e649192ab569203d5998d908705ad0e561ae1d68d4&tw=37c095412bc6afdf68ff9e2f03a7bc969f54d0710e450c3a99471ef0fe0910fa'>
         </script>
         <!-- Do not remove this --- Analytics Tracking code ends. -->
 
-        <script id='webformDependencyScript7310745000001809474'
-          src='https://crm.zohopublic.com/crm/WebFormDependencies?rid=58d2ccb2012c603804f46780fae14fab2b9bbf0c0c1014bbae6d3fe77cfcdf39'>
+        <script id='webformDependencyScript7310745000002125094'
+          src='https://crm.zohopublic.com/crm/WebFormDependencies?rid=58d2ccb2012c603804f46780fae14fab0389731862b52ac3610864c5f122f8b7'>
         </script>
 
       </form>
@@ -930,7 +731,7 @@
 
   <script>
     /* ── Zoho-required helpers ── */
-    function addAriaChecked7310745000001809474() {
+    function addAriaChecked7310745000002125094() {
       var checkboxElem = event.target;
       if (checkboxElem != undefined && checkboxElem.checked) {
         checkboxElem.ariaChecked = 'true';
@@ -939,7 +740,7 @@
       }
     }
 
-    function addAriaSelected7310745000001809474() {
+    function addAriaSelected7310745000002125094() {
       var optionElem = event.target;
       var previousSelectedOption = optionElem.querySelector('[aria-selected=true]');
       if (previousSelectedOption) {
@@ -948,8 +749,8 @@
       optionElem.querySelectorAll('option')[optionElem.selectedIndex].ariaSelected = 'true';
     }
 
-    function validateEmail7310745000001809474() {
-      var form = document.forms['WebToLeads7310745000001809474'];
+    function validateEmail7310745000002125094() {
+      var form = document.forms['WebToLeads7310745000002125094'];
       var emailFld = form.querySelectorAll('[ftype=email]');
       for (var i = 0; i < emailFld.length; i++) {
         var emailVal = emailFld[i].value;
@@ -966,13 +767,13 @@
       return true;
     }
 
-    function checkMandatory7310745000001809474(isAjax) {
+    function checkMandatory7310745000002125094(isAjax) {
       // Mandatory-field alerts removed — Zoho handles server-side validation.
-      if (!validateEmail7310745000001809474()) { return false; }
+      if (!validateEmail7310745000002125094()) { return false; }
 
       var urlparams = new URLSearchParams(window.location.search);
       if (urlparams.has('service') && (urlparams.get('service') === 'smarturl')) {
-        var webform = document.getElementById('webform7310745000001809474');
+        var webform = document.getElementById('webform7310745000002125094');
         var service = urlparams.get('service');
         var smarturlfield = document.createElement('input');
         smarturlfield.setAttribute('type', 'hidden');
@@ -984,18 +785,10 @@
       document.querySelector('.crmWebToEntityForm #formsubmit').setAttribute('disabled', true);
     }
 
-    /* ── Account card sync (JS fallback for :has) ── */
-    function syncAcctCard() {
-      document.querySelectorAll('.acct-card').forEach(function (card) {
-        var radio = card.querySelector('input[type=radio]');
-        card.classList.toggle('selected', radio && radio.checked);
-      });
-    }
-
     /* ── Step wizard ── */
-    var zTotalSteps = 5;
+    var zTotalSteps = 4;
     var zCurrentStep = 1;
-    var zStepTitles = ['Welcome', 'Personal Information', 'Address & Next of Kin', 'Terms & Conditions', 'Review & Submit'];
+    var zStepTitles = ['Personal Information', 'Address', 'Terms & Conditions', 'Review & Submit'];
 
     function zEl(id) { return document.getElementById(id); }
 
@@ -1020,15 +813,9 @@
         if (!el) return '';
         if (el.tagName === 'SELECT') {
           var v = el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : '';
-          return (v === '-None-' || v === 'Select ID Type' || v === 'Select KYC Status' ||
-                  v === 'Select State / Province' || v === 'Select Relationship') ? '' : v;
+          return (v === '-None-') ? '' : v;
         }
         return el.value.trim();
-      }
-
-      function acctType() {
-        var r = document.querySelector('input[name="LEADCF5"]:checked');
-        return r ? r.value : '';
       }
 
       function set(id, v) {
@@ -1038,18 +825,17 @@
         el.classList.toggle('empty', !v);
       }
 
-      set('rv_acctType',    acctType());
-      set('rv_fullName',    val('LEADCF15'));
-      set('rv_productName', val('Last_Name'));
+      set('rv_firstName',   val('First_Name'));
+      set('rv_lastName',    val('Last_Name'));
       set('rv_idNo',        val('LEADCF3'));
-      set('rv_idType',      val('LEADCF7'));
       set('rv_phone',       val('Phone'));
       set('rv_email',       val('Email'));
-      set('rv_kyc',         val('LEADCF6'));
-      set('rv_country',     val('Address_-_City'));
+      set('rv_contribution',val('LEADCF69'));
+      set('rv_country',     val('Address_-_Country_/_Region'));
+      set('rv_city',        val('Address_-_City'));
+      set('rv_street',      val('Address_-_Street_Address'));
+      set('rv_state',       val('Address_-_State_/_Province'));
       set('rv_postal',      val('Address_-_Zip_/_Postal_Code'));
-      set('rv_kinState',    val('LEADCF13'));
-      set('rv_kinRel',      val('LEADCF17'));
 
       var termsAccepted = document.getElementById('LEADCF53') && document.getElementById('LEADCF53').checked;
       set('rv_terms', termsAccepted ? '✓ Accepted' : 'Not accepted');
