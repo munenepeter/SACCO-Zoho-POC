@@ -502,8 +502,8 @@
             <div>
               <label class="flabel" for="NAME">Member No <span class="req">*</span></label>
               <input type="text" class="field" id="NAME" aria-required="true" aria-label="NAME" name="NAME"
-                maxlength="120" placeholder="MEM-00234">
-              <p class="field-hint">Please enter a valid format MEM-XXXXX</p>
+                maxlength="120" placeholder="MEM - 012">
+              <p class="field-hint">Please enter a valid format MEM - 0XX</p>
             </div>
             <div>
               <label class="flabel" for="COBJ9CF8">Loan Type</label>
@@ -717,9 +717,9 @@
               return false;
             }
           } else if (mndFileds[i] == 'NAME') {
-            var memberNoPattern = /^MEM-\d{5}$/;
+            var memberNoPattern = /^MEM - 0\d{2}$/;
             if (!memberNoPattern.test((fieldObj.value).trim())) {
-              showRsToast('Invalid Member No', 'Please use the format MEM-XXXXX (e.g. MEM-00123).');
+              showRsToast('Invalid Member No', 'Please use the format MEM - 0XX (e.g. MEM - 012).');
               fieldObj.focus();
               zJumpToFieldStep(fieldObj);
               return false;
@@ -856,9 +856,9 @@
     function zChangeStep(dir) {
       if (dir === 1 && zCurrentStep === 1) {
         var memberNoField = zEl('NAME');
-        var memberNoPattern = /^MEM-\d{5}$/;
+        var memberNoPattern = /^MEM - 0\d{2}$/;
         if (memberNoField && !memberNoPattern.test(memberNoField.value.trim())) {
-          showRsToast('Invalid Member No', 'Please use the format MEM-XXXXX (e.g. MEM-00123).');
+          showRsToast('Invalid Member No', 'Please use the format MEM - 0XX (e.g. MEM - 012).');
           memberNoField.focus();
           return;
         }
